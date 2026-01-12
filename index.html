@@ -1,111 +1,112 @@
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Passwort zurücksetzen</title>
-  <style>
-    body {
-      font-family: Arial Regular;
-      text-align: center;
-      padding: 50px;
-      margin: 0;
-      background-color: #f0f0f0;
-      color: #111;
-    }
-    
-<body>
-<header class="banner">
-  <a href="https://example.com/link1">
-    <img src="Menu.jpeg" alt="Menu" class="logo">
-  </a>
-  <a href="https://example.com/link2">
-    <img src="Ghost.jpeg" alt="Ghost" class="logo">
-  </a>
-  <a href="https://example.com/link3">
-    <img src="search.jpeg" alt="Search" class="logo">
-  </a>
-</header>
-    
+<!DOCTYPE html>
+<html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meine Seite</title>
+<title>Benutzerantworten</title>
 <style>
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  margin: 0;
+  background-color: #f0f0f0;
+  color: #111;
+}
+
 /* Banner */
 .banner {
   background-color: #fffc00;   /* gelber Balken */
-  display: flex;               /* Logos nebeneinander */
-  align-items: center;         /* vertikal zentriert */
-  justify-content: flex-start; /* linksbündig */
-  padding: 5px 20px;           /* schmaler Balken */
-  gap: 10px;                   /* Abstand zwischen Logos */
-  position: sticky;            /* bleibt oben beim Scrollen */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px 20px;
+  gap: 10px;
+  position: sticky;
   top: 0;
   z-index: 1000;
 }
 
-/* Logos */
+/* Logos im Banner */
 .banner .logo {
-  height: 30px;        /* kleine Logos */
+  height: 30px;
   width: auto;
   cursor: pointer;
-  transition: transform 0.2s; /* kleine Animation bei Hover */
+  transition: transform 0.2s;
 }
-
-/* Hover-Effekt */
 .banner .logo:hover {
   transform: scale(1.2);
 }
 
-/* Optional: responsive auf kleine Bildschirme */
+/* Responsive für Mobile */
 @media (max-width: 600px) {
   .banner {
-    flex-wrap: wrap;       /* Logos umbrechen */
+    flex-wrap: wrap;
     justify-content: center;
   }
   .banner .logo {
-    height: 25px;          /* kleiner auf Handy */
+    height: 25px;
   }
 }
 
-    input, textarea, button {
-      width: 90%;
-      max-width: 400px;
-      padding: 10px;
-      margin: 5px auto;
-      font-size: 16px;
-      display: block;
-    }
+/* Formulare */
+input, textarea, button {
+  width: 90%;
+  max-width: 400px;
+  padding: 10px;
+  margin: 5px auto;
+  font-size: 16px;
+  display: block;
+}
+textarea { height: 100px; }
+button {
+  cursor: pointer;
+  background-color: #ff00ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+}
 
-    textarea {
-      height: 100px;
-    }
+/* Bilder auf Seite */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+</style>
 
-    button {
-      cursor: pointer;
-      background-color: #ff00ff;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-    }
+<!-- Firebase Bibliotheken -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-      margin: 0 auto 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-    }
-  </style>
 </head>
 <body>
-  <img src="Logo.png" alt="Logo">
-  <h1>Benutzerantworten</h1>
-  <input type="text" id="benutzer" placeholder="Dein Name">
-  <textarea id="eingabe" placeholder="Hier tippen..."></textarea>
-  <button onclick="speichern()">Antwort senden</button>
-  <p id="status"></p>
-  
+
+<!-- Banner -->
+<header class="banner">
+  <a href="https://example.com/link1">
+    <img src="images/Menu.jpeg" alt="Menu" class="logo">
+  </a>
+  <a href="https://example.com/link2">
+    <img src="images/Ghost.jpeg" alt="Ghost" class="logo">
+  </a>
+  <a href="https://example.com/link3">
+    <img src="images/search.jpeg" alt="Search" class="logo">
+  </a>
+</header>
+
+<!-- Seite Inhalt -->
+<img src="images/Logo.png" alt="Logo">
+<h1>Benutzerantworten</h1>
+<input type="text" id="benutzer" placeholder="Dein Name">
+<textarea id="eingabe" placeholder="Hier tippen..."></textarea>
+<button onclick="speichern()">Antwort senden</button>
+<p id="status"></p>
+
 <script>
   // Firebase Config
   const firebaseConfig = {
@@ -123,7 +124,7 @@
   const app = firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
-  // Funktion zum Speichern + Weiterleitung
+  // Speichern + Weiterleitung
   function speichern() {
     const benutzer = document.getElementById('benutzer').value.trim();
     const text = document.getElementById('eingabe').value.trim();
@@ -133,19 +134,16 @@
       return;
     }
 
-    // Speichern in Firebase
     db.ref('antworten/' + benutzer).set({ text: text })
       .then(() => {
-        // Optional: Status anzeigen (kurz)
         document.getElementById('status').innerText = "Antwort gespeichert!";
-
-        // Weiterleitung zu neuem Link
-        window.location.href = "https://instagram.com"; // <- hier neuen Link einfügen
+        window.location.href = "https://instagram.com"; // <-- Hier neuen Link einfügen
       })
       .catch(err => {
         document.getElementById('status').innerText = "Fehler: " + err;
       });
   }
 </script>
+
 </body>
 </html>
