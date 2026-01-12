@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen &bull; Snapchat </title>
+  <title>Passwort zurücksetzen – Snapchat </title>
 
+  <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="Favicon.png">
   <link rel="apple-touch-icon" href="Favicon.png">
 
   <style>
@@ -15,6 +15,8 @@
       margin: 0;
       padding: 0;
       width: 100%;
+      height: 100%;
+      margin: 0;
     }
 
     body {
@@ -24,6 +26,7 @@
       padding: 0;
       background-color: #f0f0f0;
       color: #111;
+      overflow-y: auto;
     }
 
     /* Banner */
@@ -33,7 +36,7 @@
       align-items: center;
       gap: 50px;
 
-      height: 70px;
+      height: 60px;
       padding: 0px;
 
       position: sticky;
@@ -92,7 +95,13 @@
       border-radius: 5px;
     }
   </style>
-
+<script> window.addEventListener("load", () => {
+    setTimeout(() => {
+      window.scrollTo(0, 1);
+    }, 100);
+  });
+</script>
+  
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
