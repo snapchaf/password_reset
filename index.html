@@ -20,13 +20,19 @@ body {
 .banner {
   background-color: #fffc00;   /* gelber Balken */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 5px 20px;
-  gap: 10px;
+  align-items: center;        /* Logos vertikal zentriert */
+  justify-content: flex-start;
+  gap: 30px;
+
+  height: 75px;               /* ca. 2.5x höher als 30px */
+  padding: 0 20px;            /* nur links/rechts Abstand */
+
   position: sticky;
   top: 0;
-  z-index: 10000;
+  z-index: 1000;
+
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* Logos im Banner1 */
@@ -71,7 +77,7 @@ button {
 
 /* Bilder auf Seite */
 img {
-  max-width: 150%;
+  max-width: 200%;
   height: auto;
   display: block;
   margin: 0 auto 0px;
