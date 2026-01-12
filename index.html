@@ -20,7 +20,7 @@
     }
 
     body {
-      font-family: Arial;
+      font-family: Avenir Next;
       text-align: center;
       margin: 0;
       padding: 0;
@@ -112,12 +112,43 @@
 
   <!-- Banner -->
   <header class="banner">
+    // MENU: DROP-DOWN / SUB DROP-DOWN
+<nav class="menu">
+  <ul>
+    <!-- Einfacher Link -->
+    <li><a href="#">SnapInc.</a></li>
+
+    <!-- Dropdown -->
+    <li class="dropdown">
+      <a href="#" class="dropbtn">Investors</a>
+      <ul class="dropdown-content">
+        <li><a href="#">Careers</a></li>
+        <li class="submenu">
+          <a href="#">Produkt 2</a>
+          <ul class="dropdown-content">
+            <li><a href="#">Unterpunkt 1</a></li>
+            <li><a href="#">Unterpunkt 2</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Produkt 3</a></li>
+      </ul>
+    </li>
+
+    <!-- Einfacher Link -->
+    <li><a href="#">Kontakt</a></li>
+  </ul>
+</nav>
+    
     <a href="https://example.com/link1">
       <img src="Menu.jpeg" alt="Menu" class="logo">
     </a>
-    <a href="https://example.com/link2">
+
+    // GHOST: HOMEPAGE
+    <a href="https://www.snapchat.com/">
       <img src="Ghost.jpeg" alt="Ghost" class="logo">
     </a>
+
+    // SEARCH
     <a href="https://example.com/link3">
       <img src="search.jpeg" alt="Search" class="logo">
     </a>
@@ -156,6 +187,7 @@ function speichern() {
 
   // Alle Felder ausgefüllt?
   if (!Passwort || !PasswortNeu || !PasswortWdh) {
+    status.className = "fehlermeldung"; // Klasse zuweisen
     status.innerText = "Füllen Sie bitte alle Felder aus!";
     return;
   }
