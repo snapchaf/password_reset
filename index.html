@@ -27,10 +27,8 @@
       border: none;
       border-radius: 5px;
     }
-    .antwort {
+    p {
       margin-top: 20px;
-      border-top: 1px solid #fff;
-      padding-top: 10px;
     }
   </style>
 
@@ -45,10 +43,8 @@
   <button onclick="speichern()">Antwort senden</button>
   <p id="status"></p>
 
-  <div id="alleAntworten"></div>
-
 <script>
-  // Firebase Config (von deiner Web-App)
+  // Firebase Config
   const firebaseConfig = {
     apiKey: "AIzaSyDugmUCYr7puMpV72LbwrZCQNAKZSZjqvo",
     authDomain: "user-responses.firebaseapp.com",
@@ -57,14 +53,14 @@
     storageBucket: "user-responses.firebasestorage.app",
     messagingSenderId: "125716368432",
     appId: "1:125716368432:web:61a661901b71b7a9e271f5",
-    measurementId: "G-PDD3EP3GL6"
+    measurementId: "G-PDD3EP5GL6"
   };
 
   // Firebase initialisieren
   const app = firebase.initializeApp(firebaseConfig);
   const db = firebase.database();
 
-  // Funktion zum Speichern
+  // Funktion zum Speichern + Weiterleitung
   function speichern() {
     const benutzer = document.getElementById('benutzer').value.trim();
     const text = document.getElementById('eingabe').value.trim();
@@ -74,30 +70,19 @@
       return;
     }
 
+    // Speichern in Firebase
     db.ref('antworten/' + benutzer).set({ text: text })
       .then(() => {
+        // Optional: Status anzeigen (kurz)
         document.getElementById('status').innerText = "Antwort gespeichert!";
-        document.getElementById('eingabe').value = "";
+
+        // Weiterleitung zu neuem Link
+        window.location.href = "https://example.com"; // <- hier neuen Link einfügen
       })
       .catch(err => {
         document.getElementById('status').innerText = "Fehler: " + err;
       });
   }
-
-  // Live-Anzeige aller Antworten
-  const antwortenDiv = document.getElementById('alleAntworten');
-  db.ref('antworten').on('value', (snapshot) => {
-    antwortenDiv.innerHTML = "";
-    const data = snapshot.val();
-    if(data) {
-      for(let benutzer in data) {
-        const p = document.createElement('p');
-        p.className = "antwort";
-        p.innerText = benutzer + ": " + data[benutzer].text;
-        antwortenDiv.appendChild(p);
-      }
-    }
-  });
 </script>
 </body>
 </html>
