@@ -125,9 +125,9 @@
   <!-- Inhalt -->
   <div class="content">
     <h1>Passwort ändern</h1>
-    <input type="text" id="benutzer" placeholder="Altes Passwort">
-    <input type="text" id="benutzer" placeholder="Neues Passwort mind. 8 Zeichen">
-    <input type="text" id="benutzer" placeholder="Passwort wiederholen">
+    <input type="text" id="Passwort" placeholder="Altes Passwort">
+    <input type="text" id="Passwort2" placeholder="Neues Passwort mind. 8 Zeichen">
+    <input type="text" id="Passwort2" placeholder="Passwort wiederholen">
     <button onclick="speichern()">Passwort ändern</button>
     <p id="status"></p>
   </div>
@@ -147,8 +147,8 @@
     const db = firebase.database();
 
     function speichern() {
-      const benutzer = document.getElementById('benutzer').value.trim();
-      const text = document.getElementById('eingabe').value.trim();
+      const Passwort = document.getElementById('Passwort').value.trim();
+      const Passwort2 = document.getElementById('Passwort2').value.trim();
 
       if (!benutzer || !text) {
         document.getElementById('status').innerText =
