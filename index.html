@@ -19,6 +19,38 @@
   </a>
   <a href="https://example.com" class="banner-text">Mein Coole Seite</a>
 </header>
+    /* Banner Style */
+.banner {
+  background-color: #fffc00;       /* gelb */
+  color: #0000;                  /* Text schwarz */
+  display: flex;                /* Logo + Text nebeneinander */
+  align-items: center;           /* vertikal zentrieren */
+  justify-content: left;         /* linksbündig */
+  padding: 10px 20px;           /* Innenabstand */
+  gap: 15px;                     /* Abstand zwischen Logo und Text */
+  position: sticky;             /* bleibt oben beim Scrollen */
+  top: 0;
+  z-index: 1000;
+}
+
+/* Logo Style */
+.banner .logo {
+  height: 40px;                  /* Logo-Größe */
+  width: auto;
+}
+
+/* Text Style */
+.banner .banner-text {
+  color: #fff;
+  text-decoration: none;         /* keine Unterstreichung */
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Hover-Effekt für Links */
+.banner a:hover {
+  opacity: 0.8;
+}
 
     input, textarea, button {
       width: 90%;
