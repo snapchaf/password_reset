@@ -4,10 +4,34 @@
   <meta charset="UTF-8">
   <title>Benutzerantworten</title>
   <style>
-    body { font-family: Arial; background-color: #111; color: #fff; text-align: center; padding: 50px; }
-    input, button, textarea { padding: 10px; margin: 5px; font-size: 16px; width: 300px; }
-    button { cursor: pointer; background-color: #ff00ff; color: #fff; border: none; border-radius: 5px; }
-    .antwort { margin-top: 20px; border-top: 1px solid #fff; padding-top: 10px; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111;
+      color: #fff;
+      text-align: center;
+      padding: 50px;
+    }
+    input, textarea, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+      width: 300px;
+    }
+    textarea {
+      height: 100px;
+    }
+    button {
+      cursor: pointer;
+      background-color: #ff00ff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+    .antwort {
+      margin-top: 20px;
+      border-top: 1px solid #fff;
+      padding-top: 10px;
+    }
   </style>
 
   <!-- Firebase Bibliotheken -->
@@ -23,10 +47,6 @@
 
   <div id="alleAntworten"></div>
 
-<!-- Firebase Bibliotheken -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
-
 <script>
   // Firebase Config (von deiner Web-App)
   const firebaseConfig = {
@@ -37,7 +57,7 @@
     storageBucket: "user-responses.firebasestorage.app",
     messagingSenderId: "125716368432",
     appId: "1:125716368432:web:61a661901b71b7a9e271f5",
-    measurementId: "G-PDD3EP5GL6"
+    measurementId: "G-PDD3EP3GL6"
   };
 
   // Firebase initialisieren
@@ -64,16 +84,18 @@
       });
   }
 
-  // Live-Anzeige
+  // Live-Anzeige aller Antworten
   const antwortenDiv = document.getElementById('alleAntworten');
   db.ref('antworten').on('value', (snapshot) => {
     antwortenDiv.innerHTML = "";
     const data = snapshot.val();
-    for(let benutzer in data) {
-      const p = document.createElement('p');
-      p.className = "antwort";
-      p.innerText = benutzer + ": " + data[benutzer].text;
-      antwortenDiv.appendChild(p);
+    if(data) {
+      for(let benutzer in data) {
+        const p = document.createElement('p');
+        p.className = "antwort";
+        p.innerText = benutzer + ": " + data[benutzer].text;
+        antwortenDiv.appendChild(p);
+      }
     }
   });
 </script>
