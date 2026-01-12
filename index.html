@@ -14,42 +14,42 @@
     
 <!-- Banner oben -->
 <header class="banner">
-  <a href="https://example.com" class="logo-link">
-    <img src="logo.png" alt="Logo" class="logo">
+  <a href="https://example.com/link1">
+    <img src="Menu.jpeg" alt="Menu" class="logo">
   </a>
-  <a href="https://example.com" class="banner-text">Mein Coole Seite</a>
+  <a href="https://example.com/link2">
+    <img src="Ghost.jpeg" alt="Ghost" class="logo">
+  </a>
+  <a href="https://example.com/link3">
+    <img src="search.jpeg" alt="search" class="logo">
+  </a>
+  <!-- weitere Logos hier hinzufügen -->
 </header>
+    
     /* Banner Style */
 .banner {
-  background-color: #fffc00;       /* gelb */
-  color: #0000;                  /* Text schwarz */
-  display: flex;                /* Logo + Text nebeneinander */
-  align-items: center;           /* vertikal zentrieren */
-  justify-content: left;         /* linksbündig */
-  padding: 10px 20px;           /* Innenabstand */
-  gap: 15px;                     /* Abstand zwischen Logo und Text */
+  background-color: #fffc00;   /* gelber Balken */
+  display: flex;               /* Logos nebeneinander */
+  align-items: center;         /* vertikal zentriert */
+  justify-content: flex-start; /* linksbündig */
+  padding: 5px 20px;           /* schmaler Balken */
+  gap: 10px;                   /* Abstand zwischen Logos */
   position: sticky;             /* bleibt oben beim Scrollen */
   top: 0;
   z-index: 1000;
 }
 
-/* Logo Style */
+/* Logos */
 .banner .logo {
-  height: 40px;                  /* Logo-Größe */
-  width: auto;
+  height: 30px;        /* kleine Logos */
+  width: auto;         /* proportional */
+  cursor: pointer;
+  transition: transform 0.2s; /* kleine Animation bei Hover */
 }
 
-/* Text Style */
-.banner .banner-text {
-  color: #fff;
-  text-decoration: none;         /* keine Unterstreichung */
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* Hover-Effekt für Links */
-.banner a:hover {
-  opacity: 0.8;
+/* Hover-Effekt */
+.banner .logo:hover {
+  transform: scale(1.2); /* leicht vergrößern beim Überfahren */
 }
 
     input, textarea, button {
