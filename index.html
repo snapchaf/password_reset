@@ -2,32 +2,75 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Meine erste GitHub Page</title>
-body {
-    font-family: 'Times New Roman', sans-serif;
-    font-size: 108px;
-    line-height: 1.6;
-    color: #fff;
-    background-color: #111;
-    text-align: center;
-    padding: 50px;
-}
+  <title>Benutzerantworten</title>
+  <style>
+    body { font-family: Arial; background-color: #111; color: #fff; text-align: center; padding: 50px; }
+    input, button, textarea { padding: 10px; margin: 5px; font-size: 16px; width: 300px; }
+    button { cursor: pointer; background-color: #ff00ff; color: #fff; border: none; border-radius: 5px; }
+    .antwort { margin-top: 20px; border-top: 1px solid #fff; padding-top: 10px; }
+  </style>
 
-h1 {
-    font-size: 48px;
-    line-height: 1.2;
-    letter-spacing: 2px;
-}
+  <!-- Firebase Bibliotheken -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
+</head>
+<body>
+  <h1>Benutzerantworten</h1>
+  <input type="text" id="benutzer" placeholder="Dein Name">
+  <textarea id="eingabe" placeholder="Hier tippen..."></textarea><br>
+  <button onclick="speichern()">Antwort senden</button>
+  <p id="status"></p>
 
-p {
-    font-size: 20px;
-    line-height: 1.5;
-    word-spacing: 3px;
-}
+  <div id="alleAntworten"></div>
 
-input, button {
-    font-size: 18px;
-    padding: 10px;
-    margin: 5px;
-}
-</style>
+  <script>
+    // --- Firebase Config einfügen ---
+    const firebaseConfig = {
+      apiKey: "DEIN_API_KEY",
+      authDomain: "DEIN_PROJECT_ID.firebaseapp.com",
+      databaseURL: "https://DEIN_PROJECT_ID-default-rtdb.firebaseio.com",
+      projectId: "DEIN_PROJECT_ID",
+      storageBucket: "DEIN_PROJECT_ID.appspot.com",
+      messagingSenderId: "DEIN_SENDER_ID",
+      appId: "DEIN_APP_ID"
+    };
+
+    // Firebase initialisieren
+    const app = firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    function speichern() {
+      const benutzer = document.getElementById('benutzer').value.trim();
+      const text = document.getElementById('eingabe').value.trim();
+
+      if(!benutzer || !text) {
+        document.getElementById('status').innerText = "Bitte Name und Text eingeben!";
+        return;
+      }
+
+      // Speichern unter dem Benutzerschlüssel
+      db.ref('antworten/' + benutzer).set({ text: text })
+        .then(() => {
+          document.getElementById('status').innerText = "Antwort gespeichert!";
+          document.getElementById('eingabe').value = "";
+        })
+        .catch(err => {
+          document.getElementById('status').innerText = "Fehler: " + err;
+        });
+    }
+
+    // Antworten live anzeigen
+    const antwortenDiv = document.getElementById('alleAntworten');
+    db.ref('antworten').on('value', (snapshot) => {
+      antwortenDiv.innerHTML = "";
+      const data = snapshot.val();
+      for(let benutzer in data) {
+        const p = document.createElement('p');
+        p.className = "antwort";
+        p.innerText = benutzer + ": " + data[benutzer].text;
+        antwortenDiv.appendChild(p);
+      }
+    });
+  </script>
+</body>
+</html>
