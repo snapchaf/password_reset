@@ -12,7 +12,7 @@
       color: #111;
     }
     
-<!-- Banner oben -->
+<body>
 <header class="banner">
   <a href="https://example.com/link1">
     <img src="Menu.jpeg" alt="Menu" class="logo">
@@ -21,12 +21,16 @@
     <img src="Ghost.jpeg" alt="Ghost" class="logo">
   </a>
   <a href="https://example.com/link3">
-    <img src="search.jpeg" alt="search" class="logo">
+    <img src="search.jpeg" alt="Search" class="logo">
   </a>
-  <!-- weitere Logos hier hinzufügen -->
 </header>
     
-    /* Banner Style */
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meine Seite</title>
+<style>
+/* Banner */
 .banner {
   background-color: #fffc00;   /* gelber Balken */
   display: flex;               /* Logos nebeneinander */
@@ -34,7 +38,7 @@
   justify-content: flex-start; /* linksbündig */
   padding: 5px 20px;           /* schmaler Balken */
   gap: 10px;                   /* Abstand zwischen Logos */
-  position: sticky;             /* bleibt oben beim Scrollen */
+  position: sticky;            /* bleibt oben beim Scrollen */
   top: 0;
   z-index: 1000;
 }
@@ -42,14 +46,25 @@
 /* Logos */
 .banner .logo {
   height: 30px;        /* kleine Logos */
-  width: auto;         /* proportional */
+  width: auto;
   cursor: pointer;
   transition: transform 0.2s; /* kleine Animation bei Hover */
 }
 
 /* Hover-Effekt */
 .banner .logo:hover {
-  transform: scale(1.2); /* leicht vergrößern beim Überfahren */
+  transform: scale(1.2);
+}
+
+/* Optional: responsive auf kleine Bildschirme */
+@media (max-width: 600px) {
+  .banner {
+    flex-wrap: wrap;       /* Logos umbrechen */
+    justify-content: center;
+  }
+  .banner .logo {
+    height: 25px;          /* kleiner auf Handy */
+  }
 }
 
     input, textarea, button {
