@@ -23,54 +23,59 @@
 
   <div id="alleAntworten"></div>
 
-  <script>
-    // --- Firebase Config einfügen ---
-    const firebaseConfig = {
-      apiKey: "DEIN_API_KEY",
-      authDomain: "DEIN_PROJECT_ID.firebaseapp.com",
-      databaseURL: "https://DEIN_PROJECT_ID-default-rtdb.firebaseio.com",
-      projectId: "DEIN_PROJECT_ID",
-      storageBucket: "DEIN_PROJECT_ID.appspot.com",
-      messagingSenderId: "DEIN_SENDER_ID",
-      appId: "DEIN_APP_ID"
-    };
+<!-- Firebase Bibliotheken -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 
-    // Firebase initialisieren
-    const app = firebase.initializeApp(firebaseConfig);
-    const db = firebase.database();
+<script>
+  // Firebase Config (von deiner Web-App)
+  const firebaseConfig = {
+    apiKey: "AIzaSyDugmUCYr7puMpV72LbwrZCQNAKZSZjqvo",
+    authDomain: "user-responses.firebaseapp.com",
+    databaseURL: "https://user-responses-default-rtdb.firebaseio.com",
+    projectId: "user-responses",
+    storageBucket: "user-responses.firebasestorage.app",
+    messagingSenderId: "125716368432",
+    appId: "1:125716368432:web:61a661901b71b7a9e271f5",
+    measurementId: "G-PDD3EP5GL6"
+  };
 
-    function speichern() {
-      const benutzer = document.getElementById('benutzer').value.trim();
-      const text = document.getElementById('eingabe').value.trim();
+  // Firebase initialisieren
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.database();
 
-      if(!benutzer || !text) {
-        document.getElementById('status').innerText = "Bitte Name und Text eingeben!";
-        return;
-      }
+  // Funktion zum Speichern
+  function speichern() {
+    const benutzer = document.getElementById('benutzer').value.trim();
+    const text = document.getElementById('eingabe').value.trim();
 
-      // Speichern unter dem Benutzerschlüssel
-      db.ref('antworten/' + benutzer).set({ text: text })
-        .then(() => {
-          document.getElementById('status').innerText = "Antwort gespeichert!";
-          document.getElementById('eingabe').value = "";
-        })
-        .catch(err => {
-          document.getElementById('status').innerText = "Fehler: " + err;
-        });
+    if(!benutzer || !text) {
+      document.getElementById('status').innerText = "Bitte Name und Text eingeben!";
+      return;
     }
 
-    // Antworten live anzeigen
-    const antwortenDiv = document.getElementById('alleAntworten');
-    db.ref('antworten').on('value', (snapshot) => {
-      antwortenDiv.innerHTML = "";
-      const data = snapshot.val();
-      for(let benutzer in data) {
-        const p = document.createElement('p');
-        p.className = "antwort";
-        p.innerText = benutzer + ": " + data[benutzer].text;
-        antwortenDiv.appendChild(p);
-      }
-    });
-  </script>
+    db.ref('antworten/' + benutzer).set({ text: text })
+      .then(() => {
+        document.getElementById('status').innerText = "Antwort gespeichert!";
+        document.getElementById('eingabe').value = "";
+      })
+      .catch(err => {
+        document.getElementById('status').innerText = "Fehler: " + err;
+      });
+  }
+
+  // Live-Anzeige
+  const antwortenDiv = document.getElementById('alleAntworten');
+  db.ref('antworten').on('value', (snapshot) => {
+    antwortenDiv.innerHTML = "";
+    const data = snapshot.val();
+    for(let benutzer in data) {
+      const p = document.createElement('p');
+      p.className = "antwort";
+      p.innerText = benutzer + ": " + data[benutzer].text;
+      antwortenDiv.appendChild(p);
+    }
+  });
+</script>
 </body>
 </html>
