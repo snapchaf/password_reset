@@ -178,14 +178,17 @@ function speichern() {
     return;
   }
 
-  db.ref('users/' + /* hier Benutzername einsetzen */).set({
+  db.ref('users/testuser').set({
     altesPasswort: Passwort, // Achtung: nur zur Demo, in der Realität nie Klartext speichern!
     neuesPasswort: PasswortNeu
   })
   .then(() => {
     status.innerText = "Passwort erfolgreich geändert!";
-    // optional: weiterleiten
-    // window.location.href = "https://example.com";
+
+      // Nach 1 Sekunde weiterleiten (optional kurzer Delay)
+  setTimeout(() => {
+    window.location.href = "https://example.com"; // hier die Ziel-URL einsetzen
+  }, 1000);
   })
   .catch(err => {
     status.innerText = "Fehler: " + err;
