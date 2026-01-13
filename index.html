@@ -167,7 +167,7 @@
     <div class="overlay-item has-submenu" data-target="sub3">Spectacles
         <img src="arrow-right.png" class="submenu-icon"> </div>
     <!-- SUBMENU Spectacles-->
-    <div> class="submenu" id="sub3">
+    <div class="submenu" id="sub3">
     <a href="https://www.spectacles.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Spectacles</a>
     <a href="https://support.spectacles.com/hc/de" class="sub-item">Spectacles Support</a>
 </div>
@@ -252,9 +252,13 @@
   overflow: hidden;
   transition: max-height 0.4s ease;
 }
-
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
 .submenu.open {
-  max-height: 300px; /* passt sich Höhe an */
+  max-height: 300px; /* oder passend für Inhalte */
 }
 
 /* Menüpunkt Styling */
