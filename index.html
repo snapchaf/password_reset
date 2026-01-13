@@ -114,7 +114,19 @@
   <header class="banner">
 
     <!-- MENU-->
- <img src="Menu.jpeg" alt="Menu" class="logo" id="menuLogo">
+ <img src="Menu.jpeg" alt="Menu" class="logo" id="menuLogo">  
+    <!-- GHOST: HOMEPAGE-->
+    <a href="https://www.snapchat.com/">
+      <img src="Ghost.jpeg" alt="Ghost" class="logo">
+    </a>
+    <!-- SEARCH-->
+    <a href="https://example.com/link3">
+ <img src="search.jpeg" alt="Search" class="logo" id="searchLogo"> 
+    </a>
+    
+  </header>
+
+  <!-- DROPDOWN MENÜ -->  
   <div id="dropdownMenu">
   <!-- Menüinhalt -->
     <!-- NO SUBMENUS -->
@@ -211,17 +223,6 @@
     <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>     
 </div>
     
-    <!-- GHOST: HOMEPAGE-->
-    <a href="https://www.snapchat.com/">
-      <img src="Ghost.jpeg" alt="Ghost" class="logo">
-    </a>
-
-    <!-- SEARCH-->
-    <a href="https://example.com/link3">
-      <img src="search.jpeg" alt="Search" class="logo">
-    </a>
-  </header>
-
   <style>
 /* Menü komplett unsichtbar am Start */
 #dropdownMenu {
@@ -229,10 +230,20 @@
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
-
-#dropdownMenu.show {
-  opacity: 1;
-  pointer-events: auto;
+#dropdownMenu {
+  position: fixed;
+  top: 60px; /* Höhe des Headers */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: #fffc00; /* gleiche Farbe wie Banner */
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
 }
 
 /* Submenu Animation */
@@ -271,54 +282,68 @@
 .sub-item:hover {
   background: rgba(0,0,0,0.05);
 }
+    
+/* Pfeil am rechten Rand, statisch */
+.submenu-icon {
+  width: 12px;        /* kleiner als Original */
+  height: 12px;       /* proportional anpassen */
+  margin-left: auto;   /* schiebt den Pfeil ganz nach rechts */
+  display: block;
+}
 
   </style>
   <script>
   
-   ///* MENU: DROP-DOWN / SUB DROP-DOWN *///
+///* MENU: DROP-DOWN / SUB DROP-DOWN *///
+    
 const menuLogo = document.getElementById("menuLogo");
 const dropdownMenu = document.getElementById("dropdownMenu");
-menuLogo.addEventListener("click", () => {
-  dropdownMenu.classList.toggle("show");
-});
 
-  /* Nur ein Unterpunkt darf gleichzeitig geöffnet sein */  
-submenus.forEach(sub => {
-  if (sub !== targetMenu) {
-  sub.classList.remove("open");
+// Original- und Close-Icons
+const menuOpenIcon = "Menu.jpeg";       // Hamburger
+const menuCloseIcon = "menu-close.png"; // X-Icon
+
+menuLogo.addEventListener("click", () => {
+  // Overlay ein-/ausblenden
+  dropdownMenu.classList.toggle("show");
+
+  // Logo wechseln
+  if (dropdownMenu.classList.contains("show")) {
+    menuLogo.src = menuCloseIcon;  // X-Icon
+  } else {
+    menuLogo.src = menuOpenIcon;   // Hamburger
   }
 });
-
-  /* Animation */  
-  .submenu {
-  max-height: 0;
-  transition: max-height 0.4s ease;
-}
-.submenu.open {
-  max-height: 300px;
-}
     
-/* Menü öffnen/schließen */    
-menuBtn.addEventListener("click", () => {
-  dropdownMenu.classList.toggle("show");
-});
+// Untermenüs steuern
+const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
 
-/* Untermenü öffnen/schließen */  
-document.querySelectorAll(".submenu > a").forEach(item => {
+submenuItems.forEach(item => {
+  const targetMenu = document.getElementById(item.dataset.target);
+
   item.addEventListener("click", e => {
-    e.preventDefault(); // verhindert Seitenwechsel
-    const parent = item.parentElement;
-    parent.classList.toggle("active");
+    e.preventDefault(); // wenn kein eigener Link, sonst optional
+
+    // Alle anderen Untermenüs schließen
+    document.querySelectorAll(".submenu").forEach(sub => {
+      if (sub !== targetMenu) sub.classList.remove("open");
+    });
+
+    // Dieses Untermenü ein-/ausblenden
+    targetMenu.classList.toggle("open");
+    item.classList.toggle("open"); // optional: Pfeil-Icon, falls Rotation
   });
 });
 
-/* Menü schließen, wenn außerhalb geklickt wird */
+// Menü schließen, wenn außerhalb geklickt wird
 window.addEventListener("click", e => {
-  if (!dropdownMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+  if (!dropdownMenu.contains(e.target) && !menuLogo.contains(e.target)) {
     dropdownMenu.classList.remove("show");
-    document.querySelectorAll(".submenu").forEach(sub => sub.classList.remove("active"));
+    document.querySelectorAll(".submenu").forEach(sub => sub.classList.remove("open"));
+    submenuItems.forEach(item => item.classList.remove("open"));
   }
 });
+
 
   /* Inhalt */
   <div class="content">
