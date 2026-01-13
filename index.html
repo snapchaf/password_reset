@@ -112,36 +112,34 @@
 
   <!-- Banner -->
   <header class="banner">
-    <!-- MENU: DROP-DOWN / SUB DROP-DOWN
-<nav class="menu">
-  <ul>
-    <!-- Einfacher Link -->
-    <li><a href="#">SnapInc.</a></li>
-
-    <!-- Dropdown -->
-    <li class="dropdown">
-      <a href="#" class="dropbtn">Investors</a>
-      <ul class="dropdown-content">
-        <li><a href="#">Careers</a></li>
-        <li class="submenu">
-          <a href="#">Produkt 2</a>
-          <ul class="dropdown-content">
-            <li><a href="#">Unterpunkt 1</a></li>
-            <li><a href="#">Unterpunkt 2</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Produkt 3</a></li>
-      </ul>
-    </li>
-
-    <!-- Einfacher Link -->
-    <li><a href="#">Kontakt</a></li>
-  </ul>
-</nav>
+    <!-- MENU: DROP-DOWN / SUB DROP-DOWN-->
     
-    <a href="https://example.com/link1">
-      <img src="Menu.jpeg" alt="Menu" class="logo">
-    </a>
+const menuBtn = document.getElementById("menuBtn");
+const dropdownMenu = document.getElementById("dropdownMenu");
+
+<!--Menü öffnen/schließen-->
+    
+menuBtn.addEventListener("click", () => {
+  dropdownMenu.classList.toggle("show");
+});
+
+<!-- Untermenü öffnen/schließen -->
+document.querySelectorAll(".submenu > a").forEach(item => {
+  item.addEventListener("click", e => {
+    e.preventDefault(); // verhindert Seitenwechsel
+    const parent = item.parentElement;
+    parent.classList.toggle("active");
+  });
+});
+
+<!-- Menü schließen, wenn außerhalb geklickt wird -->
+    
+window.addEventListener("click", e => {
+  if (!dropdownMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+    dropdownMenu.classList.remove("show");
+    document.querySelectorAll(".submenu").forEach(sub => sub.classList.remove("active"));
+  }
+});
 
     // GHOST: HOMEPAGE
     <a href="https://www.snapchat.com/">
