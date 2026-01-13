@@ -123,15 +123,19 @@
   z-index: 1000;
   transition: opacity 0.4s ease;
   align-items: flex-start;
-  overflow-y: auto; 
-  -webkit-overflow-scrolling: touch;
 }
     
 #dropdownMenu.show {
   opacity: 1;
   pointer-events: auto;
 }
-
+  /* Scrollable auf mobile devices*/
+@media (max-width: 600px) {
+  #dropdownMenu {
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+  }
+}
 /* Submenu Animation */
 .submenu {
   max-height: 0;            /* versteckt */
