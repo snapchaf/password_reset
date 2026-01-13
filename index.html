@@ -122,6 +122,7 @@
   padding-top: 20px;
   z-index: 1000;
   transition: opacity 0.4s ease;
+  align-items: flex-start;
 }
     
 #dropdownMenu.show {
@@ -135,11 +136,10 @@
   opacity: 0;               /* unsichtbar */
   overflow: hidden;
   flex-direction: column;
-  transition: max-height 0.6s ease, opacity 0.6s ease; /* animiert Fade + Slide */
+  transition: max-height 0.2s ease, opacity 0.3s ease; /* animiert Fade + Slide */
 }
     
-.submenu.open {
-  max-height: 500px;        /* ausreichend hoch für Inhalte */
+.submenu.open {       
   opacity: 1;               /* sichtbar */
 }
 
@@ -164,6 +164,7 @@
   font-weight: 400;
   color: #666;
   text-decoration: none;
+  padding-left: 40px;
 }
 
 .sub-item:hover {
@@ -247,12 +248,13 @@
     <div class="overlay-spacer"></div>
 
     <div class="overlay-header">Explore More Sites</div>
+    
     <div class="overlay-item has-submenu" data-target="sub2">Snap Inc.
         <img src="arrow-right.png" class="submenu-icon"> </div>
     <!-- SUBMENU Snap Inc.-->
-      <div href="https://values.snap.com/" class="submenu" id="sub2">
+      <div class="submenu" id="sub2">
      <a href="https://www.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Snap Inc.</a>
-     <a href="https://investor.snap.com/overview/default.aspx" class="sub-item">Investors</div>
+     <a href="https://investor.snap.com/overview/default.aspx" class="sub-item">Investors</a>
      <a href="https://careers.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Careers</a>
      <a href="https://newsroom.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">News</a>
      <a href="https://values.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Privacy and Safety</a>
