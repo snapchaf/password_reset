@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen::</title>
+  <title>Passwort zurücksetzen_</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -101,6 +101,12 @@
     color: red;
     font-style: italic;
   }
+    
+#menuLogo.open {
+  transform: scale(0.5); /* halb so groß */
+  transition: transform 0.2s ease;
+}
+    
 /* Menü komplett unsichtbar am Start */
 #dropdownMenu {
   position: fixed;
@@ -115,7 +121,7 @@
   flex-direction: column;
   padding-top: 20px;
   z-index: 1000;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.7s ease;
 }
     
 #dropdownMenu.show {
@@ -144,6 +150,7 @@
   font-weight: bold;
   cursor: pointer;
   text-decoration: none;
+  box-sizing: border-box;
   color: #000;
 }
 
@@ -325,10 +332,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuCloseIcon = "menu-close.png"; // X-Icon
 
   // Menü öffnen/schließen
-  menuLogo.addEventListener("click", () => {
-    dropdownMenu.classList.toggle("show");
-    menuLogo.src = dropdownMenu.classList.contains("show") ? menuCloseIcon : menuOpenIcon;
-  });
+menuLogo.addEventListener("click", () => {
+  dropdownMenu.classList.toggle("show");
+
+  if (dropdownMenu.classList.contains("show")) {
+    menuLogo.src = menuCloseIcon;  // X-Icon
+    menuLogo.classList.add("open"); // Größe anpassen
+  } else {
+    menuLogo.src = menuOpenIcon;   // Hamburger
+    menuLogo.classList.remove("open");
+  }
+});
 
   // Submenus initialisieren
   const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
