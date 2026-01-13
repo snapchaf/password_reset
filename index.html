@@ -101,8 +101,74 @@
     color: red;
     font-style: italic;
   }
+/* Menü komplett unsichtbar am Start */
+#dropdownMenu {
+  position: fixed;
+  top: 60px; /* Höhe des Headers */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: #fffc00; /* gleiche Farbe wie Banner */
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  padding-top: 20px;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+    
+#dropdownMenu.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Submenu Animation */
+.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+    
+.submenu.open {
+  max-height: 300px; /* oder passend für Inhalte */
+}
+
+/* Menüpunkt Styling */
+.overlay-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
+
+.sub-item {
+  display: block;
+  padding: 8px 40px;
+  font-size: 20px;
+  font-weight: 400;
+  color: #666;
+  text-decoration: none;
+}
+
+.sub-item:hover {
+  background: rgba(0,0,0,0.05);
+}
+    
+/* Pfeil am rechten Rand, statisch */
+.submenu-icon {
+  width: 12px;        /* kleiner als Original */
+  height: 12px;       /* proportional anpassen */
+  margin-left: auto;   /* schiebt den Pfeil ganz nach rechts */
+  display: block;
+}
   </style>
-  
+    
   <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
@@ -125,7 +191,7 @@
     </a>
     
   </header>
-
+ 
   <!-- DROPDOWN MENÜ -->  
   <div id="dropdownMenu">
   <!-- Menüinhalt -->
@@ -223,85 +289,7 @@
     <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>     
 </div>
     
-  <style>
-/* Menü komplett unsichtbar am Start */
-#dropdownMenu {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-    
-#dropdownMenu.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-    
-#dropdownMenu {
-  position: fixed;
-  top: 60px; /* Höhe des Headers */
-  left: 0;
-  width: 100%;
-  height: calc(100% - 60px);
-  background-color: #fffc00; /* gleiche Farbe wie Banner */
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  z-index: 1000;
-  transition: opacity 0.3s ease;
-}
 
-/* Submenu Animation */
-.submenu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.submenu {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.submenu.open {
-  max-height: 300px; /* oder passend für Inhalte */
-}
-
-/* Menüpunkt Styling */
-.overlay-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 12px 20px;
-  font-size: 24px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  color: #000;
-}
-
-.sub-item {
-  display: block;
-  padding: 8px 40px;
-  font-size: 20px;
-  font-weight: 400;
-  color: #666;
-  text-decoration: none;
-}
-
-.sub-item:hover {
-  background: rgba(0,0,0,0.05);
-}
-    
-/* Pfeil am rechten Rand, statisch */
-.submenu-icon {
-  width: 12px;        /* kleiner als Original */
-  height: 12px;       /* proportional anpassen */
-  margin-left: auto;   /* schiebt den Pfeil ganz nach rechts */
-  display: block;
-}
-  </style>
-  
   <script>
 ///* Lade alle HTML Inhalte vor dem ausführen des Scripts*///
 document.addEventListener("DOMContentLoaded", () => {
