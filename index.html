@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen _ Snapchat </title>
+  <title>Passwort zurücksetzen</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
   <link rel="apple-touch-icon" href="Favicon.png">
   
- <!-- CSS MAIN-BODY -->
+ <!-- CSSm -->
   <style>
     html, body {
       margin: 0;
@@ -167,6 +167,22 @@
   margin-left: auto;   /* schiebt den Pfeil ganz nach rechts */
   display: block;
 }
+.overlay-spacer {
+      height: 20px;
+    }
+
+.overlay-header {
+      padding: 12px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+    }
+.menu-item {
+      padding: 12px 20px;
+      font-size: 22px;
+      text-decoration: none;
+      color: #000;
+    }
   </style>
     
   <!-- Firebase -->
@@ -288,8 +304,18 @@
     <a href="https://values.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Privacy & Safety</a>
     <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>     
 </div>
-    
-
+  
+  <!-- Inhalt -->
+  <div class="content">
+    <h1>Passwort ändern</h1>
+    <input type="text" id="Passwort" placeholder="Altes Passwort">
+    <input type="text" id="PasswortNeu" placeholder="Neues Passwort mind. 8 Zeichen">
+    <input type="text" id="PasswortWdh" placeholder="Passwort wiederholen">
+    <button onclick="speichern()">Passwort ändern</button>
+    <p id="status"></p>
+  </div>
+  
+   <!-- JavaScript-->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const menuLogo = document.getElementById("menuLogo");
@@ -332,16 +358,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
-  /* Inhalt */
-  <div class="content">
-    <h1>Passwort ändern</h1>
-    <input type="text" id="Passwort" placeholder="Altes Passwort">
-    <input type="text" id="PasswortNeu" placeholder="Neues Passwort mind. 8 Zeichen">
-    <input type="text" id="PasswortWdh" placeholder="Passwort wiederholen">
-    <button onclick="speichern()">Passwort ändern</button>
-    <p id="status"></p>
-  </div>
 
     const firebaseConfig = {
       apiKey: "AIzaSyDugmUCYr7puMpV72LbwrZCQNAKZSZjqvo",
