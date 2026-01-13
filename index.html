@@ -130,16 +130,16 @@
 }
 
 /* Submenu Animation */
-.submenu {
-  max-height: 0;            /* versteckt */
-  opacity: 0;               /* unsichtbar */
-  overflow: hidden;
-  flex-direction: column;
-  transition: max-height 0.6s ease, opacity 0.6s ease;
+.submenu { 
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.6s ease;
+display: none; 
+overflow: hidden; 
+flex-direction: column; }
     
 .submenu.open {
   max-height: 500px;
-  opacity: 1;
   pointer-events: auto;
 }
 
