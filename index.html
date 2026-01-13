@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen _ Snapchat </title>
+  <title>Passwort zurücksetzen</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -318,7 +318,6 @@
    <!-- JavaScript-->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
-  // --- DROPDOWN MENU ---
   const menuLogo = document.getElementById("menuLogo");
   const dropdownMenu = document.getElementById("dropdownMenu");
 
@@ -331,13 +330,12 @@ document.addEventListener("DOMContentLoaded", () => {
     menuLogo.src = dropdownMenu.classList.contains("show") ? menuCloseIcon : menuOpenIcon;
   });
 
-  // --- SUBMENUS ---
+  // Submenus initialisieren
   const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
 
   submenuItems.forEach((item, index) => {
-    const submenu = item.nextElementSibling;
+    const submenu = item.nextElementSibling; // direktes Submenu
     const subId = "sub" + (index + 1);
-
     submenu.id = subId;
     item.dataset.target = subId;
 
@@ -346,18 +344,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const targetMenu = document.getElementById(item.dataset.target);
 
-      // Schließe alle anderen Submenus
+      // Alle anderen Submenus schließen
       document.querySelectorAll(".submenu").forEach(sub => {
         if (sub !== targetMenu) sub.classList.remove("open");
       });
 
-      // Öffne/Schließe dieses Submenu
+      // Dieses Submenu öffnen/schließen
       targetMenu.classList.toggle("open");
-      item.classList.toggle("open"); // optional: für Pfeil-Icons
+      item.classList.toggle("open");
     });
   });
 
-  // Menü schließen beim Klick außerhalb
+  // Menü schließen, wenn außerhalb geklickt wird
   window.addEventListener("click", (e) => {
     if (!dropdownMenu.contains(e.target) && !menuLogo.contains(e.target)) {
       dropdownMenu.classList.remove("show");
@@ -365,6 +363,7 @@ document.addEventListener("DOMContentLoaded", () => {
       submenuItems.forEach(item => item.classList.remove("open"));
     }
   });
+});
 
   // --- FIREBASE INIT ---
   const firebaseConfig = {
