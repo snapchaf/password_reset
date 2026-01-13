@@ -9,7 +9,8 @@
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
   <link rel="apple-touch-icon" href="Favicon.png">
-
+  
+ <!-- CSS MAIN-BODY -->
   <style>
     html, body {
       margin: 0;
@@ -30,7 +31,7 @@
       overflow-y: auto;
     }
 
-    /* Banner */
+    /* Banner-CSS */
     .banner {
       background-color: #fffc00;
       display: flex;
@@ -70,7 +71,7 @@
       }
     }
 
-    /* Inhalt */
+    /* Inhalt der Main-Seite */
     .content {
       padding: 50px;
     }
@@ -109,7 +110,7 @@
 
 <body>
 
-  <!-- Banner -->
+  <!-- Banner-HTML -->
   <header class="banner">
 
     <!-- MENU-->
@@ -299,12 +300,13 @@
   margin-left: auto;   /* schiebt den Pfeil ganz nach rechts */
   display: block;
 }
-
   </style>
+  
   <script>
+///* Lade alle HTML Inhalte vor dem ausführen des Scripts*///
+document.addEventListener("DOMContentLoaded", () => {
   
 ///* MENU: DROP-DOWN / SUB DROP-DOWN *///
-    
 const menuLogo = document.getElementById("menuLogo");
 const dropdownMenu = document.getElementById("dropdownMenu");
 
@@ -313,10 +315,10 @@ const menuOpenIcon = "Menu.jpeg";       // Hamburger
 const menuCloseIcon = "menu-close.png"; // X-Icon
 
 menuLogo.addEventListener("click", () => {
-  // Overlay ein-/ausblenden
+// Overlay ein-/ausblenden
   dropdownMenu.classList.toggle("show");  // <- DAS ist der entscheidende Teil
 
-  // Logo wechseln
+// Logo wechseln
   if (dropdownMenu.classList.contains("show")) {
     menuLogo.src = menuCloseIcon;  // X-Icon
   } else {
@@ -327,34 +329,43 @@ menuLogo.addEventListener("click", () => {
 // Untermenüs steuern
 const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
 submenuItems.forEach((item, index) => {
-  const submenu = item.nextElementSibling; // das nächste Div muss das Submenu sein
+  const submenu = item.nextElementSibling;
+  
+// Sicherheitscheck ob nextElementSibling ein submenu ist
+    if (!submenu || !submenu.classList.contains("submenu")) return;
+  
   const subId = "sub" + (index + 1);       // sub1, sub2, ...
   item.dataset.target = subId;
   submenu.id = subId;
-});
-    
-  item.addEventListener("click", e => {
+  
+    item.addEventListener("click", e => {
     e.preventDefault(); // wenn kein eigener Link, sonst optional
+      
+    const targetMenu = document.getElementById(item.dataset.target);
+    if (!targetMenu) return;
 
-    // Alle anderen Untermenüs schließen
+    //alle anderen Submenu schließen
     document.querySelectorAll(".submenu").forEach(sub => {
       if (sub !== targetMenu) sub.classList.remove("open");
-    });
+});
 
-    // Dieses Untermenü ein-/ausblenden
+// Dieses Untermenü ein-/ausblenden
     targetMenu.classList.toggle("open");
-    item.classList.toggle("open"); // optional: Pfeil-Icon, falls Rotation
   });
 });
 
 // Menü schließen, wenn außerhalb geklickt wird
 window.addEventListener("click", e => {
+  if (!dropdownMenu || !menuLogo) return;
+  
   if (!dropdownMenu.contains(e.target) && !menuLogo.contains(e.target)) {
     dropdownMenu.classList.remove("show");
     document.querySelectorAll(".submenu").forEach(sub => sub.classList.remove("open"));
     submenuItems.forEach(item => item.classList.remove("open"));
   }
 });
+  });
+
 
 
   /* Inhalt */
