@@ -466,23 +466,31 @@ menuLogo.addEventListener("click", () => {
         if (sub !== targetMenu) sub.classList.remove("open");
       });
 
- //Submenu scrollen, wenn Bedarf
+// Dieses Submenu öffnen/schließen
+const isOpening = !targetMenu.classList.contains("open");
+
+targetMenu.classList.toggle("open");
+item.classList.toggle("open");
+
+// Wenn geöffnet wird: im HAUPTMENÜ scrollen
 if (isOpening) {
   setTimeout(() => {
     const menuContainer = document.getElementById("dropdownMenu");
 
-    const menuTop = targetMenu.offsetTop;
-    const menuHeight = targetMenu.offsetHeight;
+    const itemTop = item.offsetTop;
+    const submenuHeight = targetMenu.scrollHeight;
     const containerHeight = menuContainer.clientHeight;
 
-    // Scroll so, dass das Submenu komplett sichtbar ist
+    const scrollTarget =
+      itemTop + submenuHeight - containerHeight + 40; // + etwas Luft
+
     menuContainer.scrollTo({
-      top: menuTop - containerHeight / 2 + menuHeight / 2,
+      top: scrollTarget > 0 ? scrollTarget : 0,
       behavior: "smooth"
     });
-  }, 200);
+  }, 200); // etwas länger wegen Animation
 }
-
+      
   // Menü schließen, wenn außerhalb geklickt wird
   window.addEventListener("click", (e) => {
     if (!dropdownMenu.contains(e.target) && !menuLogo.contains(e.target)) {
