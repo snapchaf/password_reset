@@ -131,6 +131,8 @@
   z-index: 1000;
   transition: opacity 0.4s ease;
   align-items: flex-start;
+  overflow-y: auto;
+  padding-bottom: 60px;
 }
     
 #dropdownMenu.show {
@@ -180,6 +182,7 @@
   font-weight: 300;
   color: #3a3e41;
   text-decoration: none;
+  justify-content: flex-start;
   padding-left: 40px;
 }
 
@@ -191,7 +194,6 @@
 .submenu-icon {
   width: 12px;        /* kleiner als Original */
   height: 12px;       /* proportional anpassen */
-  margin-left: auto;   /* schiebt den Pfeil ganz nach rechts */
   display: block;
   transition: transform 0.2s ease;
 }
@@ -207,7 +209,7 @@
     
 /* Pfeil drehen, wenn Untermenü geöffnet ist */
 .overlay-item.has-submenu.open .submenu-icon {
-  transform: rotate(180deg);
+  transform: translateY(-50%) rotate(180deg);
 }
     
 .overlay-spacer {
@@ -224,6 +226,7 @@
       padding: 12px 20px;
       font-size: 14px;
       text-decoration: none;
+      justify-content: flex-start;
       font-weight: 500;
       color: #3a3e41;
     }
@@ -403,8 +406,21 @@ menuLogo.addEventListener("click", () => {
       });
 
       // Dieses Submenu öffnen/schließen
-      targetMenu.classList.toggle("open");
-      item.classList.toggle("open");
+// Dieses Submenu öffnen/schließen
+const isOpening = !targetMenu.classList.contains("open");
+
+targetMenu.classList.toggle("open");
+item.classList.toggle("open");
+
+// Wenn geöffnet wird: automatisch ins Sichtfeld scrollen
+if (isOpening) {
+  setTimeout(() => {
+    targetMenu.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }, 50);
+}
     });
   });
 
