@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen_</title>
+  <title>Passwort zurücksetzen:</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -285,42 +285,30 @@
 .overlay-item.open {
   color: #000;
 }
-/* Container für Search-Icon + Suchfeld */
+  
 .search-container {
   position: relative;
+  transition: width 0.3s ease, opacity 0.3s ease;
 }
 
-/* Suchfeld initial versteckt */
-#searchBox {
-  display: none;             /* Start: versteckt */
+.search-container.search-close {
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.search-container.search-activate {
+  width: 250px;  /* gewünschte Breite */
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.search-btn {
   position: absolute;
-  top: 50%;
-  left: 50px;                /* Abstand vom Icon */
-  transform: translateY(-50%);
-  display: flex;
-  gap: 5px;
-  z-index: 1001;
-}
-
-#searchInput {
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  width: 200px;
-}
-
-#cancelSearch {
-  padding: 5px 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: #eee;
+  right: 0;
+  border: none;
+  background: transparent;
   cursor: pointer;
-}
-
-#cancelSearch:hover {
-  background-color: #ddd;
 }
   </style>
     
@@ -341,14 +329,11 @@
       <img src="Ghost.png" alt="Ghost" class="Ghostlogo" id="Ghostlogo">
     </a>
     <!-- SEARCH-->
-<div class="search-container">
-  <img src="search.jpeg" id="searchLogo" class="logo" style="cursor:pointer;">  
-  <!-- Suchfeld + Button -->
-  <div id="searchBox">
-    <input type="text" id="searchInput" placeholder="Suche...">
-    <button id="cancelSearch">Abbrechen</button>
-  </div>
+<div class="search-container search-close">
+  <input type="text" placeholder=" ">
+  <button class="search-btn">✕</button>
 </div>
+<img src="search-icon.png" id="searchLogo">
     
   </header>
  
@@ -538,27 +523,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const cancelSearch = document.getElementById("cancelSearch");
 
   // Klick auf Search-Icon → Suchfeld zeigen
-  searchLogo.addEventListener("click", () => {
-    searchBox.style.display = "flex";
-    searchInput.focus();
-  });
+const searchLogo = document.getElementById("searchLogo");
+const searchContainer = document.querySelector(".search-container");
+const searchBtn = document.querySelector(".search-btn");
 
-  // Klick auf Abbrechen → Suchfeld verstecken
-  cancelSearch.addEventListener("click", () => {
-    searchBox.style.display = "none";
-    searchInput.value = ""; // optional: Eingabe löschen
-  });
+searchLogo.addEventListener("click", () => {
+  searchContainer.classList.remove("search-close");
+  searchContainer.classList.add("search-activate");
+});
 
-  // Enter-Taste → Weiterleitung
-  searchInput.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      const query = searchInput.value.trim();
-      if (query) {
-        // Hier beliebige Ziel-URL eintragen
-        window.location.href = `https://example.com/search?q=${encodeURIComponent(query)}`;
-      }
-    }
-  });
+searchBtn.addEventListener("click", () => {
+  searchContainer.classList.remove("search-activate");
+  searchContainer.classList.add("search-close");
+});
 
   // Optional: Klick außerhalb → Suchfeld schließen
   document.addEventListener("click", (e) => {
