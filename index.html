@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen_</title>
+  <title>Passwort zurücksetzen:</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -190,6 +190,9 @@
   background: rgba(0,0,0,0.05);
 }
     
+.overlay-item.has-submenu {
+  position: relative;
+}    
 /* Pfeil am rechten Rand, statisch */
 .submenu-icon {
   width: 12px;        /* kleiner als Original */
@@ -230,6 +233,34 @@
       font-weight: 500;
       color: #3a3e41;
     }
+    /* === HOVER: alles wird schwarz === */
+.overlay-item:hover,
+.sub-item:hover,
+.menu-item:hover,
+.overlay-header:hover {
+  color: #000;        /* tiefes Schwarz */
+}
+
+/* === ACTIVE / GEKLICKT === */
+.overlay-item:active,
+.sub-item:active,
+.menu-item:active,
+.overlay-header:active {
+  color: #000;
+}
+
+/* === FOCUS (Keyboard / Mobile Tap) === */
+.overlay-item:focus,
+.sub-item:focus,
+.menu-item:focus,
+.overlay-header:focus {
+  color: #000;
+  outline: none;
+/* aktiver Menüpunkt, wenn Submenu offen */
+.overlay-item.open {
+  color: #000;
+}
+  
   </style>
     
   <!-- Firebase -->
