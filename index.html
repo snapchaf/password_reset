@@ -471,25 +471,6 @@ const isOpening = !targetMenu.classList.contains("open");
 
 targetMenu.classList.toggle("open");
 item.classList.toggle("open");
-
-// Wenn geöffnet wird: im HAUPTMENÜ scrollen
-if (isOpening) {
-  setTimeout(() => {
-    const menuContainer = document.getElementById("dropdownMenu");
-
-    const itemTop = item.offsetTop;
-    const submenuHeight = targetMenu.scrollHeight;
-    const containerHeight = menuContainer.clientHeight;
-
-    const scrollTarget =
-      itemTop + submenuHeight - containerHeight + 40; // + etwas Luft
-
-    menuContainer.scrollTo({
-      top: scrollTarget > 0 ? scrollTarget : 0,
-      behavior: "smooth"
-    });
-  }, 200); // etwas länger wegen Animation
-}
       
   // Menü schließen, wenn außerhalb geklickt wird
   window.addEventListener("click", (e) => {
