@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen/</title>
+  <title>Passwort zurücksetzen_</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -283,22 +283,20 @@
 .overlay-item.open {
   color: #000;
 }
+/* Container für Search-Icon + Suchfeld */
 .search-container {
   position: relative;
 }
 
-.search-container {
-  position: relative;
-}
-
+/* Suchfeld initial versteckt */
 #searchBox {
   display: none;             /* Start: versteckt */
   position: absolute;
   top: 50%;
-  left: 50px;                /* Abstand vom Search-Icon */
+  left: 50px;                /* Abstand vom Icon */
   transform: translateY(-50%);
   display: flex;
-  gap: 5px;                  /* Abstand zwischen Input und Button */
+  gap: 5px;
   z-index: 1001;
 }
 
@@ -321,7 +319,7 @@
 
 #cancelSearch:hover {
   background-color: #ddd;
-} 
+}
   </style>
     
   <!-- Firebase -->
@@ -341,11 +339,14 @@
       <img src="Ghost.png" alt="Ghost" class="Ghostlogo">
     </a>
     <!-- SEARCH-->
-  <div class="search-container">
-    <img src="search.jpeg" id="searchLogo" class="logo" style="cursor:pointer;">
-    <input type="text" id="searchInput" placeholder="Suche" />
+<div class="search-container">
+  <img src="search.jpeg" id="searchLogo" class="logo" style="cursor:pointer;">  
+  <!-- Suchfeld + Button -->
+  <div id="searchBox">
+    <input type="text" id="searchInput" placeholder="Suche...">
     <button id="cancelSearch">Abbrechen</button>
   </div>
+</div>
     
   </header>
  
@@ -528,31 +529,41 @@ if (isOpening) {
   });
 });
   // SUCHFELD
-const searchLogo = document.getElementById("searchLogo");
-const searchBox = document.getElementById("searchBox");
-const searchInput = document.getElementById("searchInput");
-const cancelSearch = document.getElementById("cancelSearch");
+document.addEventListener("DOMContentLoaded", () => {
+  const searchLogo = document.getElementById("searchLogo");
+  const searchBox = document.getElementById("searchBox");
+  const searchInput = document.getElementById("searchInput");
+  const cancelSearch = document.getElementById("cancelSearch");
 
-// Klick auf Search-Icon -> Suchfeld anzeigen
-searchLogo.addEventListener("click", () => {
-  searchBox.style.display = "flex";
-  searchInput.focus();
-});
+  // Klick auf Search-Icon → Suchfeld zeigen
+  searchLogo.addEventListener("click", () => {
+    searchBox.style.display = "flex";
+    searchInput.focus();
+  });
 
-// Klick auf Abbrechen -> Suchfeld verstecken
-cancelSearch.addEventListener("click", () => {
-  searchBox.style.display = "none";
-  searchInput.value = ""; // optional: Eingabe löschen
-});
+  // Klick auf Abbrechen → Suchfeld verstecken
+  cancelSearch.addEventListener("click", () => {
+    searchBox.style.display = "none";
+    searchInput.value = ""; // optional: Eingabe löschen
+  });
 
-// Enter-Taste löst Suche aus
-searchInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    const query = searchInput.value.trim();
-    if (query) {
-      window.location.href = `https://example.com/search?q=${encodeURIComponent(query)}`;
+  // Enter-Taste → Weiterleitung
+  searchInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const query = searchInput.value.trim();
+      if (query) {
+        // Hier beliebige Ziel-URL eintragen
+        window.location.href = `https://example.com/search?q=${encodeURIComponent(query)}`;
+      }
     }
-  }
+  });
+
+  // Optional: Klick außerhalb → Suchfeld schließen
+  document.addEventListener("click", (e) => {
+    if (!searchBox.contains(e.target) && e.target !== searchLogo) {
+      searchBox.style.display = "none";
+    }
+  });
 });
   
   // --- FIREBASE INIT ---
