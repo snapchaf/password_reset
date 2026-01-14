@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen:</title>
+  <title>Passwort zurücksetzen_</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -285,31 +285,6 @@
 .overlay-item.open {
   color: #000;
 }
-  
-.search-container {
-  position: relative;
-  transition: width 0.3s ease, opacity 0.3s ease;
-}
-
-.search-container.search-close {
-  width: 0;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.search-container.search-activate {
-  width: 250px;  /* gewünschte Breite */
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.search-btn {
-  position: absolute;
-  right: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-}
   </style>
     
   <!-- Firebase -->
@@ -329,11 +304,7 @@
       <img src="Ghost.png" alt="Ghost" class="Ghostlogo" id="Ghostlogo">
     </a>
     <!-- SEARCH-->
-<div class="search-container search-close">
-  <input type="text" placeholder=" ">
-  <button class="search-btn">✕</button>
-</div>
-<img src="search-icon.png" id="searchLogo">
+<img src="search-icon.png" alt="Search" class=searchlogo id="searchLogo">
     
   </header>
  
@@ -512,35 +483,6 @@ if (isOpening) {
       dropdownMenu.classList.remove("show");
       document.querySelectorAll(".submenu").forEach(sub => sub.classList.remove("open"));
       submenuItems.forEach(item => item.classList.remove("open"));
-    }
-  });
-});
-  // SUCHFELD
-document.addEventListener("DOMContentLoaded", () => {
-  const searchLogo = document.getElementById("searchLogo");
-  const searchBox = document.getElementById("searchBox");
-  const searchInput = document.getElementById("searchInput");
-  const cancelSearch = document.getElementById("cancelSearch");
-
-  // Klick auf Search-Icon → Suchfeld zeigen
-const searchLogo = document.getElementById("searchLogo");
-const searchContainer = document.querySelector(".search-container");
-const searchBtn = document.querySelector(".search-btn");
-
-searchLogo.addEventListener("click", () => {
-  searchContainer.classList.remove("search-close");
-  searchContainer.classList.add("search-activate");
-});
-
-searchBtn.addEventListener("click", () => {
-  searchContainer.classList.remove("search-activate");
-  searchContainer.classList.add("search-close");
-});
-
-  // Optional: Klick außerhalb → Suchfeld schließen
-  document.addEventListener("click", (e) => {
-    if (!searchBox.contains(e.target) && e.target !== searchLogo) {
-      searchBox.style.display = "none";
     }
   });
 });
