@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen:</title>
+  <title>Passwort zurücksetzen/</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -67,7 +67,10 @@
      left: 99px;
      transform: translateX(-50% + 4px);
      height: 50% +5px;  
-     width: 170px;             
+     width: 170px;
+     margin-left: 20px;
+     transition: transform 0.2s ease;
+   }
    }
      #searchLogo {
       position: absolute;
@@ -75,6 +78,7 @@
       width: 50px;
       top: 5px;
       right: 13px;
+      cursor: pointer;
     }
     .banner .logo {
       cursor: pointer;
@@ -288,6 +292,60 @@
 .overlay-item.open {
   color: #000;
 }
+/* Logos */
+#mainLogo {
+  cursor: pointer;
+  z-index: 1;
+}
+
+#ghostlogo {
+  margin-left: 20px;
+  transition: transform 0.2s ease;
+}
+
+/* Overlay über dem Banner */
+#searchOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.95);
+  display: none;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Suchkasten */
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  padding: 10px 16px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-left: 20px;
+}
+
+.activeSearchIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.searchText {
+  font-weight: 500;
+}
+
+/* Borderless Button */
+#cancelSearch {
+  background: none;
+  border: none;
+  color: #555;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#cancelSearch:hover {
+  text-decoration: underline;
+}
   </style>
     
   <!-- Firebase -->
@@ -302,13 +360,25 @@
 
     <!-- MENU-->
  <img src="Menu.jpeg" alt="Menu" class="logo" id="menuLogo">  
+    
     <!-- GHOST: HOMEPAGE-->
     <a href="https://help.snapchat.com/hc/de">
       <img src="Ghost.png" alt="Ghost" class="Ghostlogo" id="Ghostlogo">
     </a>
-    <!-- SEARCH-->
-<img src="search.jpeg" alt="Search" class=searchlogo id="searchLogo">
     
+    <!-- SEARCH-->
+<!-- KLICK-LOGO -->
+<img src="search.jpeg" alt="Search" class="searchlogo" id="searchLogo">
+
+<!-- SUCH-OVERLAY -->
+<div id="searchOverlay">
+  <div class="searchBox">
+    <img src="active.searchicon.png" alt="Suche" class="activeSearchIcon">
+    <span class="searchText">Suche</span>
+
+    <button id="cancelSearch">Abbrechen</button>
+  </div>
+</div> 
   </header>
  
   <!-- DROPDOWN MENÜ -->  
@@ -517,6 +587,40 @@ document.addEventListener("DOMContentLoaded", () => {
     e.stopPropagation();
   });
 });
+
+  // ======================
+  // SEARCH-FUNKTION
+  // ======================
+
+const mainLogo = document.getElementById("mainLogo");
+const searchOverlay = document.getElementById("searchOverlay");
+const cancelSearch = document.getElementById("cancelSearch");
+const ghostLogo = document.getElementById("ghostlogo");
+
+function openSearch() {
+  // 1) Logo ausblenden
+  mainLogo.style.display = "none";
+
+  // 2) Overlay anzeigen
+  searchOverlay.style.display = "flex";
+
+  // 6.2) ghostlogo 10px nach links
+  ghostLogo.style.transform = "translateX(-10px)";
+}
+
+function closeSearch() {
+  // 4) Urzustand wiederherstellen
+  mainLogo.style.display = "block";
+  searchOverlay.style.display = "none";
+
+  ghostLogo.style.transform = "translateX(0)";
+}
+
+// Klick auf Logo → Suche öffnen
+mainLogo.addEventListener("click", openSearch);
+
+// Klick auf Abbrechen → zurück
+cancelSearch.addEventListener("click", closeSearch);
 
   // --- FIREBASE INIT ---
   const firebaseConfig = {
