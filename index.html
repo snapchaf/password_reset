@@ -431,48 +431,82 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuLogo = document.getElementById("menuLogo");
   const dropdownMenu = document.getElementById("dropdownMenu");
 
-  const menuOpenIcon = "Menu.jpeg";       // Hamburger
-  const menuCloseIcon = "menu-close.png"; // X-Icon
+  const menuOpenIcon = "Menu.jpeg";       
+  const menuCloseIcon = "menu-close.png"; 
 
-  // Menü öffnen/schließen
-menuLogo.addEventListener("click", () => {
-  dropdownMenu.classList.toggle("show");
+  // ======================
+  // MENU öffnen/schließen
+  // ======================
+  menuLogo.addEventListener("click", () => {
+    const isOpen = dropdownMenu.classList.toggle("show");
 
-  if (dropdownMenu.classList.contains("show")) {
-    menuLogo.src = menuCloseIcon;  // X-Icon
-    menuLogo.classList.add("open"); // Größe anpassen
-  } else {
-    menuLogo.src = menuOpenIcon;   // Hamburger
-    menuLogo.classList.remove("open");
-  }
-});
+    if (isOpen) {
+      menuLogo.src = menuCloseIcon;
+      menuLogo.classList.add("open");
+    } else {
+      menuLogo.src = menuOpenIcon;
+      menuLogo.classList.remove("open");
+    }
+  });
 
-  // Submenus initialisieren
+  // ======================
+  // SUBMENUS
+  // ======================
   const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
 
   submenuItems.forEach((item, index) => {
-    const submenu = item.nextElementSibling; // direktes Submenu
+    const submenu = item.nextElementSibling;
+    if (!submenu) return;
+
     const subId = "sub" + (index + 1);
     submenu.id = subId;
     item.dataset.target = subId;
 
     item.addEventListener("click", (e) => {
       e.preventDefault();
+      e.stopPropagation(); // wichtig!
 
       const targetMenu = document.getElementById(item.dataset.target);
+      const isOpening = !targetMenu.classList.contains("open");
 
-      // Alle anderen Submenus schließen
+      // andere Submenus schließen
       document.querySelectorAll(".submenu").forEach(sub => {
         if (sub !== targetMenu) sub.classList.remove("open");
       });
+      submenuItems.forEach(i => {
+        if (i !== item) i.classList.remove("open");
+      });
 
-// Dieses Submenu öffnen/schließen
-const isOpening = !targetMenu.classList.contains("open");
+      // dieses togglen
+      targetMenu.classList.toggle("open");
+      item.classList.toggle("open");
 
-targetMenu.classList.toggle("open");
-item.classList.toggle("open");
-      
-  // Menü schließen, wenn außerhalb geklickt wird
+      // ======================
+      // AUTO-SCROLL IM HAUPTMENÜ
+      // ======================
+      if (isOpening) {
+        setTimeout(() => {
+          const menu = dropdownMenu;
+
+          const itemTop = item.offsetTop;
+          const submenuHeight = targetMenu.scrollHeight;
+          const containerHeight = menu.clientHeight;
+
+          const targetScroll =
+            itemTop + submenuHeight - containerHeight + 40;
+
+          menu.scrollTo({
+            top: targetScroll > 0 ? targetScroll : 0,
+            behavior: "smooth"
+          });
+        }, 150);
+      }
+    });
+  });
+
+  // ======================
+  // Klick außerhalb → Menü schließen
+  // ======================
   window.addEventListener("click", (e) => {
     if (!dropdownMenu.contains(e.target) && !menuLogo.contains(e.target)) {
       dropdownMenu.classList.remove("show");
@@ -481,6 +515,7 @@ item.classList.toggle("open");
     }
   });
 });
+
   
   // --- FIREBASE INIT ---
   const firebaseConfig = {
