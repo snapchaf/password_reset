@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen:</title>
+  <title>Passwort zurücksetzen_</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -62,8 +62,8 @@
       width: 55;
     }
      #ghostLogo {
-      height: 50px;
-      transform: scale(0.2);
+      height: auto;
+      width: 10;
     }
      #searchLogo {
       height: 60px;
@@ -156,11 +156,15 @@
 /* Submenu Animation */
 .submenu {
   max-height: 0;            /* versteckt */
+  display: flex;
+  width: 100%;
+  pointer-events:none;
   opacity: 0;               /* unsichtbar */
   overflow: hidden;
   flex-direction: column;
   align-items: flex-start;
   transition: max-height 0.2s ease, opacity 0.3s ease; /* animiert Fade + Slide */
+  padding-left: 0px;
 }
     
 .submenu.open {       
@@ -186,11 +190,12 @@
 .sub-item {
   display: block;
   padding: 8px 40px;
+  width: 100%;
   font-size: 14px;
   font-weight: 300;
   color: #3a3e41;
   text-decoration: none;
-  justify-content: flex-start;
+  text-align: left;
   padding-left: 40px;
 }
 
