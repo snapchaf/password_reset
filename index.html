@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen_</title>
+  <title>Passwort zurücksetzen:</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -147,6 +147,7 @@
   transition: opacity 0.4s ease;
   align-items: flex-start;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch; /* iOS smooth */
   padding-bottom: 60px;
 }
     
@@ -169,7 +170,6 @@
   pointer-events:none;
   opacity: 0;               /* unsichtbar */
   overflow: hidden;
-  overflow-y: auto;
   flex-direction: column;
   align-items: flex-start;
   transition: max-height 0.2s ease, opacity 0.3s ease; /* animiert Fade + Slide */
@@ -466,24 +466,22 @@ menuLogo.addEventListener("click", () => {
         if (sub !== targetMenu) sub.classList.remove("open");
       });
 
-      // Dieses Submenu öffnen/schließen
-// Dieses Submenu öffnen/schließen
-const isOpening = !targetMenu.classList.contains("open");
-
-targetMenu.classList.toggle("open");
-item.classList.toggle("open");
-
-// Wenn geöffnet wird: automatisch ins Sichtfeld scrollen
+ //Submenu scrollen, wenn Bedarf
 if (isOpening) {
   setTimeout(() => {
-    targetMenu.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest"
+    const menuContainer = document.getElementById("dropdownMenu");
+
+    const menuTop = targetMenu.offsetTop;
+    const menuHeight = targetMenu.offsetHeight;
+    const containerHeight = menuContainer.clientHeight;
+
+    // Scroll so, dass das Submenu komplett sichtbar ist
+    menuContainer.scrollTo({
+      top: menuTop - containerHeight / 2 + menuHeight / 2,
+      behavior: "smooth"
     });
-  }, 50);
+  }, 200);
 }
-    });
-  });
 
   // Menü schließen, wenn außerhalb geklickt wird
   window.addEventListener("click", (e) => {
