@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen:</title>
+  <title>Passwort zurücksetzen_</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -283,7 +283,45 @@
 .overlay-item.open {
   color: #000;
 }
-  
+.search-container {
+  position: relative;
+}
+
+.search-container {
+  position: relative;
+}
+
+#searchBox {
+  display: none;             /* Start: versteckt */
+  position: absolute;
+  top: 50%;
+  left: 50px;                /* Abstand vom Search-Icon */
+  transform: translateY(-50%);
+  display: flex;
+  gap: 5px;                  /* Abstand zwischen Input und Button */
+  z-index: 1001;
+}
+
+#searchInput {
+  padding: 5px 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  width: 200px;
+}
+
+#cancelSearch {
+  padding: 5px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #eee;
+  cursor: pointer;
+}
+
+#cancelSearch:hover {
+  background-color: #ddd;
+} 
   </style>
     
   <!-- Firebase -->
@@ -303,9 +341,11 @@
       <img src="Ghost.png" alt="Ghost" class="Ghostlogo">
     </a>
     <!-- SEARCH-->
-    <a href="https://example.com/link3">
- <img src="search.jpeg" alt="Search" class="logo" id="searchLogo"> 
-    </a>
+  <div class="search-container">
+    <img src="search.jpeg" id="searchLogo" class="logo" style="cursor:pointer;">
+    <input type="text" id="searchInput" placeholder="Suche" />
+    <button id="cancelSearch">Abbrechen</button>
+  </div>
     
   </header>
  
@@ -487,7 +527,34 @@ if (isOpening) {
     }
   });
 });
+  // SUCHFELD
+const searchLogo = document.getElementById("searchLogo");
+const searchBox = document.getElementById("searchBox");
+const searchInput = document.getElementById("searchInput");
+const cancelSearch = document.getElementById("cancelSearch");
 
+// Klick auf Search-Icon -> Suchfeld anzeigen
+searchLogo.addEventListener("click", () => {
+  searchBox.style.display = "flex";
+  searchInput.focus();
+});
+
+// Klick auf Abbrechen -> Suchfeld verstecken
+cancelSearch.addEventListener("click", () => {
+  searchBox.style.display = "none";
+  searchInput.value = ""; // optional: Eingabe löschen
+});
+
+// Enter-Taste löst Suche aus
+searchInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    const query = searchInput.value.trim();
+    if (query) {
+      window.location.href = `https://example.com/search?q=${encodeURIComponent(query)}`;
+    }
+  }
+});
+  
   // --- FIREBASE INIT ---
   const firebaseConfig = {
     apiKey: "AIzaSyDugmUCYr7puMpV72LbwrZCQNAKZSZjqvo",
