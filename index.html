@@ -81,10 +81,6 @@
       transition: transform 0.2s;
     }
 
-    .banner .logo:hover {
-      transform: scale(1.2);
-    }
-
 @media (max-width: 600px) {
   .banner {
     flex-wrap: nowrap;         /* NICHT wrap, sonst verschiebt sich die Zentrierung */
@@ -308,7 +304,7 @@
     <!-- MENU-->
  <img src="Menu.jpeg" alt="Menu" class="logo" id="menuLogo">  
     <!-- GHOST: HOMEPAGE-->
-    <a href="https://www.snapchat.com/">
+    <a href="https://help.snapchat.com/hc/de">
       <img src="Ghost.png" alt="Ghost" class="Ghostlogo" id="Ghostlogo">
     </a>
     <!-- SEARCH-->
@@ -430,16 +426,15 @@
 document.addEventListener("DOMContentLoaded", () => {
   const menuLogo = document.getElementById("menuLogo");
   const dropdownMenu = document.getElementById("dropdownMenu");
-
   const menuOpenIcon = "Menu.jpeg";       
   const menuCloseIcon = "menu-close.png"; 
+  const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
 
   // ======================
   // MENU öffnen/schließen
   // ======================
   menuLogo.addEventListener("click", () => {
     const isOpen = dropdownMenu.classList.toggle("show");
-
     if (isOpen) {
       menuLogo.src = menuCloseIcon;
       menuLogo.classList.add("open");
@@ -450,10 +445,8 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // ======================
-  // SUBMENUS
+  // SUBMENUS initialisieren
   // ======================
-  const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
-
   submenuItems.forEach((item, index) => {
     const submenu = item.nextElementSibling;
     if (!submenu) return;
@@ -467,9 +460,8 @@ document.addEventListener("DOMContentLoaded", () => {
       e.stopPropagation(); // wichtig!
 
       const targetMenu = document.getElementById(item.dataset.target);
-      const isOpening = !targetMenu.classList.contains("open");
 
-      // andere Submenus schließen
+      // 1️⃣ Andere Submenus schließen
       document.querySelectorAll(".submenu").forEach(sub => {
         if (sub !== targetMenu) sub.classList.remove("open");
       });
@@ -477,29 +469,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (i !== item) i.classList.remove("open");
       });
 
-      // dieses togglen
+      // 2️⃣ Eigenes Submenu toggeln
+      const isOpening = !targetMenu.classList.contains("open");
       targetMenu.classList.toggle("open");
       item.classList.toggle("open");
 
-      // ======================
-      // AUTO-SCROLL IM HAUPTMENÜ
-      // ======================
+      // 3️⃣ Scrollen, falls Submenu zu groß
       if (isOpening) {
         setTimeout(() => {
-          const menu = dropdownMenu;
-
-          const itemTop = item.offsetTop;
-          const submenuHeight = targetMenu.scrollHeight;
-          const containerHeight = menu.clientHeight;
-
-          const targetScroll =
-            itemTop + submenuHeight - containerHeight + 40;
-
-          menu.scrollTo({
-            top: targetScroll > 0 ? targetScroll : 0,
-            behavior: "smooth"
-          });
-        }, 150);
+          const menuRect = dropdownMenu.getBoundingClientRect();
+          const submenuRect = targetMenu.getBoundingClientRect();
+          const over = submenuRect.bottom - menuRect.bottom;
+          if (over > 0) {
+            dropdownMenu.scrollBy({ top: over + 10, behavior: "smooth" });
+          }
+        }, 150); 
       }
     });
   });
@@ -516,7 +500,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-  
   // --- FIREBASE INIT ---
   const firebaseConfig = {
     apiKey: "AIzaSyDugmUCYr7puMpV72LbwrZCQNAKZSZjqvo",
