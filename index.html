@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen_</title>
+  <title>Passwort zurücksetzen:</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -79,12 +79,13 @@
       transform: scale(1.2);
     }
 
-    @media (max-width: 600px) {
-      .banner {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
+@media (max-width: 600px) {
+  .banner {
+    flex-wrap: nowrap;         /* NICHT wrap, sonst verschiebt sich die Zentrierung */
+    justify-content: center;   /* immer zentriert */
+    gap: 15px;                 /* Abstand ggf. kleiner */
+  }
+}
 
     /* Inhalt der Main-Seite */
     .content {
@@ -303,7 +304,7 @@
       <img src="Ghost.png" alt="Ghost" class="Ghostlogo" id="Ghostlogo">
     </a>
     <!-- SEARCH-->
-<img src="search-icon.png" alt="Search" class=searchlogo id="searchLogo">
+<img src="search.jpeg" alt="Search" class=searchlogo id="searchLogo">
     
   </header>
  
