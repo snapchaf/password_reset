@@ -622,16 +622,21 @@ const cancelSearch = document.getElementById("cancelSearch");
 const ghostLogo = document.getElementById("Ghostlogo");
 
 function openSearch() {
+  searchLogo.style.display = "none";
   searchOverlay.classList.add("active");
-  ghostLogo.style.transform = "translateX(-50px)";
+
+  // Ghostlogo 10px nach links verschieben, relativ zur ursprünglichen Position
+  ghostLogo.style.transform = "translateX(calc(-50% - 10px))";
+
   document.querySelector(".searchInput").focus();
-  searchLogo.style.opacity = 0;  // Trigger ausblenden
 }
 
 function closeSearch() {
   searchOverlay.classList.remove("active");
-  ghostLogo.style.transform = "translateX(0)";
-  searchLogo.style.opacity = 1;  // Trigger wieder einblenden
+  searchLogo.style.display = "block";
+
+  // Ghostlogo wieder exakt zentriert
+  ghostLogo.style.transform = "translateX(-50%)";
 }
 
 searchLogo.addEventListener("click", openSearch);
