@@ -297,49 +297,38 @@
   z-index: 1;
 }
 
-#ghostlogo {
-  margin-left: 20px;
-  transition: transform 0.2s ease;
-}
-
-/* Overlay über dem Banner */
+/* Such-Overlay */
 #searchOverlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.95);
-  display: none;
+  position: absolute; /* innerhalb Banner */
+  inset: 0;           /* füllt Banner */
+  display: none;      /* nur sichtbar beim Klick */
   align-items: center;
-  z-index: 10;
+  justify-content: flex-start; 
+  background: rgba(255,255,255,0.95);
+  z-index: 1010;      /* über Banner */
 }
 
-/* Suchkasten */
+/* Suchfeld im Overlay */
 .searchBox {
   display: flex;
-  align-items: center;
   gap: 10px;
+  align-items: center;
   background: #fff;
   padding: 10px 16px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-  margin-left: 20px;
 }
 
+/* Lupen-Icon */
 .activeSearchIcon {
-  width: 18px;
   height: 18px;
+  width: auto;
 }
 
-.searchText {
-  font-weight: 500;
-}
-
-/* Borderless Button */
+/* Abbrechen nur Text */
 #cancelSearch {
-  background: none;
-  border: none;
-  color: #555;
   cursor: pointer;
-  font-size: 14px;
+  color: #555;
 }
 
 #cancelSearch:hover {
@@ -374,7 +363,6 @@
   <div class="searchBox">
     <img src="active.searchicon.png" alt="Suche" class="activeSearchIcon">
     <span class="searchText">Suche</span>
-
     <button id="cancelSearch">Abbrechen</button>
   </div>
 </div> 
@@ -591,34 +579,37 @@ document.addEventListener("DOMContentLoaded", () => {
   // SEARCH-FUNKTION
   // ======================
 
-const mainLogo = document.getElementById("mainLogo");
+const mainLogo = document.getElementById("searchLogo");
 const searchOverlay = document.getElementById("searchOverlay");
 const cancelSearch = document.getElementById("cancelSearch");
-const ghostLogo = document.getElementById("ghostlogo");
+const ghostLogo = document.getElementById("Ghostlogo");
 
 function openSearch() {
-  // 1) Logo ausblenden
+  // 1) Original-Logo ausblenden
   mainLogo.style.display = "none";
 
   // 2) Overlay anzeigen
   searchOverlay.style.display = "flex";
 
-  // 6.2) ghostlogo 10px nach links
+  // 3) Ghost-Logo verschieben
   ghostLogo.style.transform = "translateX(-10px)";
 }
 
 function closeSearch() {
-  // 4) Urzustand wiederherstellen
-  mainLogo.style.display = "block";
+  // Overlay schließen
   searchOverlay.style.display = "none";
 
+  // Original-Logo wieder anzeigen
+  mainLogo.style.display = "block";
+
+  // Ghost-Logo zurück
   ghostLogo.style.transform = "translateX(0)";
 }
 
-// Klick auf Logo → Suche öffnen
+// Klick auf Search-Logo → Suche öffnen
 mainLogo.addEventListener("click", openSearch);
 
-// Klick auf Abbrechen → zurück
+// Klick auf „Abbrechen“ → Suche schließen
 cancelSearch.addEventListener("click", closeSearch);
 
   // --- FIREBASE INIT ---
