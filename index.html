@@ -408,17 +408,15 @@
     
     <!-- SEARCH-->
 <!-- SEARCH-OVERLAY -->
-<div id="searchOverlay">
-  <div class="searchBox">
-    <img src="active.searchicon.png" alt="Lupen-Icon" class="activeSearchIcon">
-    <form id="searchForm"> 
-    <input type="text" class="searchInput" placeholder="Suche" name="query">
-    </form>
-    <span id="cancelSearch">Abbrechen</span>
-  </div>
-</div>
-<!-- Trigger -->
-<img src="search.jpeg" alt="Search Logo" id="searchLogo">
+  <img src="search.jpeg" alt="Search Logo" id="searchLogo">
+    <div id="searchOverlay">
+      <form id="searchForm" class="searchBox">
+        <img src="active.searchicon.png" alt="Lupen-Icon" class="activeSearchIcon">
+        <input type="text" class="searchInput" placeholder="Suche" name="query">
+        <button type="submit" style="display:none;"></button> <!-- unsichtbarer Submit -->
+      </form>
+      <span id="cancelSearch">Abbrechen</span>
+    </div>
 
 
 
