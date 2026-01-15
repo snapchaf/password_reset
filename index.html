@@ -295,17 +295,18 @@
   
 #searchOverlay {
   position: absolute;
-  top: 0;
+  top: 5px;                 /* entspricht Banner-Margin */
+  bottom: 5px;
   left: 0;
-  display: flex;
-  justify-content: flex-end;
   width: 100%;
-  height: calc(100% - 20px);                  /* füllt Banner + etwas darüber */
-  background: transparent;       /* Banner sichtbar, Overlay transparent */
-  z-index: 1010;
-  pointer-events: none;          /* erst aktiv bei .active */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 0;         /* linksbündig */
   opacity: 0;
-  transition: opacity 0.25s ease
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  z-index: 1010;
 }
 
 #searchOverlay.active {
