@@ -380,8 +380,11 @@
   background: #f0f0f0;     /* dein leichter Graustich */
   display: flex;
   align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 80px;
   padding: 0 20px;        /* 20px links & rechts */
+  box-sizing: border-box;
 }
 
 /* Karte */
@@ -390,10 +393,9 @@
   width: 100%;
   max-width: 420px;
 
-  padding: 28px 24px;
+  padding: 16px 16px;
   border-radius: 20px;    /* wie dein Suchfeld */
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-
   text-align: left;
 }
 
@@ -765,7 +767,7 @@ searchForm.addEventListener("submit", function(e) {
   if (searchMap[query]) {
     window.location.href = searchMap[query];
   } else {
-    // ❌ kein Treffer → elegantes Feedback
+    //  kein Treffer → elegantes Feedback
     searchInput.value = "";
     searchInput.placeholder = "Keine Ergebnisse";
     searchInput.classList.add("error");
