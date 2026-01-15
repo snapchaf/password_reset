@@ -26,7 +26,7 @@
       padding: 0;
       color: #111;
       background-color: #f0f0f0;
-    }
+    }          
 
     body {
       font-family: Avenir Next;
@@ -55,8 +55,9 @@
       z-index: 1000;
     }
     .bannerWrapper {
-  position: relative;   /* Referenz für Overlay */
-}
+     position: relative;   /* Referenz für Overlay */
+     min-height: 200vh;
+    }
     
      #menuLogo {
       position: absolute;
@@ -332,6 +333,7 @@
   height: 100%;        /* füllt Overlay-Höhe */
   max-width: 45vw;
   width: 100%;
+  justify-content: flex-end;
 }
 
 /* Icon */
