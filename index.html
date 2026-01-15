@@ -297,34 +297,30 @@
   z-index: 1;
 }
 
-/* Such-Overlay */
 #searchOverlay {
-  position: absolute; /* innerhalb Banner */
-  inset: 0;           /* füllt Banner */
-  display: none;      /* nur sichtbar beim Klick */
+  display: none;          /* unsichtbar bis Klick */
+  position: absolute;
   align-items: center;
-  justify-content: flex-start; 
+  justify-content: flex-start;
   background: rgba(255,255,255,0.95);
-  z-index: 1010;      /* über Banner */
+  z-index: 1010;
 }
 
-/* Suchfeld im Overlay */
 .searchBox {
   display: flex;
   gap: 10px;
   align-items: center;
   background: #fff;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* Lupen-Icon */
 .activeSearchIcon {
-  height: 5px;
+  height: 3px;
   width: auto;
 }
-  
+
 .searchInput {
   border: none;
   outline: none;
@@ -333,7 +329,6 @@
   width: 150px;
 }
 
-/* Abbrechen nur Text */
 #cancelSearch {
   cursor: pointer;
   color: #555;
@@ -342,6 +337,7 @@
 #cancelSearch:hover {
   text-decoration: underline;
 }
+
   </style>
     
   <!-- Firebase -->
@@ -370,8 +366,8 @@
 <div id="searchOverlay">
   <div class="searchBox">
     <img src="active.searchicon.png" alt="Suche" class="activeSearchIcon">
-    <span class="searchText">Suche</span>
-    <button id="cancelSearch">Abbrechen</button>
+    <input type="text" class="searchInput" placeholder="Suche">
+    <span id="cancelSearch">Abbrechen</span>
   </div>
 </div> 
   </header>
