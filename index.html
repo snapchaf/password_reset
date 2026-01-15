@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen:</title>
+  <title>Passwort zurücksetzen_</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -361,6 +361,10 @@
   margin-left: auto;
 }
 
+  .searchInput.error::placeholder {
+  color: #d00;
+}
+
 /* Mobile Anpassung */
 @media (max-width: 600px) {
   .searchBox {
@@ -680,6 +684,15 @@ searchForm.addEventListener("submit", function(e) {
   } else {
     alert("Keine Ergebnisse gefunden!");      // optional
   }
+});
+  if (!searchMap[query]) {
+  searchInput.value = "";
+  searchInput.placeholder = "Keine Ergebnisse";
+  searchInput.classList.add("error");
+}
+  searchInput.addEventListener("focus", () => {
+  searchInput.placeholder = "Suche";
+  searchInput.classList.remove("error");
 });
 
   // --- FIREBASE INIT ---
