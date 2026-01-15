@@ -623,7 +623,7 @@ function openSearch() {
   searchOverlay.classList.add("active");
 
   // z.B. 10px nach links vom Startpunkt
-  ghostLogo.style.transform = `translate(calc(-50% - 10px), -50%)`; 
+  ghostLogo.style.transform = `translate(calc(-60% - 40px), -50%)`; 
 
   document.querySelector(".searchInput").focus();
 }
@@ -633,7 +633,7 @@ function closeSearch() {
   searchLogo.style.display = "block";
 
   // wieder exakt zentriert
-  ghostLogo.style.transform = "translate(-50%, -50%)";
+  ghostLogo.style.transform = "translate(-60%, -50%)";
 }
 
 searchLogo.addEventListener("click", openSearch);
