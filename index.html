@@ -70,7 +70,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-60%, -50%);
+  transform: translate(-50%, -50%);
   width: 170px;
   height: auto;
   margin-left: 20px;
@@ -625,7 +625,8 @@ function openSearch() {
   searchLogo.style.display = "none";
   searchOverlay.classList.add("active");
 
-    ghostLogo.style.transform = `translateX(-60%) translateY(-50%)`; 
+  // z.B. 10px nach links vom Startpunkt
+  ghostLogo.style.transform = `translate(calc(-50% - 10px), -50%)`; 
 
   document.querySelector(".searchInput").focus();
 }
@@ -634,8 +635,8 @@ function closeSearch() {
   searchOverlay.classList.remove("active");
   searchLogo.style.display = "block";
 
-  // Ghostlogo wieder exakt zentriert
-  ghostLogo.style.transform = "translate(-60%, -50%)";
+  // wieder exakt zentriert
+  ghostLogo.style.transform = "translate(-50%, -50%)";
 }
 
 searchLogo.addEventListener("click", openSearch);
