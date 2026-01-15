@@ -331,7 +331,7 @@
 /* Icon */
 .activeSearchIcon {
   display: block;
-  max-height: 100%;
+  max-height: 50%;
   width: auto;
   flex-shrink: 0;
 }
@@ -341,7 +341,6 @@
   border: none;
   outline: none;
   justify-content: flex-start;
-  align-items: center;
   background: transparent;
   font-size: 14px;
   width: 100%;                 /* füllt Rest der Box */
@@ -391,7 +390,6 @@
 <div id="searchOverlay">
   <div class="searchBox">
     <img src="active.searchicon.png" alt="Lupen-Icon" class="activeSearchIcon">
-    <span class="searchText">Suche</span>
     <input type="text" class="searchInput" placeholder="Suche">
     <span id="cancelSearch">Abbrechen</span>
   </div>
