@@ -678,22 +678,23 @@ searchForm.addEventListener("submit", function(e) {
 
   const query = searchInput.value.toLowerCase().trim();
 
-  // Prüfen, ob Suchbegriff existiert
+  // Treffer?
   if (searchMap[query]) {
-    window.location.href = searchMap[query];  // Weiterleitung zur Unterseite
+    window.location.href = searchMap[query];
   } else {
-    alert("Keine Ergebnisse gefunden!");      // optional
+    // ❌ kein Treffer → elegantes Feedback
+    searchInput.value = "";
+    searchInput.placeholder = "Keine Ergebnisse";
+    searchInput.classList.add("error");
   }
 });
-  if (!searchMap[query]) {
-  searchInput.value = "";
-  searchInput.placeholder = "Keine Ergebnisse";
-  searchInput.classList.add("error");
-}
-  searchInput.addEventListener("focus", () => {
+
+// Placeholder zurücksetzen beim Fokus
+searchInput.addEventListener("focus", () => {
   searchInput.placeholder = "Suche";
   searchInput.classList.remove("error");
 });
+;
 
   // --- FIREBASE INIT ---
   const firebaseConfig = {
