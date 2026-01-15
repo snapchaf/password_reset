@@ -377,26 +377,25 @@
     
 .resetPage {
   min-height: 100vh;
-  background: #f0f0f0;         /* leichter Graustich */
+  background: #f0f0f0;       /* leichter Graustich */
   display: flex;
   flex-direction: column;
-  align-items: center;          /* horizontal zentriert */
-  padding-top: 80px;            /* Abstand Banner → Karte */
-  padding-left: 20px;           /* links Abstand */
-  padding-right: 20px;          /* rechts Abstand */
+  align-items: center;        /* horizontal zentriert */
+  padding-top: 24px;          /* Abstand Banner → Karte jetzt 30% von vorher (70% reduziert) */
+  padding-left: 20px;         /* Abstand links */
+  padding-right: 20px;        /* Abstand rechts */
   box-sizing: border-box;
 }
 
 /* Karte */
 .resetCard {
   background: #fff;
-  width: 100%;                  /* nimmt maximal verfügbaren Platz */
-  max-width: 360px;             /* kleiner als Banner (z.B. 400-420px) */
+  width: calc(100% - 40px);   /* 20px Abstand links + rechts */
+  max-width: 360px;           /* kleiner als Banner */
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-align: left;
-}
 
 /* Titel */
 .resetCard h1 {
