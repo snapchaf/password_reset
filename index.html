@@ -367,6 +367,24 @@
   }
 }
 
+    #searchResults {
+  margin-top: 10px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.searchResult {
+  padding: 6px 10px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.searchResult:hover {
+  background-color: #f0f0f0;
+}
+
   </style>
     
   <!-- Firebase -->
@@ -397,9 +415,19 @@
     <span id="cancelSearch">Abbrechen</span>
   </div>
 </div>
-
 <!-- Trigger -->
 <img src="search.jpeg" alt="Search Logo" id="searchLogo">
+
+    <!-- Bereich, der durchsucht wird -->
+<div class="content" id="content">
+  <p>Das ist ein Text über Katzen.</p>
+  <p>Hier steht etwas über Hunde.</p>
+  <p>Wir haben auch Informationen über Vögel.</p>
+</div>
+
+<!-- Hier werden die Suchergebnisse angezeigt -->
+<div id="searchResults"></div>
+
   </header>
  
   <!-- DROPDOWN MENÜ -->  
@@ -610,7 +638,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
   // ======================
-  // SEARCH-FUNKTION
+  // SEARCH-WINDOW
   // ======================
 
 const searchLogo = document.getElementById("searchLogo");
@@ -637,6 +665,44 @@ function closeSearch() {
 
 searchLogo.addEventListener("click", openSearch);
 cancelSearch.addEventListener("click", closeSearch);
+
+  // ======================
+  // SEARCH-FUNKTION
+  // ======================
+  const searchInput = document.querySelector(".searchInput");
+const searchResults = document.getElementById("searchResults");
+const content = document.getElementById("content");
+
+// Funktion: durchsucht den Content
+function performSearch() {
+  const query = searchInput.value.toLowerCase();
+  searchResults.innerHTML = ""; // Alte Ergebnisse löschen
+
+  if (!query) return; // Nichts eingeben → nichts anzeigen
+
+  // Alle <p> in content durchsuchen
+  const paragraphs = content.querySelectorAll("p");
+  paragraphs.forEach(p => {
+    const text = p.textContent.toLowerCase();
+    if (text.includes(query)) {
+      // Treffer anzeigen
+      const div = document.createElement("div");
+      div.classList.add("searchResult");
+      div.textContent = p.textContent;
+      searchResults.appendChild(div);
+    }
+  });
+}
+
+// Event: bei jeder Eingabe suchen
+searchInput.addEventListener("input", performSearch);
+
+// Optional: Enter-Taste scrollt zu erstem Treffer
+searchInput.addEventListener("keydown", e => {
+  if (e.key === "Enter" && searchResults.firstChild) {
+    searchResults.firstChild.scrollIntoView({ behavior: "smooth" });
+  }
+});
 
   // --- FIREBASE INIT ---
   const firebaseConfig = {
