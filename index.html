@@ -291,12 +291,7 @@
 .overlay-item.open {
   color: #000;
 }
-/* Logos */
-#mainLogo {
-  cursor: pointer;
-  z-index: 1;
-}
-
+  
 #searchOverlay {
   display: none;          /* unsichtbar bis Klick */
   position: absolute;
@@ -317,8 +312,11 @@
 }
 
 .activeSearchIcon {
-  height: 0.2px;
-  width: auto;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  top: 50%;
+  margin-left:50px;
 }
 
 .searchInput {
