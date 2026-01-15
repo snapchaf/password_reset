@@ -300,12 +300,13 @@
   display: flex;
   justify-content: flex-end;
   width: 100%;
-  height: 100%;                  /* füllt Banner + etwas darüber */
+  height: 50px;                  /* füllt Banner + etwas darüber */
   background: transparent;       /* Banner sichtbar, Overlay transparent */
   z-index: 1010;
   pointer-events: none;          /* erst aktiv bei .active */
   opacity: 0;
   transition: opacity 0.25s ease;
+  margin: 5px 0;
 }
 
 #searchOverlay.active {
@@ -324,7 +325,7 @@
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   max-width: 66vw;               /* ca. 2/3 Bildschirmbreite auf Mobile */
   width: 100%;                    /* bei Desktop kleiner: max-width regelt */
-  height: 50px; 
+  height: 60px; 
   margin: 5px 0;                 /* vertikaler Abstand zum Bannerrand */
 }
 
@@ -619,7 +620,7 @@ const ghostLogo = document.getElementById("Ghostlogo");
 
 function openSearch() {
   searchOverlay.classList.add("active");
-  ghostLogo.style.transform = "translateX(-10px)";
+  ghostLogo.style.transform = "translateX(-50px)";
   document.querySelector(".searchInput").focus();
   searchLogo.style.opacity = 0;  // Trigger ausblenden
 }
