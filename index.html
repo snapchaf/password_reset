@@ -293,18 +293,27 @@
 }
   
 #searchOverlay {
-  display: none;           /* unsichtbar bis Klick */
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 60px;            /* passend zur Bannerhöhe */
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   background: rgba(255,255,255,0.95);
   z-index: 1010;
-  padding-left: 20px;      /* Abstand vom linken Rand */
+  padding-left: 20px;
+
+  /* 🔑 Unsichtbar starten */
+  opacity: 0;
+  pointer-events: none; /* verhindert Klicks wenn versteckt */
+  transition: opacity 0.25s ease;
+}
+
+#searchOverlay.active {
+  opacity: 1;
+  pointer-events: auto; /* Klicks möglich */
 }
 
 .searchBox {
@@ -318,7 +327,7 @@
 }
 
 .activeSearchIcon {
-  height: 20px;  /* korrekt sichtbar */
+  height: 20px;
   width: auto;
   flex-shrink: 0;
 }
@@ -334,7 +343,7 @@
 #cancelSearch {
   cursor: pointer;
   color: #555;
-  margin-left: auto;  /* schiebt Abbrechen rechts in der Box */
+  margin-left: auto;
 }
 
 #cancelSearch:hover {
@@ -362,17 +371,18 @@
     </a>
     
     <!-- SEARCH-->
-<!-- KLICK-LOGO -->
-<img src="search.jpeg" alt="Search" class="searchlogo" id="searchLogo">
-
-<!-- SUCH-OVERLAY -->
+<!-- SEARCH-OVERLAY -->
 <div id="searchOverlay">
   <div class="searchBox">
-    <img src="active.searchicon.png" alt="Suche" class="activeSearchIcon">
+    <img src="active.searchicon.png" alt="Lupen-Icon" class="activeSearchIcon">
+    <span class="searchText">Suche</span>
     <input type="text" class="searchInput" placeholder="Suche">
     <span id="cancelSearch">Abbrechen</span>
   </div>
-</div> 
+</div>
+
+<!-- Trigger -->
+<img src="search.jpeg" alt="Search Logo" id="searchLogo">
   </header>
  
   <!-- DROPDOWN MENÜ -->  
@@ -586,37 +596,24 @@ document.addEventListener("DOMContentLoaded", () => {
   // SEARCH-FUNKTION
   // ======================
 
-const searchLogo = document.getElementById("searchLogo"); // Dein Trigger
+const searchLogo = document.getElementById("searchLogo");
 const searchOverlay = document.getElementById("searchOverlay");
 const cancelSearch = document.getElementById("cancelSearch");
 const ghostLogo = document.getElementById("Ghostlogo");
 
 function openSearch() {
-  // 1) Search-Logo ausblenden
-  searchLogo.style.display = "none";
-
-  // 2) Overlay sichtbar machen
-  searchOverlay.style.display = "flex";
-
-  // 3) Ghost-Logo verschieben
+  searchOverlay.classList.add("active");
   ghostLogo.style.transform = "translateX(-10px)";
-
-  // Input fokussieren
   document.querySelector(".searchInput").focus();
+  searchLogo.style.opacity = 0;  // Trigger ausblenden
 }
 
 function closeSearch() {
-  // Overlay ausblenden
-  searchOverlay.style.display = "none";
-
-  // Search-Logo wieder anzeigen
-  searchLogo.style.display = "block";
-
-  // Ghost-Logo zurück
+  searchOverlay.classList.remove("active");
   ghostLogo.style.transform = "translateX(0)";
+  searchLogo.style.opacity = 1;  // Trigger wieder einblenden
 }
 
-// Eventlistener
 searchLogo.addEventListener("click", openSearch);
 cancelSearch.addEventListener("click", closeSearch);
 
