@@ -450,6 +450,46 @@
 .resetCard button:active {
   transform: scale(0.98);
 }
+
+ /* VERKNÜPFUNG CARD */
+.linkCard {
+  min-height: 100vh;
+  background: #f0f0f0;       /* leichter Graustich */
+  display: flex;
+  flex-direction: column;
+  align-items: center;        /* horizontal zentriert */
+  padding-top: 12px;          /* Abstand Banner → Karte halbiert */
+  padding-left: 20px;         /* Abstand links halbiert */
+  padding-right: 20px;        /* Abstand rechts halbiert */
+  box-sizing: border-box;
+  gap: 12px;               /* Abstand zwischen den Link-Zeilen */
+}
+
+/* Einzelne Link-Zeile */
+.linkItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;              /* Abstand Bild zu Text */
+}
+
+/* Bild links */
+.linkItem img {
+  width: 32px;             /* beliebige Größe */
+  height: 32px;
+  border-radius: 8px;      /* optional für runde Ecken */
+  object-fit: cover;
+}
+
+/* Link-Text */
+.linkItem a {
+  text-decoration: underline;
+  color: #289bee;          /* link Farbe */
+  font-size: 14px;
+}
+
+.linkItem a:hover {
+  opacity: 0.8;
+}
   </style>
     
   <!-- Firebase -->
@@ -600,6 +640,34 @@
   </div>
 </div>
 
+  <!-- 2nd CARD -->
+<div class="linkCard">
+  
+  <div class="linkItem">
+    <img src="flammen.png" alt="flammen">
+    <a href="https://help.snapchat.com/hc/de/articles/7012318024852-Ich-habe-meine-Flamme-verloren-Wie-stelle-ich-sie-wieder-her">Ich habe meine Flammen verloren</a>
+  </div>
+  
+  <div class="linkItem">
+    <img src="2.png" alt="Hacking">
+    <a href="https://help.snapchat.com/hc/de/requests/new?co=true&tf_29335679682068=cant_access_account_reason_compromised&ticket_form_id=76586">Mein Account wurde gehackt</a>
+  </div>
+  
+    <div class="linkItem">
+    <img src="account_zugreifen.png" alt="account_zugreifen">
+    <a href="https://help.snapchat.com/hc/de/articles/23102718270996-Ich-kann-nicht-auf-meinen-Account-zugreifen">Ich kann nicht auf meinen Account zugreifen</a>
+  </div>
+  
+  <div class="linkItem">
+    <img src="sicherheit_snap.png" alt="sicherheit_snap">
+    <a href="https://help.snapchat.com/hc/de/articles/7012304746644-Welche-Ma%C3%9Fnahmen-kann-ich-ergreifen-um-meine-Sicherheit-auf-Snapchat-zu-gew%C3%A4hrleisten">Wie bleibe ich bei Snapchat sicher?</a>
+  </div>
+
+    <div class="linkItem">
+    <img src="Datenschutz.png" alt="Datenschutz">
+    <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat">Wie ändere ich meine Datenschutzeinstellungen in Snapchat?</a>
+  </div>
+</div>
   
    <!-- JavaScript-->
 <script>
