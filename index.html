@@ -297,11 +297,12 @@
   position: absolute;
   top: 5px;                 /* entspricht Banner-Margin */
   bottom: 5px;
-  left: 0;
+  left: 0px;
+  right: 0px;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding-left: 0;         /* linksbündig */
   opacity: 0;
   pointer-events: none;
@@ -320,13 +321,12 @@
   align-items: center;
   gap: 8px;
   background: #fff;
-  padding: 6px 12px;
+  padding: 0px 12px;
   border-radius: 20px;           /* stark abgerundet */
   box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   max-width: 66vw;               /* ca. 2/3 Bildschirmbreite auf Mobile */
   width: 100%;                    /* bei Desktop kleiner: max-width regelt */
-  height: 60px; 
-  margin: 5px 0;                 /* vertikaler Abstand zum Bannerrand */
+  height: 100%px;                 /* vertikaler Abstand zum Bannerrand */
 }
 
 /* Icon */
@@ -341,7 +341,8 @@
 .searchInput {
   border: none;
   outline: none;
-  justify-content: flex-start;
+  flex: 1;
+  text-align: left;
   background: transparent;
   font-size: 14px;
   width: 100%;                 /* füllt Rest der Box */
