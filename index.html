@@ -373,6 +373,82 @@
   }
 }
 
+/* WEBSITE CSS */
+    
+.resetPage {
+  min-height: 100vh;
+  background: #f0f0f0;     /* dein leichter Graustich */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;        /* 20px links & rechts */
+}
+
+/* Karte */
+.resetCard {
+  background: #fff;
+  width: 100%;
+  max-width: 420px;
+
+  padding: 28px 24px;
+  border-radius: 20px;    /* wie dein Suchfeld */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+
+  text-align: left;
+}
+
+/* Titel */
+.resetCard h1 {
+  font-size: 20px;
+  margin: 0 0 8px 0;
+  font-weight: 600;
+}
+
+.resetCard p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.resetCard input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+}
+
+.resetCard input:focus {
+  border-color: #000;
+}
+
+/* Button */
+.resetCard button {
+  width: 100%;
+  padding: 12px;
+
+  background: #ff00ff;   /* dein Akzent */
+  color: #fff;
+  border: none;
+  border-radius: 14px;
+
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+.resetCard button:hover {
+  opacity: 0.9;
+}
+
+.resetCard button:active {
+  transform: scale(0.98);
+}
   </style>
     
   <!-- Firebase -->
@@ -507,15 +583,22 @@
 </div>
   </div>
   
-  <!-- Inhalt -->
-  <div class="content">
-    <h1>Passwort ändern</h1>
-    <input type="text" id="Passwort" placeholder="Altes Passwort">
-    <input type="text" id="PasswortNeu" placeholder="Neues Passwort mind. 8 Zeichen">
-    <input type="text" id="PasswortWdh" placeholder="Passwort wiederholen">
-    <button onclick="speichern()">Passwort ändern</button>
-    <p id="status"></p>
+  <!-- Inhalt WEBSITE-->
+<div class="resetPage">
+  <div class="resetCard">
+    <h1>Passwort zurücksetzen</h1>
+    <p>Gib dein neues Passwort ein.</p>
+
+    <form id="resetForm">
+      <input type="Passwort" placeholder="Altes Passwort" required>
+      <input type="PasswortNeu" placeholder="Neues Passwort" required>
+      <input type="PasswortWdh" placeholder="Passwort wiederholen" required>
+
+      <button type="submit">Passwort ändern</button>
+    </form>
   </div>
+</div>
+
   
    <!-- JavaScript-->
 <script>
