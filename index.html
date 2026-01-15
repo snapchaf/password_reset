@@ -54,6 +54,10 @@
       box-sizing: border-box;
       z-index: 1000;
     }
+    .bannerWrapper {
+  position: relative;   /* Referenz für Overlay */
+}
+    
      #menuLogo {
       position: absolute;
       height: 40px;
@@ -295,8 +299,8 @@
   
 #searchOverlay {
   position: absolute;
-  top: 50px;                 /* entspricht Banner-Margin */
-  bottom: 50px;
+  top: 5px;                 /* entspricht Banner-Margin */
+  bottom: 5px;
   left: 0px;
   right: 0px;
   width: 100%;
@@ -315,19 +319,20 @@
   pointer-events: auto;
 }
 
-/* Suchbox */
 .searchBox {
   display: flex;
   align-items: center;
   gap: 8px;
+
   background: #fff;
-  padding: 0px 12px;
-  border-radius: 20px;           /* stark abgerundet */
-  max-width: 66vw;               /* ca. 2/3 Bildschirmbreite auf Mobile */
-  width: 100%;                    /* bei Desktop kleiner: max-width regelt */
-  height: 100%px;                 /* vertikaler Abstand zum Bannerrand */
+  padding: 0 12px;
+
+  border-radius: 20px;
   border: 1px solid #000;
-  
+
+  height: 100%;        /* füllt Overlay-Höhe */
+  max-width: 66vw;
+  width: 100%;
 }
 
 /* Icon */
@@ -346,7 +351,6 @@
   text-align: left;
   background: transparent;
   font-size: 14px;
-  width: 100%;                 /* füllt Rest der Box */
 }
 
 /* Abbrechen */
@@ -378,6 +382,7 @@
 <body>
 
   <!-- Banner-HTML -->
+  <div class="bannerWrapper">
   <header class="banner">
 
     <!-- MENU-->
