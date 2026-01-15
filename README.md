@@ -22,6 +22,8 @@ Eigenverantwortung des Nutzers
 Jede Person, die Zugriff auf diese Inhalte erhält, ist selbst dafür verantwortlich, wie sie diese verwendet und welche Konsequenzen sich daraus ergeben. Eine Verantwortung oder Haftung des Rechteinhabers wird ausdrücklich ausgeschlossen.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+README
+
 
 The contents of this project (including, but not limited to, texts, source code, graphics, files, and other materials) are protected by copyright law.
 
