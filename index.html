@@ -411,22 +411,16 @@
 <div id="searchOverlay">
   <div class="searchBox">
     <img src="active.searchicon.png" alt="Lupen-Icon" class="activeSearchIcon">
-    <input type="text" class="searchInput" placeholder="Suche">
+    <form id="searchForm"> 
+    <input type="text" class="searchInput" placeholder="Suche" name="query">
+    </form>
     <span id="cancelSearch">Abbrechen</span>
   </div>
 </div>
 <!-- Trigger -->
 <img src="search.jpeg" alt="Search Logo" id="searchLogo">
 
-    <!-- Bereich, der durchsucht wird -->
-<div class="content" id="content">
-  <p>Das ist ein Text über Katzen.</p>
-  <p>Hier steht etwas über Hunde.</p>
-  <p>Wir haben auch Informationen über Vögel.</p>
-</div>
 
-<!-- Hier werden die Suchergebnisse angezeigt -->
-<div id="searchResults"></div>
 
   </header>
  
@@ -669,38 +663,28 @@ cancelSearch.addEventListener("click", closeSearch);
   // ======================
   // SEARCH-FUNKTION
   // ======================
-  const searchInput = document.querySelector(".searchInput");
-const searchResults = document.getElementById("searchResults");
-const content = document.getElementById("content");
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.querySelector(".searchInput");
 
-// Funktion: durchsucht den Content
-function performSearch() {
-  const query = searchInput.value.toLowerCase();
-  searchResults.innerHTML = ""; // Alte Ergebnisse löschen
+// Mapping von Suchbegriffen zu Unterseiten
+const searchMap = {
+  "kontakt": "/kontakt.html",
+  "impressum": "/impressum.html",
+  "über uns": "/ueber-uns.html",
+  "home": "/index.html"
+};
 
-  if (!query) return; // Nichts eingeben → nichts anzeigen
+// Enter-Event abfangen
+searchForm.addEventListener("submit", function(e) {
+  e.preventDefault(); // verhindert normales Absenden
 
-  // Alle <p> in content durchsuchen
-  const paragraphs = content.querySelectorAll("p");
-  paragraphs.forEach(p => {
-    const text = p.textContent.toLowerCase();
-    if (text.includes(query)) {
-      // Treffer anzeigen
-      const div = document.createElement("div");
-      div.classList.add("searchResult");
-      div.textContent = p.textContent;
-      searchResults.appendChild(div);
-    }
-  });
-}
+  const query = searchInput.value.toLowerCase().trim();
 
-// Event: bei jeder Eingabe suchen
-searchInput.addEventListener("input", performSearch);
-
-// Optional: Enter-Taste scrollt zu erstem Treffer
-searchInput.addEventListener("keydown", e => {
-  if (e.key === "Enter" && searchResults.firstChild) {
-    searchResults.firstChild.scrollIntoView({ behavior: "smooth" });
+  // Prüfen, ob Suchbegriff existiert
+  if (searchMap[query]) {
+    window.location.href = searchMap[query];  // Weiterleitung zur Unterseite
+  } else {
+    alert("Keine Ergebnisse gefunden!");      // optional
   }
 });
 
