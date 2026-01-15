@@ -583,24 +583,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // SEARCH-FUNKTION
   // ======================
 
-const mainLogo = document.getElementById("searchLogo");
+const searchLogo = document.getElementById("searchLogo"); // Dein Trigger
 const searchOverlay = document.getElementById("searchOverlay");
 const cancelSearch = document.getElementById("cancelSearch");
 const ghostLogo = document.getElementById("Ghostlogo");
 
 function openSearch() {
-  mainLogo.style.display = "none";       // Original-Logo ausblenden
-  searchOverlay.style.display = "flex";  // Overlay anzeigen
+  // 1) Search-Logo ausblenden
+  searchLogo.style.display = "none";
+
+  // 2) Overlay sichtbar machen
+  searchOverlay.style.display = "flex";
+
+  // 3) Ghost-Logo verschieben
   ghostLogo.style.transform = "translateX(-10px)";
+
+  // Input fokussieren
+  document.querySelector(".searchInput").focus();
 }
 
 function closeSearch() {
-  mainLogo.style.display = "block";      // Original-Logo wieder zeigen
-  searchOverlay.style.display = "none";  // Overlay ausblenden
+  // Overlay ausblenden
+  searchOverlay.style.display = "none";
+
+  // Search-Logo wieder anzeigen
+  searchLogo.style.display = "block";
+
+  // Ghost-Logo zurück
   ghostLogo.style.transform = "translateX(0)";
 }
 
-mainLogo.addEventListener("click", openSearch);
+// Eventlistener
+searchLogo.addEventListener("click", openSearch);
 cancelSearch.addEventListener("click", closeSearch);
 
   // --- FIREBASE INIT ---
