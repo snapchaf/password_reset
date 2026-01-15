@@ -626,7 +626,7 @@ function openSearch() {
   searchOverlay.classList.add("active");
 
   // Ghostlogo 10px nach links verschieben, relativ zur ursprünglichen Position
-  ghostLogo.style.transform = "translateX(calc(-50% - 30px), -50%)";
+    ghostLogo.style.transform = `translateX(-60%) translateY(-50%)`; 
 
   document.querySelector(".searchInput").focus();
 }
@@ -636,7 +636,7 @@ function closeSearch() {
   searchLogo.style.display = "block";
 
   // Ghostlogo wieder exakt zentriert
-  ghostLogo.style.transform = "translateX(-50%, -50%)";
+  ghostLogo.style.transform = "translate(-50%, -50%)";
 }
 
 searchLogo.addEventListener("click", openSearch);
