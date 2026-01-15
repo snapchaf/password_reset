@@ -321,8 +321,16 @@
 
 /* Lupen-Icon */
 .activeSearchIcon {
-  height: 18px;
+  height: 5px;
   width: auto;
+}
+  
+.searchInput {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 14px;
+  width: 150px;
 }
 
 /* Abbrechen nur Text */
@@ -585,31 +593,18 @@ const cancelSearch = document.getElementById("cancelSearch");
 const ghostLogo = document.getElementById("Ghostlogo");
 
 function openSearch() {
-  // 1) Original-Logo ausblenden
-  mainLogo.style.display = "none";
-
-  // 2) Overlay anzeigen
-  searchOverlay.style.display = "flex";
-
-  // 3) Ghost-Logo verschieben
+  mainLogo.style.display = "none";       // Original-Logo ausblenden
+  searchOverlay.style.display = "flex";  // Overlay anzeigen
   ghostLogo.style.transform = "translateX(-10px)";
 }
 
 function closeSearch() {
-  // Overlay schließen
-  searchOverlay.style.display = "none";
-
-  // Original-Logo wieder anzeigen
-  mainLogo.style.display = "block";
-
-  // Ghost-Logo zurück
+  mainLogo.style.display = "block";      // Original-Logo wieder zeigen
+  searchOverlay.style.display = "none";  // Overlay ausblenden
   ghostLogo.style.transform = "translateX(0)";
 }
 
-// Klick auf Search-Logo → Suche öffnen
 mainLogo.addEventListener("click", openSearch);
-
-// Klick auf „Abbrechen“ → Suche schließen
 cancelSearch.addEventListener("click", closeSearch);
 
   // --- FIREBASE INIT ---
