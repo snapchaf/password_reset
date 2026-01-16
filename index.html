@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Passwort zurücksetzen/</title>
+  <title>Passwort zurücksetzen_</title>
 
   <link rel="icon" type="image/png" sizes="64x64" href="Favicon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
@@ -374,22 +374,24 @@
 
 /* WEBSITE CSS */
     
-/* === BASIS: resetCard + linkCard === */
+/* === RESET CARD + LINK CARD BASIS === */
 .resetCard,
 .linkCard {
-  width: 100%;
-  max-width: 360px;           /* gleiche Max-Breite */
-  padding: 20px;              /* Innenabstand */
-  border-radius: 20px;
+  width: 100%;                /* füllt max-width aus */
+  max-width: 360px;           /* maximalbreite */
+  padding: 20px;              /* innen Abstand */
+  border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-align: left;
   position: relative;
   background: #fff;
   box-sizing: border-box;
-  margin: 0 auto;             /* horizontal zentriert */
 }
 
-/* --- RESET CARD --- */
+/* Abstand zwischen ResetCard und LinkCard wird durch ParentContainer gap erzeugt */
+
+/* === RESET CARD === */
+/* Titel */
 .resetCard h1 {
   font-size: 20px;
   margin: 0 0 8px 0;
@@ -402,6 +404,7 @@
   margin-bottom: 20px;
 }
 
+/* Inputs */
 .resetCard input {
   width: 80%;
   padding: 12px 14px;
@@ -416,6 +419,7 @@
   border-color: #000;
 }
 
+/* Button */
 .resetCard button {
   width: 80%;
   padding: 12px;
@@ -437,11 +441,26 @@
   transform: scale(0.98);
 }
 
-/* LINK CARD: Struktur */
+/* === LINK CARD === */
+.linkCard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;               /* Abstand zwischen den Link-Zeilen */
+}
+
+/* Überschrift innerhalb LinkCard */
+.LinkText {
+  font-size: 18px;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Einzelne Link-Zeile */
 .linkItem {
   display: flex;
   align-items: center;
-  gap: 20px;                  /* Abstand Bild → LinkText */
+  gap: 12px;               /* Abstand Bild zu Text */
 }
 
 /* Bild links */
@@ -450,24 +469,17 @@
   height: 32px;
   border-radius: 8px;
   object-fit: cover;
-  margin-left: 20px;          /* Abstand zum linken Kartenrand */
 }
 
 /* Link-Text */
 .linkItem a {
-  color: #289bee;
+  color: #000;
   font-size: 14px;
-  text-decoration: underline;
 }
 
-/* Hover */
 .linkItem a:hover {
   opacity: 0.8;
-}
-
-/* Optional: letzten Link unten etwas Abstand */
-.linkItem:last-child {
-  margin-bottom: 20px;        /* Abstand zum Kartenende */
+  text-decoration: underline;
 }
 
   </style>
