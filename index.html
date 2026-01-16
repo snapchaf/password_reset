@@ -506,7 +506,7 @@
   display: flex;
   align-items: center; /* Text startet oben, nicht mittig */
   gap: 24px;               /* Abstand Bild zu Text */
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   text-align: left;
 }
@@ -532,6 +532,56 @@
   text-decoration: underline;
 }
 
+ /* === Support-Card === */
+  .SupportCard {
+  width: 100%;                /* füllt max-width aus */
+  max-width: 360px;           /* maximalbreite */
+  padding: 20px;              /* innen Abstand */
+  border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  text-align: left;
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+}
+    
+ .TitleText {
+  font-size: 26px;
+  color: #000;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 5px;    /* kleiner Abstand unter Überschrift */
+} 
+
+.SubTitleText {
+  display: flex;
+  align-items: center; /* Text startet oben, nicht mittig */
+  gap: 24px;               /* Abstand Bild zu Text */
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+}   
+  
+.SupportItem {
+}
+    
+.ItemTitle {
+  display: flex;
+  align-items: center; /* Text startet oben, nicht mittig */
+  gap: 24px;               /* Abstand Bild zu Text */
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+}   
+    
+.ItemText {
+  display: flex;
+  align-items: center; /* Text startet oben, nicht mittig */
+  gap: 24px;               /* Abstand Bild zu Text */
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+}    
   </style>
     
   <!-- Firebase -->
@@ -706,6 +756,32 @@
     <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat">Wie ändere ich meine Datenschutzeinstellungen in Snapchat?</a>
   </div>
 </div>
+
+  <!-- 3rd CARD - Support-Card -->
+  <div class="SupportCard">
+  <p class="TitleText" >Erhalte personalisierten Support</p>
+  <p class="SubTitleText" >Ich bin...</p>
+    
+  <div class="SupportItem">
+    <img src="abonnent.png" alt="abonnent">
+    <a href="https://help.snapchat.com/hc/de/p/snapchat_plus_subscribers" class="ItemTitle">Abonnent von Snapchat+</a>
+    <p class="ItemText" >Genieße exklusive Funktionen und verwalte dein Abo.</p>
+  </div>
+  
+  <div class="SupportItem">
+    <img src="Creator.png" alt="Creator">
+    <a href="https://help.snapchat.com/hc/de/p/content_creators" class="ItemTitle">Inhaltskreator</a>
+    <p class="ItemText" >Vergrößere und engagiere dein Publikum auf Snapchat.</p>
+  </div>
+  
+  <div class="SupportItem">
+    <img src="Educator.png" alt="Educator">
+    <a href="https://help.snapchat.com/hc/de/p/parents_and_educators" class="ItemTitle">Eltern oder Pädagogen</a>
+    <p class="ItemText" >Hol dir Support und erfahre, wie du deinen Teenager schützen kannst.</p>
+  </div>
+</div>
+  
+<!-- Parent-Container div -->
 </div>
   
    <!-- JavaScript-->
