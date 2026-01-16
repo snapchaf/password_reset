@@ -576,21 +576,22 @@
 }
     
 .ItemTitle {
-  display: flex;
-  align-items: center; /* Text startet oben, nicht mittig */
   gap: 24px;               /* Abstand Bild zu Text */
   font-size: 16px;
   font-weight: 600;
   text-align: left;
+  color: #000;
+  text-decoration: none;
 }   
     
+.ItemTitle:hover {
+  text-decoration: underline;
+}
+    
 .ItemText {
-  display: flex;
-  align-items: center; /* Text startet oben, nicht mittig */
   gap: 24px;               /* Abstand Bild zu Text */
   font-size: 14px;
   font-weight: 400;
-  text-align: left;
 }    
   </style>
     
