@@ -562,7 +562,12 @@
   text-align: left;
 }   
   
-.SupportItem {
+.SupportItem img {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: contain;
+  flex-shrink: 0;          /* Bild fixiert, Text kann wachsen */
 }
     
 .ItemTitle {
