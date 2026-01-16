@@ -711,6 +711,7 @@
   width: 100%;
   overflow: hidden;
   min-height: 140px;   /* statt fixer Höhe */
+  height: 100%;
 }
 
 /* Einzelne Slides */
@@ -750,7 +751,7 @@
   background: transparent;
   cursor: pointer;
   z-index: 10;
-  left: 6px;  
+  left: 10px;  
 }
     
 .NextArrow {
@@ -764,7 +765,7 @@
   background: transparent;
   cursor: pointer;
   z-index: 10;
-  right: 6px;
+  right: 10px;
 }
 
 .PrevArrow img {
@@ -1066,6 +1067,10 @@
   <img src="arrowleft.png" alt="Zurück">
 </button>
     
+  <button class="NextArrow" onclick="nextSlide()">
+  <img src="arrowright.png" alt="Weiter">
+</button>
+    
   <div class="TippsCarousel">
     <div class="TipsIndicators">
     <div class="TippsSlide active" id="slide1">
@@ -1101,12 +1106,7 @@
     <span class="Dot"></span>
     <span class="Dot"></span>
     <span class="Dot"></span>
-  </div>
-    
-<button class="NextArrow" onclick="nextSlide()">
-  <img src="arrowright.png" alt="Weiter">
-</button>
-    
+  </div>  
 </div>
    
    <!-- JavaScript-->
