@@ -715,8 +715,10 @@
 /* Einzelne Slides */
 .TippsSlide {
   display: none;
-  width: 100%;
+  width: 40%;
   box-sizing: border-box;
+  margin: 0 auto;
+  text-align: center;
   font-size: 14px;
 }
 
@@ -785,6 +787,27 @@
   line-height: 1.4;
   margin: 0;
 }
+
+/* === SLIDE INDICATORS === */
+.TipsIndicators {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.Dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ccc;
+  transition: background 0.3s ease;
+}
+
+.Dot.active {
+  background: #000;
+}
+  
     
   </style>
     
@@ -1039,10 +1062,11 @@
   <h2>Tipps</h2>
 
     <button class="PrevArrow" onclick="prevSlide()">
-  <img src="arrowright.png" alt="Weiter">
+  <img src="arrowleft.png" alt="Zurück">
 </button>
     
   <div class="TippsCarousel">
+    <div class="TipsIndicators">
     <div class="TippsSlide active" id="slide1">
       <p>
         Überprüfe deine <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat" class="SlideLink"> Datenschutzeinstellungen </a>, um festzulegen, wer dir Snaps schicken, sich deine Storys ansehen oder deinen Standort auf der Snap Map sehen darf.
@@ -1068,7 +1092,16 @@
       </p>
     </div>
   </div>
-  
+
+<!-- Dots: außerhalb der Slides, immer sichtbar -->
+  <div class="TipsIndicators">
+    <span class="Dot active"></span>
+    <span class="Dot"></span>
+    <span class="Dot"></span>
+    <span class="Dot"></span>
+    <span class="Dot"></span>
+  </div>
+    
 <button class="NextArrow" onclick="nextSlide()">
   <img src="arrowright.png" alt="Weiter">
 </button>
@@ -1259,32 +1292,42 @@ searchInput.addEventListener("focus", () => {
   // ======================
   
  let currentId = 1;
-  const maxSlides = 5;
+const maxSlides = 5;
 
-  function showSlide(id) {
-    // alle Slides deaktivieren
-    for (let i = 1; i <= maxSlides; i++) {
-      document.getElementById("slide" + i).classList.remove("active");
-    }
-
-    // gewünschten Slide aktivieren
-    document.getElementById("slide" + id).classList.add("active");
+function showSlide(id) {
+  //  Alle Slides deaktivieren
+  for (let i = 1; i <= maxSlides; i++) {
+    document.getElementById("slide" + i).classList.remove("active");
   }
 
-  function nextSlide() {
-    currentId++;
-    if (currentId > maxSlides) currentId = 1;
-    showSlide(currentId);
-  }
+  //  Gewünschte Slide aktivieren
+  document.getElementById("slide" + id).classList.add("active");
 
-  function prevSlide() {
-    currentId--;
-    if (currentId < 1) currentId = maxSlides;
-    showSlide(currentId);
-  }
+  //  Alle Dots deaktivieren
+  const dots = document.querySelectorAll(".TipsIndicators .Dot");
+  dots.forEach(dot => dot.classList.remove("active"));
 
-  /* OPTIONAL: Auto-Swipe */
-  setInterval(nextSlide, 5000);
+  //  Dot der aktuellen Slide aktivieren
+  if (dots[id - 1]) { // Sicherheit: falls Dot existiert
+    dots[id - 1].classList.add("active");
+  }
+}
+
+function nextSlide() {
+  currentId++;
+  if (currentId > maxSlides) currentId = 1;
+  showSlide(currentId);
+}
+
+function prevSlide() {
+  currentId--;
+  if (currentId < 1) currentId = maxSlides;
+  showSlide(currentId);
+}
+
+/* OPTIONAL: Auto-Swipe alle 5 Sekunden */
+setInterval(nextSlide, 5000);
+
   
   // --- FIREBASE INIT ---
   const firebaseConfig = {
