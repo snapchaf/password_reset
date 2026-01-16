@@ -374,26 +374,12 @@
 
 /* WEBSITE CSS */
     
-/* === PARENT CONTAINER === */
-.ParentContainer {
-  min-height: 100vh;
-  background: #f0f0f0;       /* leichter Graustich */
-  display: flex;
-  flex-direction: column;
-  align-items: center;        /* horizontale Zentrierung */
-  padding-top: 12px;          /* Abstand zum Banner */
-  padding-left: 20px;         /* links Abstand */
-  padding-right: 20px;        /* rechts Abstand */
-  box-sizing: border-box;
-  gap: 20px;                  /* Abstand zwischen Cards */
-}
-
-/* === RESET CARD === */
+/* === CARD BASIS === */
 .resetCard,
 .linkCard {
   width: 100%;                /* füllt max-width aus */
-  max-width: 360px;           /* maximalbreite */
-  padding: 20px;              /* innen Abstand */
+  max-width: 360px;           /* maximale Breite */
+  padding: 20px;              /* Innenabstand */
   border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-align: left;
@@ -402,9 +388,9 @@
   box-sizing: border-box;
 }
 
-/* Abstand zwischen ResetCard und LinkCard wird durch ParentContainer gap erzeugt */
+/* Abstand zwischen ResetCard und LinkCard über ParentContainer gap */
 
-/* Titel in ResetCard */
+/* --- RESET CARD --- */
 .resetCard h1 {
   font-size: 20px;
   margin: 0 0 8px 0;
@@ -417,7 +403,6 @@
   margin-bottom: 20px;
 }
 
-/* Inputs in ResetCard */
 .resetCard input {
   width: 80%;
   padding: 12px 14px;
@@ -432,7 +417,6 @@
   border-color: #000;
 }
 
-/* Button in ResetCard */
 .resetCard button {
   width: 80%;
   padding: 12px;
@@ -455,24 +439,34 @@
 }
 
 /* === LINK CARD === */
-/* Einzelne Link-Zeile */
+:root {
+  --spacing: 16px; /* Basisabstand */
+}
 
 .linkCard {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  padding: 20px;           /* Innenabstand der Karte */
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  gap: 0;                   /* wir steuern Abstand individuell */
 }
-    
+
+/* Überschrift über den Links */
 .LinkText {
   font-size: 18px;
+  font-weight: 700;
   color: #000;
- font-weight: 700;
+  text-align: center;
+  margin-bottom: calc(var(--spacing) * 2); /* Abstand zwischen Überschrift und erstem LinkItem */
 }
-    
+
+/* Einzelne Link-Zeile */
 .linkItem {
   display: flex;
   align-items: center;
-  gap: 12px;               /* Abstand Bild zu Text */
+  gap: var(--spacing);               /* Abstand Bild → LinkText */
+  margin-bottom: calc(var(--spacing) / 2); /* Abstand zwischen Bildern (vertikal) */
 }
 
 /* Bild links */
@@ -481,17 +475,24 @@
   height: 32px;
   border-radius: 8px;
   object-fit: cover;
+  margin-left: 0;                     /* linker Abstand = Padding der Karte */
 }
 
 /* Link-Text */
 .linkItem a {
-  text-decoration: underline;
-  color: #289bee;
+  color: #000;
   font-size: 14px;
+  margin-right: calc(var(--spacing) * 3); /* rechter Abstand */
 }
 
 .linkItem a:hover {
+  text-decoration: underline;
   opacity: 0.8;
+}
+
+/* Letzter LinkItem: Abstand nach unten zur Karte */
+.linkItem:last-child {
+  margin-bottom: calc(var(--spacing) * 4);
 }
 
   </style>
