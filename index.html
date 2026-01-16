@@ -382,10 +382,11 @@
   flex-direction: column;        /* Karten untereinander */
   align-items: center;           /* horizontal zentriert */
   padding-top: 20px;             /* Abstand vom Banner / oberen Rand */
-  padding-left: 20px;            /* Abstand links zur Seite */
-  padding-right: 20px;           /* Abstand rechts zur Seite */
+  padding-left: 10px;            /* Abstand links zur Seite */
+  padding-right: 10px;           /* Abstand rechts zur Seite */
   gap: 20px;                     /* Abstand zwischen den Karten */
   box-sizing: border-box;        /* Padding wird in Breite/Höhe einberechnet */
+  ming-height: 100vh;
 }   
     
 /* === RESET CARD + LINK CARD BASIS === */
@@ -402,7 +403,16 @@
   box-sizing: border-box;
 }
 
-/* Abstand zwischen ResetCard und LinkCard wird durch ParentContainer gap erzeugt */
+.fullHeightCard {
+  width: 100%;
+  max-width: 360px;       /* wie andere Karten */
+  height: calc(100vh - 20px); /* 100vh minus 1x gap (oben+unten jeweils 0.5x gap) */
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  box-sizing: border-box;
+  padding: 20px;
+}
 
 /* === RESET CARD === */
 /* Titel */
@@ -629,7 +639,7 @@
   </div>
   <!-- Inhalt WEBSITE-->
 <div class="ParentContainer">
-  <div class="resetCard">
+  <div class="resetCard fullHeightCard">
     <h1>Passwort zurücksetzen</h1>
     <p>Gib dein neues Passwort ein.</p>
 
@@ -643,7 +653,7 @@
   </div>
 
   <!-- 2nd CARD -->
-<div class="linkCard">
+<div class="linkCard fullHeightCard">
   <p class="LinkText" >Verknüpfungen</p>
   <div class="linkItem">
     <img src="flammen.png" alt="flammen">
