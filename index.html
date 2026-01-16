@@ -401,6 +401,7 @@
 }   
     
 /* === RESET CARD + LINK CARD BASIS === */
+.TippsCard,
 .VideoCard,
 .resetCard,
 .linkCard {
@@ -682,12 +683,84 @@
   border-radius: 12px;  /* runde Ecken optional */
   cursor: pointer;      /* zeigt Klickbarkeit */
 }
+    
+/* SLIDES */
+/* Titel der TippsCard */
+.TippsCardTitle {
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 16px;
+}
 
- /* SLIDES */
+/* ================= CAROUSEL ================= */
+.TippsCarousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Einzelne Slides */
+.TippsSlide {
+  display: none;           /* alle Slides standardmäßig verstecken */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Aktive Slide */
+.TippsSlide.active {
+  display: block;          /* nur aktive Slide anzeigen */
+}
+
+/* Links innerhalb der Slides */
+.SlideLink {
+  color: #289bee;
+  text-decoration: none;    /* standardmäßig kein Unterstrich */
+  font-weight: 500;
+}
+
+.SlideLink:hover {
+  text-decoration: underline;  /* Unterstrich nur beim Hover */
+  opacity: 0.8;
+}
+
+/* ================= NAVIGATIONSPFEILE ================= */
+.PrevArrow,
+.NextArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.PrevArrow {
+  left: 10px;
+}
+
+.NextArrow {
+  right: 10px;
+}
+
 .PrevArrow img,
 .NextArrow img {
   width: 30px;   /* gewünschte Größe */
   height: 30px;
+}
+
+/* Optional: kleine Animation beim Hover */
+.PrevArrow img:hover,
+.NextArrow img:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+/* ================= OPTIONAL ================= */
+/* Abstand innerhalb der Slide */
+.TippsSlide p {
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
 }
     
   </style>
