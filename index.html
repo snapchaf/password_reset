@@ -738,14 +738,6 @@
 }
 
 /* ================= NAVIGATIONSPFEILE ================= */
-.PrevArrow,
-.NextArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 10;
-}
 
 .PrevArrow {
   left: 10px;
@@ -762,8 +754,8 @@
   transform: translateY(-50%);
   width: 32px;
   height: 32px;
-  background: #fff;
-  border-radius: 8px;     /* leicht abgerundet */
+  background: none;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -777,6 +769,7 @@
 .NextArrow img {
   width: 25px;
   height: 25px;
+  object-fit: contain;
 }
     
 /* ================= OPTIONAL ================= */
