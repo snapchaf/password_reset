@@ -756,17 +756,34 @@
 
 .PrevArrow img,
 .NextArrow img {
-  width: 30px;   /* gewünschte Größe */
-  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: #f0f0f0;
+  border-radius: 8px;     /* leicht abgerundet */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+}
+    
+  .PrevArrow {
+  left: -16px;            /* halb außerhalb der Card */
 }
 
-/* Optional: kleine Animation beim Hover */
-.PrevArrow img:hover,
-.NextArrow img:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s ease;
+.NextArrow {
+  right: -16px;
 }
 
+/* Pfeil-Bild */
+.PrevArrow img,
+.NextArrow img {
+  width: 14px;
+  height: 14px;
+}
 /* ================= OPTIONAL ================= */
 /* Abstand innerhalb der Slide */
 .TippsSlide p {
