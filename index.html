@@ -374,21 +374,20 @@
 
 /* WEBSITE CSS */
     
-/* === CARD BASIS === */
+/* === BASIS: resetCard + linkCard === */
 .resetCard,
 .linkCard {
-  width: 100%;                /* füllt max-width aus */
-  max-width: 360px;           /* maximale Breite */
+  width: 100%;
+  max-width: 360px;           /* gleiche Max-Breite */
   padding: 20px;              /* Innenabstand */
-  border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
+  border-radius: 20px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-align: left;
   position: relative;
   background: #fff;
   box-sizing: border-box;
+  margin: 0 auto;             /* horizontal zentriert */
 }
-
-/* Abstand zwischen ResetCard und LinkCard über ParentContainer gap */
 
 /* --- RESET CARD --- */
 .resetCard h1 {
@@ -438,35 +437,11 @@
   transform: scale(0.98);
 }
 
-/* === LINK CARD === */
-:root {
-  --spacing: 16px; /* Basisabstand */
-}
-
-.linkCard {
-  display: flex;
-  flex-direction: column;
-  padding: 20px;           /* Innenabstand der Karte */
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  gap: 0;                   /* wir steuern Abstand individuell */
-}
-
-/* Überschrift über den Links */
-.LinkText {
-  font-size: 18px;
-  font-weight: 700;
-  color: #000;
-  text-align: center;
-  margin-bottom: calc(var(--spacing) * 2); /* Abstand zwischen Überschrift und erstem LinkItem */
-}
-
-/* Einzelne Link-Zeile */
+/* LINK CARD: Struktur */
 .linkItem {
   display: flex;
   align-items: center;
-  gap: var(--spacing);               /* Abstand Bild → LinkText */
-  margin-bottom: calc(var(--spacing) / 2); /* Abstand zwischen Bildern (vertikal) */
+  gap: 20px;                  /* Abstand Bild → LinkText */
 }
 
 /* Bild links */
@@ -475,24 +450,24 @@
   height: 32px;
   border-radius: 8px;
   object-fit: cover;
-  margin-left: 0;                     /* linker Abstand = Padding der Karte */
+  margin-left: 20px;          /* Abstand zum linken Kartenrand */
 }
 
 /* Link-Text */
 .linkItem a {
-  color: #000;
+  color: #289bee;
   font-size: 14px;
-  margin-right: calc(var(--spacing) * 3); /* rechter Abstand */
+  text-decoration: underline;
 }
 
+/* Hover */
 .linkItem a:hover {
-  text-decoration: underline;
   opacity: 0.8;
 }
 
-/* Letzter LinkItem: Abstand nach unten zur Karte */
+/* Optional: letzten Link unten etwas Abstand */
 .linkItem:last-child {
-  margin-bottom: calc(var(--spacing) * 4);
+  margin-bottom: 20px;        /* Abstand zum Kartenende */
 }
 
   </style>
