@@ -687,17 +687,16 @@
     
 .TippsCard {
   width: 100%;
-  max-width: 360px;        /* maximale Breite der Card */
+  max-width: 360px;
   background: #fff;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   box-sizing: border-box;
   position: relative;
-  margin: 20px auto;       /* zentriert auf der Seite */
+  margin: 20px auto;
 }
     
-/* Titel der TippsCard */
 .TippsCardTitle {
   font-size: 20px;
   font-weight: 700;
@@ -710,66 +709,73 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  height: 200px;
+  min-height: 140px;   /* statt fixer Höhe */
 }
 
 /* Einzelne Slides */
 .TippsSlide {
-  display: none;           /* alle Slides standardmäßig verstecken */
+  display: none;
   width: 100%;
   box-sizing: border-box;
+  font-size: 14px;
 }
 
-/* Aktive Slide */
 .TippsSlide.active {
-  display: block;          /* nur aktive Slide anzeigen */
+  display: block;
 }
-
-/* Links innerhalb der Slides */
+    
 .SlideLink {
   color: #289bee;
-  text-decoration: none;    /* standardmäßig kein Unterstrich */
+  text-decoration: none;
   font-weight: 500;
 }
 
 .SlideLink:hover {
-  text-decoration: underline;  /* Unterstrich nur beim Hover */
+  text-decoration: underline;
   opacity: 0.8;
 }
 
 /* ================= NAVIGATIONSPFEILE ================= */
-
 .PrevArrow {
-  left: 10px;
-}
-
-.NextArrow {
-  right: 10px;
-}
-
-.PrevArrow img,
-.NextArrow img {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  background: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
   border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: transparent;
   cursor: pointer;
   z-index: 10;
+  left: 6px;  
 }
     
+.NextArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 10;
+  right: 6px;
+}
 
-/* Pfeil-Bild */
-.PrevArrow img,
-.NextArrow img {
-  width: 25px;
-  height: 25px;
+.PrevArrow img {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
+  pointer-events: none;
+}
+
+.NextArrow img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
 }
     
 /* ================= OPTIONAL ================= */
