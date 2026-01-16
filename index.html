@@ -374,31 +374,37 @@
 
 /* WEBSITE CSS */
     
+/* === PARENT CONTAINER === */
 .ParentContainer {
   min-height: 100vh;
   background: #f0f0f0;       /* leichter Graustich */
   display: flex;
-  gap: 20px;
   flex-direction: column;
-  align-items: center;        /* horizontal zentriert */
-  padding-top: 12px;          /* Abstand Banner → Karte halbiert */
-  padding-left: 20px;         /* Abstand links halbiert */
-  padding-right: 20px;        /* Abstand rechts halbiert */
+  align-items: center;        /* horizontale Zentrierung */
+  padding-top: 12px;          /* Abstand zum Banner */
+  padding-left: 20px;         /* links Abstand */
+  padding-right: 20px;        /* rechts Abstand */
   box-sizing: border-box;
+  gap: 20px;                  /* Abstand zwischen Cards */
 }
 
-/* Karte */
-.resetCard {
-  max-width: 360px;     /* höchstens 360px */
-  padding: 20px;
-  border-radius: 20px;
+/* === RESET CARD === */
+.resetCard,
+.linkCard {
+  width: 100%;                /* füllt max-width aus */
+  max-width: 360px;           /* maximalbreite */
+  padding: 20px;              /* innen Abstand */
+  border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
   text-align: left;
   position: relative;
-  colour: #fff;
+  background: #fff;
+  box-sizing: border-box;
 }
 
-/* Titel */
+/* Abstand zwischen ResetCard und LinkCard wird durch ParentContainer gap erzeugt */
+
+/* Titel in ResetCard */
 .resetCard h1 {
   font-size: 20px;
   margin: 0 0 8px 0;
@@ -411,12 +417,11 @@
   margin-bottom: 20px;
 }
 
-/* Inputs */
+/* Inputs in ResetCard */
 .resetCard input {
   width: 80%;
   padding: 12px 14px;
   margin-bottom: 15px;
-
   border-radius: 14px;
   border: 1px solid #ddd;
   font-size: 14px;
@@ -427,15 +432,14 @@
   border-color: #000;
 }
 
-/* Button */
+/* Button in ResetCard */
 .resetCard button {
   width: 80%;
   padding: 12px;
-  background: #ff00ff;   /* dein Akzent */
+  background: #ff00ff;
   color: #fff;
   border: none;
   border-radius: 14px;
-  justify-content: flex-start;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -450,43 +454,33 @@
   transform: scale(0.98);
 }
 
- /* VERKNÜPFUNG CARD */
-.linkCard {
-  max-width: 360px;     /* höchstens 360px */
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  text-align: left;
-  position: relative;
-  margin-top: 20px;
-  colour: #fff;
-}
-
+/* === LINK CARD === */
 /* Einzelne Link-Zeile */
 .linkItem {
   display: flex;
   align-items: center;
-  gap: 12px;              /* Abstand Bild zu Text */
+  gap: 12px;               /* Abstand Bild zu Text */
 }
 
 /* Bild links */
 .linkItem img {
-  width: 32px;             /* beliebige Größe */
+  width: 32px;
   height: 32px;
-  border-radius: 8px;      /* optional für runde Ecken */
+  border-radius: 8px;
   object-fit: cover;
 }
 
 /* Link-Text */
 .linkItem a {
   text-decoration: underline;
-  color: #289bee;          /* link Farbe */
+  color: #289bee;
   font-size: 14px;
 }
 
 .linkItem a:hover {
   opacity: 0.8;
 }
+
   </style>
     
   <!-- Firebase -->
