@@ -374,6 +374,20 @@
 
 /* WEBSITE CSS */
     
+ /* === PARENT CONTAINER FÜR KARTEN === */
+.ParentContainer {
+  min-height: 100vh;            /* volle Höhe des Viewports */
+  background: #f0f0f0;          /* leichter Graustich für Seite */
+  display: flex;                 
+  flex-direction: column;        /* Karten untereinander */
+  align-items: center;           /* horizontal zentriert */
+  padding-top: 20px;             /* Abstand vom Banner / oberen Rand */
+  padding-left: 20px;            /* Abstand links zur Seite */
+  padding-right: 20px;           /* Abstand rechts zur Seite */
+  gap: 20px;                     /* Abstand zwischen den Karten */
+  box-sizing: border-box;        /* Padding wird in Breite/Höhe einberechnet */
+}   
+    
 /* === RESET CARD + LINK CARD BASIS === */
 .resetCard,
 .linkCard {
