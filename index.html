@@ -605,11 +605,18 @@
 }   
     
 /* CONTACT-BREAK */
-    
+
+ .ContactBreak {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+ }
+   
  .ContactButton {
   padding: 12px 24px;
-  background-color: #ff00ff; /* Akzentfarbe */
-  color: #fff;
+  background-color: #000; 
+  color: #f0f0f0;
   border: none;
   border-radius: 12px;
   font-size: 18px;
@@ -619,6 +626,35 @@
 
 .ContactButton:hover {
   text-decoration: underline;
+}
+
+  /* YOUTUBE CARD */
+    
+  .VideoWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.VideoWrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+  .YoutubeLink {
+  color: #289bee;      
+  text-decoration: none; /* kein Unterstrich standardmäßig */
+}
+
+.YoutubeLink:hover {
+  text-decoration: underline; /* Unterstrich beim Hover */
 }
 
   </style>
@@ -752,6 +788,7 @@
     <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>     
 </div>
   </div>
+  
   <!-- Inhalt WEBSITE-->
 <div class="ParentContainer">
   <div class="resetCard">
@@ -837,11 +874,38 @@
   
 <!-- Parent-Container div -->
 </div>
+
+<!-- KONTAKTIERE UNS -->
+  
  <div class="ContactBreak">
  <p>Du musst uns kontaktieren?</p>
   <button class="ContactButton" onclick="location.href='https://help.snapchat.com/hc/de/requests/new';">
     Kontaktiere uns
   </button>
+
+<!-- VIDEO - EINBETTUNG -->
+   
+<div class="VideoCard">
+  <h2 class="VideoTitle">Videos erstellen</h2>
+  <div class="VideoWrapper">
+    <iframe 
+      src="https://www.youtube.com/watch?v=pDZ4Li5hFao" 
+      title="YouTube video player" 
+      frameborder="0" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  
+  <p>
+  Schau dir noch mehr Videos auf 
+  <a href="https://www.youtube.com/@OfficialSnapchat" target="_blank" class="YoutubeLink">
+    @OfficialSnapchat
+  </a>
+  auf YouTube an!
+</p>
+  
+</div>
   
    <!-- JavaScript-->
 <script>
