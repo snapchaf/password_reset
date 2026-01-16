@@ -46,7 +46,7 @@
       padding: 0;
       background-color: #f0f0f0;
       color: #111;
-      min-height: 200vh;
+      min-height: 300vh;
       overflow-y: auto;
     }
 
@@ -401,6 +401,7 @@
 }   
     
 /* === RESET CARD + LINK CARD BASIS === */
+.VideoCard,
 .resetCard,
 .linkCard {
   width: 100%;                /* füllt max-width aus */
@@ -604,7 +605,7 @@
   text-decoration: underline;  /* nur beim Hover */
 }   
     
-/* CONTACT-BREAK */
+/* === CONTACT BREAK === */
 
  .ContactBreak {
   font-weight: 700;
@@ -628,33 +629,64 @@
   text-decoration: underline;
 }
 
-  /* YOUTUBE CARD */
     
-  .VideoWrapper {
-  position: relative;
+  /* === VIDEO CARD === */
+.VideoCard {
+  max-width: 360px;            /* gleiche Max-Width wie deine anderen Cards */
   width: 100%;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  margin: 20px auto;           /* zentriert und Abstand oben/unten */
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* Überschrift der VideoCard */
+.VideoCardTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+/* Untertitel / Text */
+.VideoSubtitle {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+/* Link zum Kanal */
+.ChannelLink {
+  color: #ff0000;              /* individuelle Linkfarbe */
+  text-decoration: none;       /* Unterstrich entfernen */
+  font-weight: 500;
+}
+
+.ChannelLink:hover {
+  text-decoration: underline;
+}
+
+/* Video Wrapper für sauberes Embed */
+.VideoWrapper {
+  width: 100%;
   overflow: hidden;
   border-radius: 12px;
 }
 
 .VideoWrapper iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
+  height: 200px;               /* Höhe kannst du nach Bedarf anpassen */
   border: none;
+  border-radius: 12px;
 }
 
-  .YoutubeLink {
-  color: #289bee;      
-  text-decoration: none; /* kein Unterstrich standardmäßig */
-}
-
-.YoutubeLink:hover {
-  text-decoration: underline; /* Unterstrich beim Hover */
+/* Optional: kleine Anpassung für mobile Geräte */
+@media (max-width: 400px) {
+  .VideoWrapper iframe {
+    height: 180px;
+  }
 }
 
   </style>
@@ -882,31 +914,34 @@
   <button class="ContactButton" onclick="location.href='https://help.snapchat.com/hc/de/requests/new';">
     Kontaktiere uns
   </button>
-
+</div>
 <!-- VIDEO - EINBETTUNG -->
    
 <div class="VideoCard">
-  <h2 class="VideoTitle">Videos erstellen</h2>
+  <h2 class="VideoCardTitle">Mehr Videos entdecken</h2>
+
+  <p class="VideoSubtitle">
+    Schau dir noch mehr Videos auf 
+    <a href="https://www.youtube.com/@OfficialSnapchat" target="_blank" class="ChannelLink">
+      YouTube Kanal
+    </a> 
+    auf YouTube an!
+  </p>
+
   <div class="VideoWrapper">
     <iframe 
-      src="https://www.youtube.com/watch?v=pDZ4Li5hFao" 
-      title="YouTube video player" 
+      width="100%" 
+      height="200" 
+      src="https://youtu.be/pDZ4Li5hFao" 
+      title="YouTube Video" 
       frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
       allowfullscreen>
     </iframe>
   </div>
   
-  <p>
-  Schau dir noch mehr Videos auf 
-  <a href="https://www.youtube.com/@OfficialSnapchat" target="_blank" class="YoutubeLink">
-    @OfficialSnapchat
-  </a>
-  auf YouTube an!
-</p>
-  
 </div>
-  
+   
    <!-- JavaScript-->
 <script>
 document.addEventListener("DOMContentLoaded", () => {
