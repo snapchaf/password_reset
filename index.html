@@ -453,17 +453,15 @@
 
  /* VERKNÜPFUNG CARD */
 .linkCard {
+  background: #fff;
   width: calc(100% - 20px);   /* 10px Abstand links + rechts */
   max-width: 360px;           /* kleiner als Banner */
-  background: #fff;           /* besser sichtbar */
-  display: flex;
-  flex-direction: column;
-  gap: 12px;                  /* Abstand zwischen Link-Zeilen */
-  padding: 16px;              /* innen Abstand */
-  border-radius: 20px;
+  padding: 20px;
+  border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
   box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  box-sizing: border-box;
-  margin: 15px auto 0 auto;  /* nur Abstand oben → vorherige Card */
+  text-align: left;
+  position: relative;
+  margin-bottom: relative;
 }
 
 /* Einzelne Link-Zeile */
