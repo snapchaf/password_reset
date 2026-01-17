@@ -726,10 +726,18 @@
   text-align: center;
   font-size: 14px;
   position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  padding-bottom: 30px;
 }
 
 .TippsSlide.active {
   display: block;
+  opacity: 1;
+  pointer-events: auto;
 }
     
 .SlideLink {
