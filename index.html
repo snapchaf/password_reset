@@ -1357,14 +1357,6 @@
     <div class="FooterLegalLink">
       <a href="https://www.snap.com/terms?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterLink">Servicebestimmungen</a>
     </div>
-
-    <div class="FooterLanguageLabel">
-      <p>Sprache</p>
-    </div>
-
-    <div class="FooterLanguageSelector">
-      <div id="google_translate_element"></div>
-    </div>
   </div>
    
   <!-- ================= JAVASCRIPT ================= -->
@@ -1563,21 +1555,6 @@ function toggleFooterMenu(button) {
   const menuItem = button.parentElement;
   menuItem.classList.toggle('open');
 }
-</script>
-
-<!-- Google Translate -->
-<script type="text/javascript">
-function googleTranslateElementInit() {
-  new google.translate.TranslateElement({
-    pageLanguage: 'de',
-    includedLanguages: 'de,en,es,fr,it,nl,pl,pt,tr,ar,zh-CN,ja,ko,ru',
-    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-    autoDisplay: false
-  }, 'google_translate_element');
-}
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<script>
   // --- FIREBASE INIT ---
   const firebaseConfig = {
     apiKey: "AIzaSyDugmUCYr7puMpV72LbwrZCQNAKZSZjqvo",
@@ -1639,7 +1616,5 @@ function googleTranslateElementInit() {
     });
   };
 </script>
-
-
 </body>
 </html>
