@@ -866,7 +866,72 @@
 .InlineLink:hover {
   text-decoration: underline;
 }
-  
+/* ================= FOOTER DROPDOWN MENU ================= */
+.FooterDropdownMenu {
+  max-width: 600px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+/* ================= FOOTER MENU ITEM ================= */
+.FooterMenuItem {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.FooterMenuItem:last-child {
+  border-bottom: none;
+}
+
+/* ================= FOOTER MAIN BUTTON ================= */
+.FooterMenuButton {
+  width: 100%;
+  padding: 18px 20px;
+  background: #fff;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+/* ================= FOOTER ARROW ICON ================= */
+.FooterArrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+  transform: rotate(90deg);
+}
+
+.FooterMenuItem.open .FooterArrow {
+  transform: rotate(-90deg);
+}
+
+/* ================= FOOTER SUBMENU ================= */
+.FooterSubmenu {
+  max-height: 0;
+  overflow: hidden;
+  background: #fafafa;
+  transition: max-height 0.3s ease;
+}
+
+.FooterMenuItem.open .FooterSubmenu {
+  max-height: 300px;
+}
+
+.FooterSubmenuLink {
+  display: block;
+  padding: 14px 20px 14px 40px;
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+}  
     
   </style>
     
@@ -1173,7 +1238,7 @@
 <div class="PageDivider Top"></div>
 
 <p class="InfoText">
-  Erfahre mehr in unseren <a href="https://policies.google.com/privacy" class="InlineLink">Datenschutzbestimmungen</a> und 
+  Diese Website ist durch reCAPTCHA geschützt. Es gelten die, <a href="https://policies.google.com/privacy" class="InlineLink">Datenschutzbestimmungen</a> und 
   <a href="https://policies.google.com/terms" class="InlineLink"> Servicebestimmungen</a> 
   von Google.
   </p>
@@ -1181,6 +1246,73 @@
 <div class="PageDivider Bot">
 </div>
 
+<div class="FooterDropdownMenu">
+    
+  <!-- UNTERNEHMEN -->
+  <div class="FooterMenuItem">
+    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+      <span>Unternehmen</span>
+      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="FooterSubmenu">
+      <a href="https://example.com" class="FooterSubmenuLink">Über uns</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Karriere</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Presse</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Investoren</a>
+    </div>
+  </div>
+
+  <!-- COMMUNITY -->
+  <div class="FooterMenuItem">
+    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+      <span>Community</span>
+      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="FooterSubmenu">
+      <a href="https://example.com" class="FooterSubmenuLink">Forum</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Events</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Blog</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Support</a>
+    </div>
+  </div>
+
+  <!-- WERBUNG -->
+  <div class="FooterMenuItem">
+    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+      <span>Werbung</span>
+      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="FooterSubmenu">
+      <a href="https://example.com" class="FooterSubmenuLink">Werben bei uns</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Mediadaten</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Preise</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Kontakt</a>
+    </div>
+  </div>
+
+  <!-- RECHTLICHES -->
+  <div class="FooterMenuItem">
+    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+      <span>Rechtliches</span>
+      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <polyline points="9 18 15 12 9 6"></polyline>
+      </svg>
+    </button>
+    <div class="FooterSubmenu">
+      <a href="https://example.com" class="FooterSubmenuLink">Impressum</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Datenschutz</a>
+      <a href="https://example.com" class="FooterSubmenuLink">AGB</a>
+      <a href="https://example.com" class="FooterSubmenuLink">Cookie-Richtlinie</a>
+    </div>
+  </div>
+
+</div>  
   
    <!-- JavaScript-->
 <script>
@@ -1402,6 +1534,10 @@ function prevSlide() {
 /* OPTIONAL: Auto-Swipe alle 5 Sekunden */
 setInterval(nextSlide, 5000);
 
+function toggleFooterMenu(button) {
+const menuItem = button.parentElement;
+menuItem.classList.toggle('open');
+}
   
   // --- FIREBASE INIT ---
   const firebaseConfig = {
