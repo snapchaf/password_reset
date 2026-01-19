@@ -932,7 +932,89 @@
   font-size: 14px;
   font-weight: 400;
 }  
-    
+
+    /* ================= FOOTER IMAGE LINK ================= */
+.FooterImageLink {
+  text-align: center;
+  margin: 30px 0 20px;
+}
+
+.FooterImageLink a {
+  display: inline-block;
+}
+
+.FooterImageLink img {
+  max-width: 150px;
+  height: auto;
+}
+
+/* ================= FOOTER LEGAL LINKS ================= */
+.FooterLegalLink {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.FooterLink {
+  color: #666;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.FooterLink:hover {
+  text-decoration: underline;
+}
+
+/* ================= LANGUAGE SELECTOR ================= */
+.FooterLanguageLabel {
+  text-align: center;
+  margin: 30px 0 10px;
+}
+
+.FooterLanguageLabel p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.FooterLanguageSelector {
+  text-align: center;
+  margin: 10px 0 30px;
+}
+
+/* ================= GOOGLE TRANSLATE STYLING ================= */
+#google_translate_element {
+  display: inline-block;
+}
+
+/* Verstecke das Google Banner oben */
+.goog-te-banner-frame.skiptranslate {
+  display: none !important;
+}
+
+/* Verhindere, dass die Seite nach unten verschoben wird */
+body {
+  top: 0 !important;
+}
+
+/* Style das Dropdown */
+.goog-te-gadget-simple {
+  background-color: #fff !important;
+  border: 1px solid #e5e5e5 !important;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+}
+
+.goog-te-gadget-simple .goog-te-menu-value span {
+  color: #000 !important;
+}
+
+/* Verstecke "Powered by" Text (optional) */
+.goog-te-gadget-simple .goog-te-gadget-icon {
+  display: none !important;
+}
   </style>
     
   <!-- Firebase -->
@@ -1311,8 +1393,36 @@
       <a href="https://example.com" class="FooterSubmenuLink">Cookie-Richtlinie</a>
     </div>
   </div>
-
 </div>  
+
+
+  
+<!-- Bild-Link -->
+<div class="FooterImageLink">
+  <a href="https://example.com">
+    <img src="dein-bild.png" alt="Logo">
+  </a>
+</div>
+
+<!-- Datenschutzbestimmungen -->
+<div class="FooterLegalLink">
+  <a href="https://example.com/datenschutz" class="FooterLink">Datenschutzbestimmungen</a>
+</div>
+
+<!-- Servicebestimmungen -->
+<div class="FooterLegalLink">
+  <a href="https://example.com/service" class="FooterLink">Servicebestimmungen</a>
+</div>
+
+<!-- Sprache Text -->
+<div class="FooterLanguageLabel">
+  <p>Sprache</p>
+</div>
+
+<!-- Google Translate Widget -->
+<div class="FooterLanguageSelector">
+  <div id="google_translate_element"></div>
+</div>
   
    <!-- JavaScript-->
 <script>
@@ -1538,7 +1648,19 @@ function toggleFooterMenu(button) {
 const menuItem = button.parentElement;
 menuItem.classList.toggle('open');
 }
-  
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: 'de',
+    includedLanguages: 'de,en,es,fr,it,nl,pl,pt,tr,ar,zh-CN,ja,ko,ru',
+    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+    autoDisplay: false
+  }, 'google_translate_element');
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   // --- FIREBASE INIT ---
   const firebaseConfig = {
     apiKey: "AIzaSyDugmUCYr7puMpV72LbwrZCQNAKZSZjqvo",
