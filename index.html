@@ -801,7 +801,7 @@
 
     /* ================= INFO TEXT ================= */
     .InfoText {
-      font-size: 11px;
+      font-size: 12px;
       color: #53575b;
       text-align: center;
       line-height: 1.5;
@@ -821,7 +821,7 @@
 
     /* ================= FOOTER DROPDOWN MENU ================= */
     .FooterDropdownMenu {
-      max-width: 400px;
+      max-width: 420px;
       margin: 0 auto 30px auto;
       background: #fff;
       border-radius: 12px;
@@ -918,29 +918,46 @@
     .FooterLink:hover {
       text-decoration: underline;
     }
-
+    
     /* ================= LANGUAGE SELECTOR ================= */
     .FooterLanguageLabel {
-      text-align: center;
-      margin: 30px 0 10px;
-    }
-
-    .FooterLanguageLabel p {
-      font-size: 14px;
+      max-width: 600px;
+      margin: 20px auto 0 auto;
+      padding: 12px 20px;
+      background: #fff;
+      border-radius: 12px 12px 0 0;
+      font-size: 16px;
       font-weight: 600;
       color: #000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .FooterLanguageLabel p {
       margin: 0;
     }
-
     .FooterLanguageSelector {
-      text-align: center;
-      margin: 10px 0 30px;
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      padding: 15px 20px;
+      background: #fafafa;
+      border-radius: 0 0 12px 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    #google_translate_element {
+      text-align: left;
+    }
+    /* Google Translate Styling Override */
+    .goog-te-combo {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      font-size: 14px;
+      background: #fff;
+      color: #000;
+      cursor: pointer;
     }
 
     /* ================= GOOGLE TRANSLATE STYLING ================= */
-    #google_translate_element {
-      display: inline-block;
-    }
 
     .goog-te-banner-frame.skiptranslate {
       display: none !important;
