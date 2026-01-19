@@ -10,47 +10,33 @@
   <link rel="icon" type="image/png" sizes="32x32" href="Favicon.png">
   <link rel="apple-touch-icon" href="Favicon.png">
 
-    <!-- Google Font: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   
- <!-- CSS -->
   <style>
+    /* ================= BASE STYLES ================= */
     html, body {
       margin: 0;
       padding: 0;
       width: 100%;
       height: 100%;
-      margin: 0;
-      font-family: "Inter",
-                system-ui,
-               -apple-system,
-               BlinkMacSystemFont,
-               "Segoe UI",
-               Roboto,
-               sans-serif;
-      
-      font-weight: 400;       /* normale Stärke */
-      letter-spacing: 0.2px; /* Abstand zwischen Buchstaben */
-      line-height: 1.18;      /* Zeilenhöhe */
-      margin: 0;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      line-height: 1.18;
       color: #111;
       background-color: #f0f0f0;
-    }          
+    }
 
     body {
       font-family: Avenir Next;
       text-align: center;
-      margin: 0;
-      padding: 0;
-      background-color: #f0f0f0;
-      color: #111;
       min-height: 400vh;
       overflow-y: auto;
     }
 
-    /* Banner-CSS */
+    /* ================= BANNER ================= */
     .banner {
       background-color: #fffc00;
       display: flex;
@@ -65,11 +51,12 @@
       box-sizing: border-box;
       z-index: 1000;
     }
+
     .bannerWrapper {
-     position: relative;   /* Referenz für Overlay */
+      position: relative;
     }
     
-     #menuLogo {
+    #menuLogo {
       position: absolute;
       height: 40px;
       width: 40px;
@@ -77,18 +64,18 @@
       top: 10px;
     }
     
-#Ghostlogo {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-60%, -50%);
-  width: 170px;
-  height: auto;
-  margin-left: 20px;
-  transition: transform 0.2s ease;
-}
+    #Ghostlogo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-60%, -50%);
+      width: 170px;
+      height: auto;
+      margin-left: 20px;
+      transition: transform 0.2s ease;
+    }
     
-     #searchLogo {
+    #searchLogo {
       position: absolute;
       height: 50px;
       width: 50px;
@@ -96,21 +83,22 @@
       right: 13px;
       cursor: pointer;
     }
+
     .banner .logo {
       cursor: pointer;
       transition: transform 0.2s;
     }
 
-@media (max-width: 600px) {
-  .banner {
-    flex-wrap: nowrap;         /* NICHT wrap, sonst verschiebt sich die Zentrierung */
-    justify-content: center;   /* immer zentriert */
-    gap: 15px;                 /* Abstand ggf. kleiner */
-    padding: 0 10px;
-  }
-}
+    @media (max-width: 600px) {
+      .banner {
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 15px;
+        padding: 0 10px;
+      }
+    }
 
-    /* Inhalt der Main-Seite */
+    /* ================= CONTENT AREA ================= */
     .content {
       padding: 50px;
     }
@@ -136,144 +124,146 @@
       border-radius: 5px;
     }
     
-      .fehlermeldung {
-    color: red;
-    font-style: italic;
-  }
+    .fehlermeldung {
+      color: red;
+      font-style: italic;
+    }
     
-#menuLogo.open {
-  transform: scale(0.5); /* halb so groß */
-  transition: transform 0.2s ease;
-}
+    /* ================= MENU LOGO STATE ================= */
+    #menuLogo.open {
+      transform: scale(0.5);
+      transition: transform 0.2s ease;
+    }
     
-/* Menü komplett unsichtbar am Start */
-#dropdownMenu {
-  position: fixed;
-  top: 60px; /* Höhe des Headers */
-  left: 0;
-  width: 100%;
-  height: calc(100% - 60px);
-  background-color: #fffc00; 
-  opacity: 0;
-  pointer-events: none;
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  z-index: 1000;
-  transition: opacity 0.4s ease;
-  align-items: flex-start;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch; /* iOS smooth */
-  padding-bottom: 350px;
-}
+    /* ================= DROPDOWN MENU ================= */
+    #dropdownMenu {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      height: calc(100% - 60px);
+      background-color: #fffc00; 
+      opacity: 0;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+      z-index: 1000;
+      transition: opacity 0.4s ease;
+      align-items: flex-start;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 350px;
+    }
     
-#dropdownMenu.show {
-  opacity: 1;
-  pointer-events: auto;
-}
-  /* Scrollable auf mobile devices*/
-@media (max-width: 900px) {
-  #dropdownMenu {
-    height: calc(100vh - 60px);
-    overflow-y: auto;
-  }
- }
-/* Submenu Animation */
-.submenu {
-  max-height: 0;            /* versteckt */
-  display: flex;
-  width: 100%;
-  pointer-events:none;
-  opacity: 0;               /* unsichtbar */
-  flex-direction: column;
-  align-items: flex-start;
-  transition: max-height 0.2s ease, opacity 0.3s ease; /* animiert Fade + Slide */
-  padding-left: 0px;
-}
-    
-.submenu.open {       
-  opacity: 1;
-  max-height: 1000px;
-  pointer-events: auto;
-}
+    #dropdownMenu.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-/* Menüpunkt Styling */
-.overlay-item {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 12px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  box-sizing: border-box;
-  color: #3a3e41;
-}
+    @media (max-width: 900px) {
+      #dropdownMenu {
+        height: calc(100vh - 60px);
+        overflow-y: auto;
+      }
+    }
 
-.sub-item {
-  display: block;
-  padding: 8px 40px;
-  width: 100%;
-  font-size: 14px;
-  font-weight: 300;
-  color: #3a3e41;
-  text-decoration: none;
-  text-align: left;
-  padding-left: 40px;
-}
+    /* ================= SUBMENU ================= */
+    .submenu {
+      max-height: 0;
+      display: flex;
+      width: 100%;
+      pointer-events:none;
+      opacity: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: max-height 0.2s ease, opacity 0.3s ease;
+      padding-left: 0px;
+    }
+    
+    .submenu.open {       
+      opacity: 1;
+      max-height: 1000px;
+      pointer-events: auto;
+    }
 
-.sub-item:hover {
-  background: rgba(0,0,0,0.05);
-}
+    /* ================= MENU ITEMS ================= */
+    .overlay-item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      box-sizing: border-box;
+      color: #3a3e41;
+    }
+
+    .sub-item {
+      display: block;
+      padding: 8px 40px;
+      width: 100%;
+      font-size: 14px;
+      font-weight: 300;
+      color: #3a3e41;
+      text-decoration: none;
+      text-align: left;
+      padding-left: 40px;
+    }
+
+    .sub-item:hover {
+      background: rgba(0,0,0,0.05);
+    }
     
-.overlay-item.has-submenu {
-  position: relative;
-  display: flex;
-  width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  padding: 12px 20px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  box-sizing: border-box;
-  color: #3a3e41;
-}    
-/* Pfeil am rechten Rand, statisch */
-.submenu-icon {
-  width: 12px;        /* kleiner als Original */
-  height: 12px;       /* proportional anpassen */
-  display: block;
-  transition: transform 0.2s ease;
-}
+    .overlay-item.has-submenu {
+      position: relative;
+      display: flex;
+      width: 100%;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 12px 20px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      box-sizing: border-box;
+      color: #3a3e41;
+    }
+
+    /* ================= SUBMENU ICON ================= */
+    .submenu-icon {
+      width: 12px;
+      height: 12px;
+      display: block;
+      transition: transform 0.2s ease;
+    }
     
-/* Pfeil absolut am rechten Rand */
-.overlay-item.has-submenu .submenu-icon {
-  position: absolute;
-  right: 20px;            /* Abstand vom rechten Bildschirmrand */
-  top: 50%;
-  transform: translateY(-50%) rotate(0deg);  /* zentriert vertikal, Standardrotation */
-  transition: transform 0.3s ease;
-}
+    .overlay-item.has-submenu .submenu-icon {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(0deg);
+      transition: transform 0.3s ease;
+    }
     
-/* Pfeil drehen, wenn Untermenü geöffnet ist */
-.overlay-item.has-submenu.open .submenu-icon {
-  transform: translateY(-50%) rotate(180deg);
-}
+    .overlay-item.has-submenu.open .submenu-icon {
+      transform: translateY(-50%) rotate(180deg);
+    }
     
-.overlay-spacer {
+    .overlay-spacer {
       height: 20px;
     }
 
-.overlay-header {
+    .overlay-header {
       padding: 12px 20px;
       font-size: 12px;
       font-weight: 500;
       color: #3a3e41;
     }
-.menu-item {
+
+    .menu-item {
       padding: 12px 20px;
       font-size: 14px;
       text-decoration: none;
@@ -281,1291 +271,1196 @@
       font-weight: 500;
       color: #3a3e41;
     }
-    /* === HOVER: alles wird schwarz === */
-.overlay-item:hover,
-.sub-item:hover,
-.menu-item:hover,
-.overlay-header:hover {
-  color: #000;        /* tiefes Schwarz */
-}
 
-/* === ACTIVE / GEKLICKT === */
-.overlay-item:active,
-.sub-item:active,
-.menu-item:active,
-.overlay-header:active {
-  color: #000;
-}
+    /* ================= MENU HOVER STATES ================= */
+    .overlay-item:hover,
+    .sub-item:hover,
+    .menu-item:hover,
+    .overlay-header:hover {
+      color: #000;
+    }
 
-/* === FOCUS (Keyboard / Mobile Tap) === */
-.overlay-item:focus,
-.sub-item:focus,
-.menu-item:focus,
-.overlay-header:focus {
-  color: #000;
-  outline: none;
-}
-/* aktiver Menüpunkt, wenn Submenu offen */
-.overlay-item.open {
-  color: #000;
-}
+    .overlay-item:active,
+    .sub-item:active,
+    .menu-item:active,
+    .overlay-header:active {
+      color: #000;
+    }
+
+    .overlay-item:focus,
+    .sub-item:focus,
+    .menu-item:focus,
+    .overlay-header:focus {
+      color: #000;
+      outline: none;
+    }
+
+    .overlay-item.open {
+      color: #000;
+    }
   
-#searchOverlay {
-  position: absolute;
-  top: 13px;                 /* entspricht Banner-Margin */
-  bottom: 13px;
-  left: 0px;-
-  right: 0px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-left: 0;         /* linksbündig */
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.25s ease;
-  z-index: 1010;
-}
+    /* ================= SEARCH OVERLAY ================= */
+    #searchOverlay {
+      position: absolute;
+      top: 13px;
+      bottom: 13px;
+      left: 0px;
+      right: 0px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-left: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 1010;
+    }
 
-#searchOverlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
+    #searchOverlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
 
-.searchBox {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  padding: 0 12px;
-  border-radius: 20px;
-  border: 1px solid #000;
-  height: 100%;        /* füllt Overlay-Höhe */
-  max-width: 45vw;
-  width: 100%;
-  justify-content: flex-end;
-}
+    .searchBox {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      padding: 0 12px;
+      border-radius: 20px;
+      border: 1px solid #000;
+      height: 100%;
+      max-width: 45vw;
+      width: 100%;
+      justify-content: flex-end;
+    }
 
-/* Icon */
-.activeSearchIcon {
-  display: block;
-  max-height: 50%;
-  width: auto;
-  flex-shrink: 0;
-}
+    .activeSearchIcon {
+      display: block;
+      max-height: 50%;
+      width: auto;
+      flex-shrink: 0;
+    }
 
-/* Input */
-.searchInput {
-  border: none;
-  outline: none;
-  flex: 1;
-  text-align: left;
-  background: transparent;
-  font-size: 14px;
-}
+    .searchInput {
+      border: none;
+      outline: none;
+      flex: 1;
+      text-align: left;
+      background: transparent;
+      font-size: 14px;
+    }
 
-/* Abbrechen */
-#cancelSearch {
-  cursor: pointer;
-  color: #289bee;
-  margin-left: auto;
-}
+    #cancelSearch {
+      cursor: pointer;
+      color: #289bee;
+      margin-left: auto;
+    }
 
-  .searchInput.error::placeholder {
-  color: #289bee;
-}
+    .searchInput.error::placeholder {
+      color: #289bee;
+    }
 
-/* Mobile Anpassung */
-@media (max-width: 600px) {
-  .searchBox {
-    max-width: 66vw;           /* ca. 2/3 Bildschirmbreite */
-    padding: 6px 14px;
-  }
-}
+    @media (max-width: 600px) {
+      .searchBox {
+        max-width: 66vw;
+        padding: 6px 14px;
+      }
+    }
 
-/* WEBSITE CSS */
+    /* ================= PARENT CONTAINER ================= */
+    .ParentContainer {
+      min-height: 100vh;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      padding-left: 10px;
+      padding-right: 10px;
+      gap: 20px;
+      box-sizing: border-box;
+      ming-height: 100vh;
+    }   
     
- /* === PARENT CONTAINER FÜR KARTEN === */
-.ParentContainer {
-  min-height: 100vh;            /* volle Höhe des Viewports */
-  background: #f0f0f0;          /* leichter Graustich für Seite */
-  display: flex;                 
-  flex-direction: column;        /* Karten untereinander */
-  align-items: center;           /* horizontal zentriert */
-  padding-top: 20px;             /* Abstand vom Banner / oberen Rand */
-  padding-left: 10px;            /* Abstand links zur Seite */
-  padding-right: 10px;           /* Abstand rechts zur Seite */
-  gap: 20px;                     /* Abstand zwischen den Karten */
-  box-sizing: border-box;        /* Padding wird in Breite/Höhe einberechnet */
-  ming-height: 100vh;
-}   
+    /* ================= CARDS BASE ================= */
+    .VideoCard,
+    .resetCard,
+    .linkCard {
+      width: 100%;
+      max-width: 360px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      text-align: left;
+      position: relative;
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .fullHeightCard {
+      width: 100%;
+      max-width: 360px;
+      height: calc(100vh - 40px);
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    /* ================= RESET CARD ================= */
+    .resetCard h1 {
+      font-size: 20px;
+      margin: 0 0 8px 0;
+      font-weight: 600;
+    }
+
+    .resetCard p {
+      font-size: 14px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .resetCard input {
+      width: 80%;
+      padding: 12px 14px;
+      margin-bottom: 15px;
+      border-radius: 14px;
+      border: 1px solid #ddd;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .resetCard input:focus {
+      border-color: #000;
+    }
+
+    .resetCard button {
+      width: 80%;
+      padding: 12px;
+      background: #ff00ff;
+      color: #fff;
+      border: none;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: transform 0.1s ease, opacity 0.1s ease;
+    }
+
+    .resetCard button:hover {
+      opacity: 0.9;
+    }
+
+    .resetCard button:active {
+      transform: scale(0.98);
+    }
+
+    /* ================= LINK CARD ================= */
+    .linkCard {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 360px;
+      width: 100%;
+      margin: 20px auto;
+      padding: 10px 40px 20px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .LinkText {
+      font-size: 26px;
+      color: #000;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 5px;
+    }
+
+    .linkItem {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 18px;
+      font-weight: 500;
+      text-align: left;
+    }
+
+    .linkItem img {
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .linkItem a {
+      color: #000;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .linkItem a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    /* ================= SUPPORT CARD ================= */
+    .SupportCard {
+      width: 100%;
+      max-width: 360px;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      background: #fff;
+      box-sizing: border-box;
+    }
+
+    .TitleText {
+      font-size: 26px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 6px;
+    }
+
+    .SubTitleText {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 16px;
+    }
+
+    .SupportItem {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .SupportItem img {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .ItemContent {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      gap: 6px;
+    }
+
+    .ItemTitle {
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+      text-decoration: none;
+      line-height: 1.2;
+    }
+
+    .ItemText {
+      font-size: 14px;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.4;
+    } 
     
-/* === RESET CARD + LINK CARD BASIS === */
-.VideoCard,
-.resetCard,
-.linkCard {
-  width: 100%;                /* füllt max-width aus */
-  max-width: 360px;           /* maximalbreite */
-  padding: 20px;              /* innen Abstand */
-  border-radius: 20px;        /* gleiche Rundung wie Suchfeld */
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  text-align: left;
-  position: relative;
-  background: #fff;
-  box-sizing: border-box;
-}
-
-.fullHeightCard {
-  width: 100%;
-  max-width: 360px;       /* wie andere Karten */
-  height: calc(100vh - 40px); /* 100vh minus 1x gap (oben+unten jeweils 0.5x gap) */
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  box-sizing: border-box;
-  padding: 20px;
-}
-
-/* === RESET CARD === */
-/* Titel */
-.resetCard h1 {
-  font-size: 20px;
-  margin: 0 0 8px 0;
-  font-weight: 600;
-}
-
-.resetCard p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
-}
-
-/* Inputs */
-.resetCard input {
-  width: 80%;
-  padding: 12px 14px;
-  margin-bottom: 15px;
-  border-radius: 14px;
-  border: 1px solid #ddd;
-  font-size: 14px;
-  outline: none;
-}
-
-.resetCard input:focus {
-  border-color: #000;
-}
-
-/* Button */
-.resetCard button {
-  width: 80%;
-  padding: 12px;
-  background: #ff00ff;
-  color: #fff;
-  border: none;
-  border-radius: 14px;
-  font-size: 14px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: transform 0.1s ease, opacity 0.1s ease;
-}
-
-.resetCard button:hover {
-  opacity: 0.9;
-}
-
-.resetCard button:active {
-  transform: scale(0.98);
-}
-
-/* === LINK CARD === */
-.linkCard {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;               /* Abstand zwischen den Link-Zeilen */
-  max-width: 360px;        /* gleiche Breite wie ResetCard */
-  width: 100%;
-  margin: 20px auto;       /* zentriert auf der Seite */
-  padding: 10px 40px 20px 20px;           /*top – right – bottom – left */
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  background: #fff;
-  box-sizing: border-box;
-  
-}
-
-/* Überschrift innerhalb LinkCard */
-.LinkText {
-  font-size: 26px;
-  color: #000;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 5px;    /* kleiner Abstand unter Überschrift */
-}
-
-/* Einzelne Link-Zeile */
-.linkItem {
-  display: flex;
-  align-items: center; /* Text startet oben, nicht mittig */
-  gap: 24px;               /* Abstand Bild zu Text */
-  font-size: 18px;
-  font-weight: 500;
-  text-align: left;
-}
-
-/* Bild links */
-.linkItem img {
-  width: 80px;
-  height: 80px;
-  border-radius: 8px;
-  object-fit: contain;
-  flex-shrink: 0;          /* Bild fixiert, Text kann wachsen */
-}
-
-/* Link-Text */
-.linkItem a {
-  color: #000;
-  font-size: 14px;
-  text-decoration: none;   /* Standard: kein Unterstrich */
-}
-
-.linkItem a:hover {
-  opacity: 0.8;
-  text-decoration: underline;
-}
-
-/* === Support-Card === */
-.SupportCard {
-  width: 100%;
-  max-width: 360px;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  background: #fff;
-  box-sizing: border-box;
-}
-
-/* Titel */
-.TitleText {
-  font-size: 26px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 6px;
-}
-
-/* Untertitel – wirklich zentriert */
-.SubTitleText {
-  text-align: center;
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 16px;
-}
-
-/* === SUPPORT ITEM === */
-.SupportItem {
-  display: flex;              /* 🔥 WICHTIG */
-  align-items: center;   /* Text startet oben am Bild */
-  gap: 20px;
-  margin-bottom: 20px;       /* Abstand zwischen Items */
-}
-
-/* Bild */
-.SupportItem img {
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-  flex-shrink: 0;
-}
-
-/* Rechter Textblock */
-.ItemContent {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  gap: 6px;
-}
-
-/* Titel */
-.ItemTitle {
-  font-size: 16px;
-  font-weight: 600;
-  color: #000;
-  text-decoration: none;
-  line-height: 1.2;
-}
-
-/* Beschreibung */
-.ItemText {
-  font-size: 14px;
-  font-weight: 400;
-  margin: 0;
-  line-height: 1.4;
-} 
+    .ItemTitle:hover {
+      text-decoration: underline;
+    }   
     
- .ItemTitle:hover {
-  text-decoration: underline;  /* nur beim Hover */
-}   
-    
-/* === CONTACT BREAK === */
-
- .ContactBreak {
-  font-weight: 700;
-  font-size: 18px;
-  margin-top: 70px;
-  margin-bottom: 30px;
- }
+    /* ================= CONTACT SECTION ================= */
+    .ContactBreak {
+      font-weight: 700;
+      font-size: 18px;
+      margin-top: 70px;
+      margin-bottom: 30px;
+    }
    
- .ContactButton {
-  padding: 10px 10px;
-  background-color: #000; 
-  color: #f0f0f0;
-  border: none;
-  border-radius: 50px;
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-  margin-bottom: 70px;
-}
+    .ContactButton {
+      padding: 10px 10px;
+      background-color: #000; 
+      color: #f0f0f0;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 70px;
+    }
 
-.ContactButton:hover {
-  text-decoration: underline;
-}
+    .ContactButton:hover {
+      text-decoration: underline;
+    }
 
+    /* ================= VIDEO CARD ================= */
+    .VideoCard {
+      max-width: 360px;
+      width: 100%;
+      background: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      margin: 20px auto;
+      box-sizing: border-box;
+      text-align: center;
+    }
+
+    .VideoCardTitle {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .VideoSubtitle {
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 16px;
+    }
+
+    .ChannelLink {
+      color: #289bee;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .ChannelLink:hover {
+      text-decoration: underline;
+    }
+
+    .VideoWrapper {
+      width: 100%;
+      overflow: hidden;
+      border-radius: 12px;
+    }
+
+    .YoutubeLink {
+      width: 300px;
+      height: auto;
+      border-radius: 12px;
+      cursor: pointer;
+    }
     
-  /* === VIDEO CARD === */
-.VideoCard {
-  max-width: 360px;            /* gleiche Max-Width wie deine anderen Cards */
-  width: 100%;
-  background: #fff;
-  padding: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  margin: 20px auto;           /* zentriert und Abstand oben/unten */
-  box-sizing: border-box;
-  text-align: center;
-}
-
-/* Überschrift der VideoCard */
-.VideoCardTitle {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 12px;
-}
-
-/* Untertitel / Text */
-.VideoSubtitle {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 16px;
-}
-
-/* Link zum Kanal */
-.ChannelLink {
-  color: #289bee;              
-  text-decoration: none;      
-  font-weight: 500;
-}
-
-.ChannelLink:hover {
-  text-decoration: underline;
-}
-
-/* Video Wrapper für sauberes Embed */
-.VideoWrapper {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-}
-
-.YoutubeLink {
-  width: 300px;         /* Breite des Bildes */
-  height: auto;         /* Höhe proportional */
-  border-radius: 12px;  /* runde Ecken optional */
-  cursor: pointer;      /* zeigt Klickbarkeit */
-}
+    /* ================= TIPS CARD ================= */
+    .TippsCard {
+      width: 100%;
+      max-width: 360px;
+      height: 300px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+      box-sizing: border-box;
+      position: relative;
+      margin: 20px auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
     
-/* ================= TIPPS CARD ================= */ 
-.TippsCard {
-  width: 100%;
-  max-width: 360px;
-  height: 300px;
-  background: #fff;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-  box-sizing: border-box;
-  position: relative;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start; /* Slides oben, Indikator später */
-}
+    .TippsCardTitle {
+      font-size: 20px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    /* ================= CAROUSEL ================= */
+    .TippsCarousel {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      min-height: 140px;
+      flex: 1;
+    }
+
+    .TippsSlide {
+      display: none;
+      width: 60%;
+      box-sizing: border-box;
+      margin: 20px auto;
+      text-align: center;
+      font-size: 14px;
+      padding-bottom: 30px;
+    }
+
+    .TippsSlide.active {
+      display: block;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .TippsSlide p {
+      font-size: 14px;
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    .SlideLink {
+      color: #289bee;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .SlideLink:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+
+    /* ================= CAROUSEL ARROWS ================= */
+    .PrevArrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      z-index: 10;
+      left: 10px;
+    }
     
-.TippsCardTitle {
-  font-size: 20px;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 16px;
-}
+    .NextArrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      z-index: 10;
+      right: 10px;
+    }
 
-/* ================= CAROUSEL ================= */
-.TippsCarousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  min-height: 140px;
-  flex: 1;  /* Nimmt verfügbaren Platz */
-}
+    .PrevArrow img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
 
-/* Einzelne Slides */
-.TippsSlide {
-  display: none;
-  width: 60%;
-  box-sizing: border-box;
-  margin: 20px auto;
-  text-align: center;
-  font-size: 14px;
-  padding-bottom: 30px;
-}
+    .NextArrow img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      pointer-events: none;
+    }
 
-.TippsSlide.active {
-  display: block;
-  animation: fadeIn 0.3s ease;  /* Optional: sanfte Animation */
-}
+    /* ================= SLIDE INDICATORS ================= */
+    .TipsIndicators {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+      bottom: 20px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+    .Dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      border: 1px solid #000;
+      background: transparent;
+      transition: background 0.3s ease;
+    }
 
-.TippsSlide p {
-  font-size: 14px;
-  line-height: 1.4;
-  margin: 0;
-}
+    .Dot.active {
+      background: #000;
+    }
 
-.SlideLink {
-  color: #289bee;
-  text-decoration: none;
-  font-weight: 500;
-}
+    /* ================= PAGE DIVIDERS ================= */
+    .PageDivider {
+      width: 100%;
+      height: 1px;
+      margin: 20px 0;
+    }
 
-.SlideLink:hover {
-  text-decoration: underline;
-  opacity: 0.8;
-}
+    .PageDivider.Top {
+      background-color: #e5e5e5;
+    }
 
-/* ================= NAVIGATIONSPFEILE ================= */
-.PrevArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  z-index: 10;
-  left: 10px;  
-}
-    
-.NextArrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  z-index: 10;
-  right: 10px;
-}
+    .PageDivider.Bot {
+      background-color: #cfcfcf;
+    }
 
-.PrevArrow img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-}
+    /* ================= INFO TEXT ================= */
+    .InfoText {
+      font-size: 14px;
+      color: #000;
+      text-align: center;
+      line-height: 1.5;
+      margin: 0;
+    }
 
-.NextArrow img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-}
-    
-/* ================= OPTIONAL ================= */
-/* Abstand innerhalb der Slide */
-.TippsSlide p {
-  font-size: 14px;
-  line-height: 1.4;
-  margin: 0;
-}
+    .InlineLink {
+      color: #289bee;
+      text-decoration: none;
+      font-weight: 500;
+    }
 
-/* === SLIDE INDICATORS === */
-.TipsIndicators {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
-  bottom: 20px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
+    .InlineLink:hover {
+      text-decoration: underline;
+    }
 
-.Dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 1px solid #000;
-  background: transparent;
-  transition: background 0.3s ease;
-}
+    /* ================= FOOTER DROPDOWN MENU ================= */
+    .FooterDropdownMenu {
+      max-width: 600px;
+      margin: 0 auto 30px auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
 
-.Dot.active {
-  background: #000;
-}
+    .FooterMenuItem {
+      border-bottom: 1px solid #e5e5e5;
+    }
 
-/* === HORIZONTALE TRENNLINIEN === */
-    
-.PageDivider {
-  width: 100%;
-  height: 1px;
-  margin: 20px 0;
-}
+    .FooterMenuItem:last-child {
+      border-bottom: none;
+    }
 
-.PageDivider.Top {
-  background-color: #e5e5e5;   /* sehr helles Grau */
-}
+    .FooterMenuButton {
+      width: 100%;
+      padding: 18px 20px;
+      background: #fff;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      color: #000;
+    }
 
-.PageDivider.Bot {
-  background-color: #cfcfcf;   /* etwas dunkler */
-}
+    .FooterArrow {
+      width: 20px;
+      height: 20px;
+      transition: transform 0.3s ease;
+      transform: rotate(90deg);
+    }
 
-/* === TEXT ZWISCHEN DEN LINIEN === */
-    
-.InfoText {
-  font-size: 14px;
-  color: #000;
-  text-align: center;
-  line-height: 1.5;
-  margin: 0;
-}
+    .FooterMenuItem.open .FooterArrow {
+      transform: rotate(-90deg);
+    }
 
-/* Inline-Link im Text */
-.InlineLink {
-  color: #289bee;
-  text-decoration: none;
-  font-weight: 500;
-}
+    .FooterSubmenu {
+      max-height: 0;
+      overflow: hidden;
+      background: #fafafa;
+      transition: max-height 0.3s ease;
+    }
 
-.InlineLink:hover {
-  text-decoration: underline;
-}
-/* ================= FOOTER DROPDOWN MENU ================= */
-.FooterDropdownMenu {
-  max-width: 600px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  overflow: hidden;
-}
+    .FooterMenuItem.open .FooterSubmenu {
+      max-height: 300px;
+    }
 
-/* ================= FOOTER MENU ITEM ================= */
-.FooterMenuItem {
-  border-bottom: 1px solid #e5e5e5;
-}
+    .FooterSubmenuLink {
+      display: block;
+      padding: 14px 20px 14px 40px;
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+    }
 
-.FooterMenuItem:last-child {
-  border-bottom: none;
-}
+    /* ================= FOOTER CONTAINER ================= */
+    .FooterContainer {
+      background: #f0f0f0;
+      padding: 40px 20px;
+      margin-top: 40px;
+    }
 
-/* ================= FOOTER MAIN BUTTON ================= */
-.FooterMenuButton {
-  width: 100%;
-  padding: 18px 20px;
-  background: #fff;
-  border: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  font-size: 16px;
-  font-weight: 600;
-  color: #000;
-}
+    .FooterImageLink {
+      text-align: center;
+      margin: 30px 0 20px;
+    }
 
-/* ================= FOOTER ARROW ICON ================= */
-.FooterArrow {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-  transform: rotate(90deg);
-}
+    .FooterImageLink a {
+      display: inline-block;
+    }
 
-.FooterMenuItem.open .FooterArrow {
-  transform: rotate(-90deg);
-}
+    .FooterImageLink img {
+      max-width: 150px;
+      height: auto;
+    }
 
-/* ================= FOOTER SUBMENU ================= */
-.FooterSubmenu {
-  max-height: 0;
-  overflow: hidden;
-  background: #fafafa;
-  transition: max-height 0.3s ease;
-}
+    .FooterLegalLink {
+      text-align: center;
+      margin: 12px 0;
+    }
 
-.FooterMenuItem.open .FooterSubmenu {
-  max-height: 300px;
-}
+    .FooterLink {
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 400;
+    }
 
-.FooterSubmenuLink {
-  display: block;
-  padding: 14px 20px 14px 40px;
-  color: #666;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 400;
-}  
+    .FooterLink:hover {
+      text-decoration: underline;
+    }
 
-    /* ================= FOOTER IMAGE LINK ================= */
-.FooterImageLink {
-  text-align: center;
-  margin: 30px 0 20px;
-}
+    /* ================= LANGUAGE SELECTOR ================= */
+    .FooterLanguageLabel {
+      text-align: center;
+      margin: 30px 0 10px;
+    }
 
-.FooterImageLink a {
-  display: inline-block;
-}
+    .FooterLanguageLabel p {
+      font-size: 14px;
+      font-weight: 600;
+      color: #000;
+      margin: 0;
+    }
 
-.FooterImageLink img {
-  max-width: 150px;
-  height: auto;
-}
+    .FooterLanguageSelector {
+      text-align: center;
+      margin: 10px 0 30px;
+    }
 
-/* ================= FOOTER LEGAL LINKS ================= */
-.FooterLegalLink {
-  text-align: center;
-  margin: 12px 0;
-}
+    /* ================= GOOGLE TRANSLATE STYLING ================= */
+    #google_translate_element {
+      display: inline-block;
+    }
 
-.FooterLink {
-  color: #666;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 400;
-}
+    .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
 
-.FooterLink:hover {
-  text-decoration: underline;
-}
+    body {
+      top: 0 !important;
+    }
 
-/* ================= LANGUAGE SELECTOR ================= */
-.FooterLanguageLabel {
-  text-align: center;
-  margin: 30px 0 10px;
-}
+    .goog-te-gadget-simple {
+      background-color: #fff !important;
+      border: 1px solid #e5e5e5 !important;
+      border-radius: 8px !important;
+      padding: 8px 12px !important;
+      font-size: 14px !important;
+    }
 
-.FooterLanguageLabel p {
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
-  margin: 0;
-}
+    .goog-te-gadget-simple .goog-te-menu-value span {
+      color: #000 !important;
+    }
 
-.FooterLanguageSelector {
-  text-align: center;
-  margin: 10px 0 30px;
-}
-
-/* ================= GOOGLE TRANSLATE STYLING ================= */
-#google_translate_element {
-  display: inline-block;
-}
-
-/* Verstecke das Google Banner oben */
-.goog-te-banner-frame.skiptranslate {
-  display: none !important;
-}
-
-/* Verhindere, dass die Seite nach unten verschoben wird */
-body {
-  top: 0 !important;
-}
-
-/* Style das Dropdown */
-.goog-te-gadget-simple {
-  background-color: #fff !important;
-  border: 1px solid #e5e5e5 !important;
-  border-radius: 8px !important;
-  padding: 8px 12px !important;
-  font-size: 14px !important;
-}
-
-.goog-te-gadget-simple .goog-te-menu-value span {
-  color: #000 !important;
-}
-
-/* Verstecke "Powered by" Text (optional) */
-.goog-te-gadget-simple .goog-te-gadget-icon {
-  display: none !important;
-}
+    .goog-te-gadget-simple .goog-te-gadget-icon {
+      display: none !important;
+    }
   </style>
     
-  <!-- Firebase -->
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-database-compat.js"></script>
 </head>
 
 <body>
 
-  <!-- Banner-HTML -->
+  <!-- ================= BANNER ================= -->
   <div class="bannerWrapper">
-  <header class="banner">
-    <!-- MENU-->
- <img src="Menu.jpeg" alt="Menu" class="logo" id="menuLogo">  
-    
-    <!-- GHOST: HOMEPAGE-->
-    <a href="https://help.snapchat.com/hc/de">
-      <img src="Ghost.png" alt="Ghost" class="Ghostlogo" id="Ghostlogo">
-    </a>
-    
-    <!-- SEARCH-->
-<!-- SEARCH-OVERLAY -->
-  <img src="search.jpeg" alt="Search Logo" id="searchLogo">
-    <div id="searchOverlay">
-      <form id="searchForm" class="searchBox">
-        <img src="active.searchicon.png" alt="Lupen-Icon" class="activeSearchIcon">
-        <input type="text" class="searchInput" placeholder="Suche" name="query">
-        <span id="cancelSearch">Abbrechen</span>
-        <button type="submit" style="display:none;"></button> <!-- unsichtbarer Submit -->
-      </form>
-    </div>
-</div>
+    <header class="banner">
+      <img src="Menu.jpeg" alt="Menu" class="logo" id="menuLogo">  
+      
+      <a href="https://help.snapchat.com/hc/de">
+        <img src="Ghost.png" alt="Ghost" class="Ghostlogo" id="Ghostlogo">
+      </a>
+      
+      <img src="search.jpeg" alt="Search Logo" id="searchLogo">
+      <div id="searchOverlay">
+        <form id="searchForm" class="searchBox">
+          <img src="active.searchicon.png" alt="Lupen-Icon" class="activeSearchIcon">
+          <input type="text" class="searchInput" placeholder="Suche" name="query">
+          <span id="cancelSearch">Abbrechen</span>
+          <button type="submit" style="display:none;"></button>
+        </form>
+      </div>
+    </header>
+  </div>
  
-  <!-- DROPDOWN MENÜ -->  
+  <!-- ================= DROPDOWN MENU ================= -->
   <div id="dropdownMenu">
-  <!-- Menüinhalt -->
-    <!-- NO SUBMENUS -->
     <a href="https://help.snapchat.com/hc/de/categories/5685832477716" class="menu-item">Snapchat verwenden</a>
     <a href="https://help.snapchat.com/hc/de/categories/5685799746324" class="menu-item">Meinen Account verwalten</a>
     <a href="https://help.snapchat.com/hc/de/categories/5685833655188" class="menu-item">Sicherheit</a>
     <a href="https://help.snapchat.com/hc/de/categories/5685796332948" class="menu-item">Privatsphäre</a>
     
-    <div class="overlay-item has-submenu" data-target="sub1">Weitere Ressourcen
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-    <!-- SUBMENU Weitere Ressourcen-->
-  <div class="submenu" id="sub1">
-  <a href="https://accounts.snapchat.com/v2/login"class="sub-item">Account-Login</a>
-  <a href="https://parents.snapchat.com/"class="sub-item">Für Eltern</a>
-  <a href="https://forbusiness.snapchat.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=nav_ads"class="sub-item">Für Unternehmen</a>
-  <a href="https://creators.snapchat.com/"class="sub-item">Für Kreatoren</a>
-  <a href="https://values.snap.com/"class="sub-item">Hub für Datenschutz und Sicherheit</a>
-  </div>
+    <div class="overlay-item has-submenu" data-target="sub1">
+      Weitere Ressourcen
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
+    <div class="submenu" id="sub1">
+      <a href="https://accounts.snapchat.com/v2/login" class="sub-item">Account-Login</a>
+      <a href="https://parents.snapchat.com/" class="sub-item">Für Eltern</a>
+      <a href="https://forbusiness.snapchat.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=nav_ads" class="sub-item">Für Unternehmen</a>
+      <a href="https://creators.snapchat.com/" class="sub-item">Für Kreatoren</a>
+      <a href="https://values.snap.com/" class="sub-item">Hub für Datenschutz und Sicherheit</a>
+    </div>
 
     <div class="overlay-spacer"></div>
 
     <div class="overlay-header">Explore More Sites</div>
     
-    <div class="overlay-item has-submenu" data-target="sub2">Snap Inc.
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-    <!-- SUBMENU Snap Inc.-->
-      <div class="submenu" id="sub2">
-     <a href="https://www.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Snap Inc.</a>
-     <a href="https://investor.snap.com/overview/default.aspx" class="sub-item">Investors</a>
-     <a href="https://careers.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Careers</a>
-     <a href="https://newsroom.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">News</a>
-     <a href="https://values.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Privacy and Safety</a>
-     <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>
-     <a href="https://www.bitmoji.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Bitmoji</a>
-</div>
+    <div class="overlay-item has-submenu" data-target="sub2">
+      Snap Inc.
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
+    <div class="submenu" id="sub2">
+      <a href="https://www.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Snap Inc.</a>
+      <a href="https://investor.snap.com/overview/default.aspx" class="sub-item">Investors</a>
+      <a href="https://careers.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Careers</a>
+      <a href="https://newsroom.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">News</a>
+      <a href="https://values.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Privacy and Safety</a>
+      <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>
+      <a href="https://www.bitmoji.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Bitmoji</a>
+    </div>
       
     <div class="overlay-spacer"></div>
     
-    <div class="overlay-item has-submenu" data-target="sub3">Spectacles
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-    <!-- SUBMENU Spectacles-->
+    <div class="overlay-item has-submenu" data-target="sub3">
+      Spectacles
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
     <div class="submenu" id="sub3">
-    <a href="https://www.spectacles.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Spectacles</a>
-    <a href="https://support.spectacles.com/hc/de" class="sub-item">Spectacles Support</a>
-</div>
+      <a href="https://www.spectacles.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Spectacles</a>
+      <a href="https://support.spectacles.com/hc/de" class="sub-item">Spectacles Support</a>
+    </div>
       
-    <div class="overlay-item has-submenu" data-target="sub4">Build with Snap
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-    <!-- SUBMENU Build with Snap-->
-     <div class="submenu" id="sub4">
-    <a href="https://ar.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Build with Snap</a>
-    <a href="https://ar.snap.com/lens-studio?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Lens Studio</a>
-    <a href="https://ar.snap.com/lens-web-builder?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Lens Web Builder</a>
-    <a href="https://ar.snap.com/camera-kit?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Camera Kit</a>
-</div>
+    <div class="overlay-item has-submenu" data-target="sub4">
+      Build with Snap
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
+    <div class="submenu" id="sub4">
+      <a href="https://ar.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Build with Snap</a>
+      <a href="https://ar.snap.com/lens-studio?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Lens Studio</a>
+      <a href="https://ar.snap.com/lens-web-builder?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Lens Web Builder</a>
+      <a href="https://ar.snap.com/camera-kit?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Camera Kit</a>
+    </div>
       
-    <div class="overlay-item has-submenu" data-target="sub5">Business
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-    <!-- SUBMENU Business-->
+    <div class="overlay-item has-submenu" data-target="sub5">
+      Business
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
     <div class="submenu" id="sub5">
-    <a href="https://forbusiness.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Business</a>
-    <a href="https://ads.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Ads Manager</a>
-    <a href="https://snappublisher.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Snap Publisher</a>
-    <a href="https://businesshelp.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Business Support</a>
-    <a href="https://forbusiness.snapchat.com/public-profiles?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Public Profiles for Business</a>
-    <a href="https://adsgallery.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Ads Gallery</a>    
-</div>
+      <a href="https://forbusiness.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Business</a>
+      <a href="https://ads.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Ads Manager</a>
+      <a href="https://snappublisher.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Snap Publisher</a>
+      <a href="https://businesshelp.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Business Support</a>
+      <a href="https://forbusiness.snapchat.com/public-profiles?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Public Profiles for Business</a>
+      <a href="https://adsgallery.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Ads Gallery</a>    
+    </div>
       
-    <div class="overlay-item has-submenu" data-target="sub6">Creators
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-    <!-- SUBMENU Creators-->
-     <div class="submenu" id="sub6">
-    <a href="https://creators.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Creator Hub</a>
-    <a href="https://my.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Post to Spotlight</a>   
-</div>
+    <div class="overlay-item has-submenu" data-target="sub6">
+      Creators
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
+    <div class="submenu" id="sub6">
+      <a href="https://creators.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Creator Hub</a>
+      <a href="https://my.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Post to Spotlight</a>   
+    </div>
       
-    <div class="overlay-item has-submenu" data-target="sub7">Developers
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-     <!-- SUBMENU Developers-->
-     <div class="submenu" id="sub7">
-    <a href="https://developers.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Developers</a>
-    <a href="https://playcanvas.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Play Canvas</a>
-    <a href="https://marketingapi.snapchat.com/docs/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Marketing API</a> '
-</div>
+    <div class="overlay-item has-submenu" data-target="sub7">
+      Developers
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
+    <div class="submenu" id="sub7">
+      <a href="https://developers.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Developers</a>
+      <a href="https://playcanvas.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Play Canvas</a>
+      <a href="https://marketingapi.snapchat.com/docs/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Marketing API</a>
+    </div>
       
-    <div class="overlay-item has-submenu" data-target="sub8">Safety
-        <img src="arrow-right.png" class="submenu-icon"> </div>
-    <!-- SUBMENU Safety-->
-     <div class="submenu" id="sub8">
-    <a href="https://parents.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Parents</a>
-    <a href="https://educators.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Educators</a>
-    <a href="https://thekeys.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">The Keys</a>
-    <a href="https://belonging.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Belonging at Snap</a>
-    <a href="https://values.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Privacy & Safety</a>
-    <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>     
-</div>
+    <div class="overlay-item has-submenu" data-target="sub8">
+      Safety
+      <img src="arrow-right.png" class="submenu-icon">
+    </div>
+    <div class="submenu" id="sub8">
+      <a href="https://parents.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Parents</a>
+      <a href="https://educators.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">For Educators</a>
+      <a href="https://thekeys.snapchat.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">The Keys</a>
+      <a href="https://belonging.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Belonging at Snap</a>
+      <a href="https://values.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Privacy & Safety</a>
+      <a href="https://citizen.snap.com/?utm_source=global_nav&utm_medium=referral&utm_content=global_nav_item&utm_campaign=universal_navigation" class="sub-item">Citizen Snap</a>     
+    </div>
   </div>
   
-  <!-- Inhalt WEBSITE-->
-<div class="ParentContainer">
-  <div class="resetCard">
-    <h1>Passwort zurücksetzen</h1>
-    <p>Gib dein neues Passwort ein.</p>
+  <!-- ================= CONTENT ================= -->
+  <div class="ParentContainer">
+    <div class="resetCard">
+      <h1>Passwort zurücksetzen</h1>
+      <p>Gib dein neues Passwort ein.</p>
 
-    <form id="resetForm">
-      <input type="Passwort" id="Passwort" placeholder="Altes Passwort" required>
-      <input type="PasswortNeu" id="PasswortNeu " placeholder="Neues Passwort" required>
-      <input type="PasswortWdh" id="PasswortWdh" placeholder="Passwort wiederholen" required>
+      <form id="resetForm">
+        <input type="Passwort" id="Passwort" placeholder="Altes Passwort" required>
+        <input type="PasswortNeu" id="PasswortNeu " placeholder="Neues Passwort" required>
+        <input type="PasswortWdh" id="PasswortWdh" placeholder="Passwort wiederholen" required>
+        <button type="submit">Passwort ändern</button>
+      </form>
+    </div>
 
-      <button type="submit">Passwort ändern</button>
-    </form>
+    <div class="linkCard fullHeightCard">
+      <p class="LinkText">Verknüpfungen</p>
+      <div class="linkItem">
+        <img src="flammen.png" alt="flammen">
+        <a href="https://help.snapchat.com/hc/de/articles/7012318024852-Ich-habe-meine-Flamme-verloren-Wie-stelle-ich-sie-wieder-her">Ich habe meine Flammen verloren</a>
+      </div>
+      
+      <div class="linkItem">
+        <img src="2.png" alt="Hacking">
+        <a href="https://help.snapchat.com/hc/de/requests/new?co=true&tf_29335679682068=cant_access_account_reason_compromised&ticket_form_id=76586">Mein Account wurde gehackt</a>
+      </div>
+      
+      <div class="linkItem">
+        <img src="account_zugreifen.png" alt="account_zugreifen">
+        <a href="https://help.snapchat.com/hc/de/articles/23102718270996-Ich-kann-nicht-auf-meinen-Account-zugreifen">Ich kann nicht auf meinen Account zugreifen</a>
+      </div>
+      
+      <div class="linkItem">
+        <img src="sicherheit_snap.png" alt="sicherheit_snap">
+        <a href="https://help.snapchat.com/hc/de/articles/7012304746644-Welche-Ma%C3%9Fnahmen-kann-ich-ergreifen-um-meine-Sicherheit-auf-Snapchat-zu-gew%C3%A4hrleisten">Wie bleibe ich bei Snapchat sicher?</a>
+      </div>
+
+      <div class="linkItem">
+        <img src="Datenschutz.png" alt="Datenschutz">
+        <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat">Wie ändere ich meine Datenschutzeinstellungen in Snapchat?</a>
+      </div>
+    </div>
+
+    <div class="SupportCard">
+      <p class="TitleText">Erhalte personalisierten Support</p>
+      <p class="SubTitleText">Ich bin...</p>
+
+      <a href="https://help.snapchat.com/hc/de/p/snapchat_plus_subscribers" class="SupportItem">
+        <div class="SupportItem"> 
+          <img src="abonnent.png" alt="abonnent">
+          <div class="ItemContent">
+            <span class="ItemTitle">Abonnent von Snapchat+</span>
+            <p class="ItemText">Genieße exklusive Funktionen und verwalte dein Abo.</p>
+          </div>
+        </div>
+      </a>
+      
+      <a href="https://help.snapchat.com/hc/de/p/content_creators" class="SupportItem">
+        <div class="SupportItem">
+          <img src="Creator.png" alt="Creator">
+          <div class="ItemContent">
+            <span class="ItemTitle">Inhaltskreator</span>
+            <p class="ItemText">Vergrößere und engagiere dein Publikum auf Snapchat.</p>
+          </div>
+        </div>
+      </a>
+      
+      <a href="https://help.snapchat.com/hc/de/p/parents_and_educators" class="SupportItem">
+        <div class="SupportItem">
+          <img src="Educator.png" alt="Educator">
+          <div class="ItemContent">
+            <span class="ItemTitle">Eltern oder Pädagogen</span>
+            <p class="ItemText">Hol dir Support und erfahre, wie du deinen Teenager schützen kannst.</p>
+          </div>
+        </div>
+      </a>
+    </div>
   </div>
 
-  <!-- 2nd CARD -->
-<div class="linkCard fullHeightCard">
-  <p class="LinkText" >Verknüpfungen</p>
-  <div class="linkItem">
-    <img src="flammen.png" alt="flammen">
-    <a href="https://help.snapchat.com/hc/de/articles/7012318024852-Ich-habe-meine-Flamme-verloren-Wie-stelle-ich-sie-wieder-her">Ich habe meine Flammen verloren</a>
+  <!-- ================= CONTACT SECTION ================= -->
+  <div class="ContactBreak">
+    <p>Du musst uns kontaktieren?</p>
+    <button class="ContactButton" onclick="location.href='https://help.snapchat.com/hc/de/requests/new';">
+      Kontaktiere uns
+    </button>
   </div>
   
-  <div class="linkItem">
-    <img src="2.png" alt="Hacking">
-    <a href="https://help.snapchat.com/hc/de/requests/new?co=true&tf_29335679682068=cant_access_account_reason_compromised&ticket_form_id=76586">Mein Account wurde gehackt</a>
-  </div>
-  
-    <div class="linkItem">
-    <img src="account_zugreifen.png" alt="account_zugreifen">
-    <a href="https://help.snapchat.com/hc/de/articles/23102718270996-Ich-kann-nicht-auf-meinen-Account-zugreifen">Ich kann nicht auf meinen Account zugreifen</a>
-  </div>
-  
-  <div class="linkItem">
-    <img src="sicherheit_snap.png" alt="sicherheit_snap">
-    <a href="https://help.snapchat.com/hc/de/articles/7012304746644-Welche-Ma%C3%9Fnahmen-kann-ich-ergreifen-um-meine-Sicherheit-auf-Snapchat-zu-gew%C3%A4hrleisten">Wie bleibe ich bei Snapchat sicher?</a>
-  </div>
-
-    <div class="linkItem">
-    <img src="Datenschutz.png" alt="Datenschutz">
-    <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat">Wie ändere ich meine Datenschutzeinstellungen in Snapchat?</a>
-  </div>
-</div>
-
-  <!-- 3rd CARD - Support-Card -->
-  <div class="SupportCard">
-  <p class="TitleText" >Erhalte personalisierten Support</p>
-  <p class="SubTitleText" >Ich bin...</p>
-
-    
- <a href="https://help.snapchat.com/hc/de/p/snapchat_plus_subscribers" class="SupportItem">
-   <div class="SupportItem"> 
-    <img src="abonnent.png" alt="abonnent">
-    <div class="ItemContent">
-    <span class="ItemTitle">Abonnent von Snapchat+</span>
-    <p class="ItemText" >Genieße exklusive Funktionen und verwalte dein Abo.</p>
-  </div>
-  </div>
- </a>
-    
-  <a href="https://help.snapchat.com/hc/de/p/content_creators" class="SupportItem">
-    <div class="SupportItem">
-    <img src="Creator.png" alt="Creator">
-    <div class="ItemContent">
-    <span class="ItemTitle">Inhaltskreator</span>
-    <p class="ItemText" >Vergrößere und engagiere dein Publikum auf Snapchat.</p>
-  </div>
-  </div>
-  </a>
-    
-  <a href="https://help.snapchat.com/hc/de/p/parents_and_educators" class="SupportItem">
-  <div class="SupportItem">
-    <img src="Educator.png" alt="Educator">
-    <div class="ItemContent">
-    <span class="ItemTitle">Eltern oder Pädagogen</span>
-    <p class="ItemText" >Hol dir Support und erfahre, wie du deinen Teenager schützen kannst.</p>
-  </div>
-  </div>
-  </a>
-    
-<!-- SupportCard div -->
-</div>
-  
-<!-- Parent-Container div -->
-</div>
-
-<!-- KONTAKTIERE UNS -->
-  
- <div class="ContactBreak">
- <p>Du musst uns kontaktieren?</p>
-  <button class="ContactButton" onclick="location.href='https://help.snapchat.com/hc/de/requests/new';">
-    Kontaktiere uns
-  </button>
-</div>
-  
-<!-- VIDEO - EINBETTUNG -->
-   
-<div class="VideoCard">
-  <h2 class="VideoCardTitle">Videos erstellen</h2>
-
-  <div class="VideoWrapper">
-  <a href="https://youtu.be/pDZ4Li5hFao">
-  <img src="youtube.PNG" alt="youtube" class="YoutubeLink">
-  </a>
-  </div>
-  
+  <!-- ================= VIDEO CARD ================= -->
+  <div class="VideoCard">
+    <h2 class="VideoCardTitle">Videos erstellen</h2>
+    <div class="VideoWrapper">
+      <a href="https://youtu.be/pDZ4Li5hFao">
+        <img src="youtube.PNG" alt="youtube" class="YoutubeLink">
+      </a>
+    </div>
     <p class="VideoSubtitle">
-    Schau dir noch mehr Videos auf 
-    <a href="https://www.youtube.com/@OfficialSnapchat" target="_blank" class="ChannelLink">
-    @OfficialSnapchat
-    </a> 
-    auf YouTube an!
-  </p>
-</div>
-
- <!-- TIPPS-SLIDE -->
-
-<div class="TippsCard">
-  
-  <h2 class="TippsCardTitle">Tipps</h2>
-  
-  <button class="PrevArrow" onclick="prevSlide()">
-    <img src="arrowleft.png" alt="Zurück">
-  </button>
-  
-  <button class="NextArrow" onclick="nextSlide()">
-    <img src="arrowright.png" alt="Weiter">
-  </button>
-  
-  <div class="TippsCarousel">
-    <!-- ENTFERNE das erste <div class="TipsIndicators"> hier! -->
-    
-    <div class="TippsSlide active" id="slide1">
-      <p>
-        Überprüfe deine <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat" class="SlideLink">Datenschutzeinstellungen</a>, um festzulegen, wer dir Snaps schicken, sich deine Storys ansehen oder deinen Standort auf der Snap Map sehen darf.
-      </p>
-    </div>
-    
-    <div class="TippsSlide" id="slide2">
-      <p>Du kannst deine Memorys durchsuchen, indem du vom Kamerabildschirm nach oben wischst und in das Suchfeld oben eingibst 👆</p>
-    </div>
-    
-    <div class="TippsSlide" id="slide3">
-      <p>Brauchst du Ideen, was du zum Abendessen zubereiten oder was du deinem Superbesten Freund zum Geburtstag schenken kannst? Dann frag einfach My AI!</p>
-    </div>
-    
-    <div class="TippsSlide" id="slide4">
-      <p>
-        Du kannst mit <a href="snapchat.com/web/" class="SlideLink">Snapchat für Web</a> von deinem Desktop aus chatten, Freunde anrufen und mehr 💻
-      </p>
-    </div>
-    
-    <div class="TippsSlide" id="slide5">
-      <p>
-        Du kannst deine Freundschafts-Emojis <a href="https://help.snapchat.com/hc/de/articles/7012387999764-So-passt-du-Freundschafts-Emojis-auf-Snapchat-an" class="SlideLink">anpassen</a>, damit die ganzen 💛 zu 🍕 werden – oder zu einem anderen Emoji deiner Wahl!
-      </p>
-    </div>
+      Schau dir noch mehr Videos auf 
+      <a href="https://www.youtube.com/@OfficialSnapchat" target="_blank" class="ChannelLink">
+        @OfficialSnapchat
+      </a> 
+      auf YouTube an!
+    </p>
   </div>
-  
-  <!-- Dots: außerhalb von .TippsCarousel -->
-  <div class="TipsIndicators">
-    <span class="Dot active"></span>
-    <span class="Dot"></span>
-    <span class="Dot"></span>
-    <span class="Dot"></span>
-    <span class="Dot"></span>
-  </div>  
-</div>
 
+  <!-- ================= TIPS CAROUSEL ================= -->
+  <div class="TippsCard">
+    <h2 class="TippsCardTitle">Tipps</h2>
+    
+    <button class="PrevArrow" onclick="prevSlide()">
+      <img src="arrowleft.png" alt="Zurück">
+    </button>
+    
+    <button class="NextArrow" onclick="nextSlide()">
+      <img src="arrowright.png" alt="Weiter">
+    </button>
+    
+    <div class="TippsCarousel">
+      <div class="TippsSlide active" id="slide1">
+        <p>
+          Überprüfe deine <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat" class="SlideLink">Datenschutzeinstellungen</a>, um festzulegen, wer dir Snaps schicken, sich deine Storys ansehen oder deinen Standort auf der Snap Map sehen darf.
+        </p>
+      </div>
+      
+      <div class="TippsSlide" id="slide2">
+        <p>Du kannst deine Memorys durchsuchen, indem du vom Kamerabildschirm nach oben wischst und in das Suchfeld oben eingibst 👆</p>
+      </div>
+      
+      <div class="TippsSlide" id="slide3">
+        <p>Brauchst du Ideen, was du zum Abendessen zubereiten oder was du deinem Superbesten Freund zum Geburtstag schenken kannst? Dann frag einfach My AI!</p>
+      </div>
+      
+      <div class="TippsSlide" id="slide4">
+        <p>
+          Du kannst mit <a href="snapchat.com/web/" class="SlideLink">Snapchat für Web</a> von deinem Desktop aus chatten, Freunde anrufen und mehr 💻
+        </p>
+      </div>
+      
+      <div class="TippsSlide" id="slide5">
+        <p>
+          Du kannst deine Freundschafts-Emojis <a href="https://help.snapchat.com/hc/de/articles/7012387999764-So-passt-du-Freundschafts-Emojis-auf-Snapchat-an" class="SlideLink">anpassen</a>, damit die ganzen 💛 zu 🍕 werden – oder zu einem anderen Emoji deiner Wahl!
+        </p>
+      </div>
+    </div>
+    
+    <div class="TipsIndicators">
+      <span class="Dot active"></span>
+      <span class="Dot"></span>
+      <span class="Dot"></span>
+      <span class="Dot"></span>
+      <span class="Dot"></span>
+    </div>  
+  </div>
 
-<div class="PageDivider Top"></div>
+  <!-- ================= PAGE DIVIDERS ================= -->
+  <div class="PageDivider Top"></div>
 
-<p class="InfoText">
-  Diese Website ist durch reCAPTCHA geschützt. Es gelten die, <a href="https://policies.google.com/privacy" class="InlineLink">Datenschutzbestimmungen</a> und 
-  <a href="https://policies.google.com/terms" class="InlineLink"> Servicebestimmungen</a> 
-  von Google.
+  <p class="InfoText">
+    Diese Website ist durch reCAPTCHA geschützt. Es gelten die, <a href="https://policies.google.com/privacy" class="InlineLink">Datenschutzbestimmungen</a> und 
+    <a href="https://policies.google.com/terms" class="InlineLink"> Servicebestimmungen</a> 
+    von Google.
   </p>
 
-<div class="PageDivider Bot">
-</div>
+  <div class="PageDivider Bot"></div>
 
-<div class="FooterDropdownMenu">
-    
-  <!-- UNTERNEHMEN -->
-  <div class="FooterMenuItem">
-    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
-      <span>Unternehmen</span>
-      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
-    <div class="FooterSubmenu">
-      <a href="https://www.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Snap Inc.</a>
-      <a href="https://careers.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Karriere</a>
-      <a href="https://newsroom.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">News</a>
-      <a href="https://values.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Datenschutz und Sicherheit</a>
+  <!-- ================= FOOTER ================= -->
+  <div class="FooterContainer">
+    <div class="FooterDropdownMenu">
+      <div class="FooterMenuItem">
+        <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+          <span>Unternehmen</span>
+          <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <div class="FooterSubmenu">
+          <a href="https://www.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Snap Inc.</a>
+          <a href="https://careers.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Karriere</a>
+          <a href="https://newsroom.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">News</a>
+          <a href="https://values.snap.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Datenschutz und Sicherheit</a>
+        </div>
+      </div>
+
+      <div class="FooterMenuItem">
+        <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+          <span>Community</span>
+          <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <div class="FooterSubmenu">
+          <a href="https://help.snapchat.com/hc?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Snapchat Support</a>
+          <a href="https://support.spectacles.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Support für Spectacles</a>
+          <a href="https://values.snap.com/privacy/transparency/community-guidelines?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Community-Richtlinien</a>
+        </div>
+      </div>
+
+      <div class="FooterMenuItem">
+        <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+          <span>Werbung</span>
+          <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <div class="FooterSubmenu">
+          <a href="https://forbusiness.snapchat.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Snapchat Anzeigen</a>
+          <a href="https://www.snap.com/ad-policies?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Werberichtlinien</a>
+          <a href="https://www.snap.com/political-ads?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Bibliothek politischer Anzeigen</a>
+          <a href="https://www.snap.com/brand-guidelines?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Markenrechtlinien</a>
+          <a href="https://help.snapchat.com/hc/articles/7047502545044?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Richtlinien für Werbeaktionen</a>
+        </div>
+      </div>
+
+      <div class="FooterMenuItem">
+        <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
+          <span>Rechtliches</span>
+          <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+        <div class="FooterSubmenu">
+          <a href="https://www.snap.com/policies?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Sonstige Bestimmungen & Richtlinien</a>
+          <a href="https://values.snap.com/safety/safety-enforcement?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Strafverfolgung</a>
+          <a href="https://www.snap.com/cookie-policy?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Cookie-Richtlinie</a>
+          <a href="https://www.snapchat.com/cookie-settings?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Cookie-Einstellungen</a>
+          <a href="https://help.snapchat.com/hc/articles/7012332110996?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Verstoß melden</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="FooterImageLink">
+      <a href="https://example.com">
+        <img src="Logo.png" alt="Logo">
+      </a>
+    </div>
+
+    <div class="FooterLegalLink">
+      <a href="https://values.snap.com/privacy/privacy-policy?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterLink">Datenschutzbestimmungen</a>
+    </div>
+
+    <div class="FooterLegalLink">
+      <a href="https://www.snap.com/terms?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterLink">Servicebestimmungen</a>
+    </div>
+
+    <div class="FooterLanguageLabel">
+      <p>Sprache</p>
+    </div>
+
+    <div class="FooterLanguageSelector">
+      <div id="google_translate_element"></div>
     </div>
   </div>
+   
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const menuLogo = document.getElementById("menuLogo");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      const menuOpenIcon = "Menu.jpeg";
+      const menuCloseIcon = "menu-close.png"; 
+      const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
 
-  <!-- COMMUNITY -->
-  <div class="FooterMenuItem">
-    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
-      <span>Community</span>
-      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
-    <div class="FooterSubmenu">
-      <a href="https://help.snapchat.com/hc?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Snapchat Support</a>
-      <a href="https://support.spectacles.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Support für Spectacles</a>
-      <a href="https://values.snap.com/privacy/transparency/community-guidelines?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Community-Richtlinien</a>
-    </div>
-  </div>
-
-  <!-- WERBUNG -->
-  <div class="FooterMenuItem">
-    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
-      <span>Werbung</span>
-      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
-    <div class="FooterSubmenu">
-      <a href="https://forbusiness.snapchat.com/?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Snapchat Anzeigen</a>
-      <a href="https://www.snap.com/ad-policies?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Werberichtlinien</a>
-      <a href="https://www.snap.com/political-ads?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Bibliothek politischer Anzeigen</a>
-      <a href="https://www.snap.com/brand-guidelines?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Markenrechtlinien</a>
-      <a href="https://help.snapchat.com/hc/articles/7047502545044?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Richtlinien für Werbeaktionen</a>
-    </div>
-  </div>
-
-  <!-- RECHTLICHES -->
-  <div class="FooterMenuItem">
-    <button class="FooterMenuButton" onclick="toggleFooterMenu(this)">
-      <span>Rechtliches</span>
-      <svg class="FooterArrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <polyline points="9 18 15 12 9 6"></polyline>
-      </svg>
-    </button>
-    <div class="FooterSubmenu">
-      <a href="https://www.snap.com/policies?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Sonstige Bestimmungen & Richtlinien</a>
-      <a href="https://values.snap.com/safety/safety-enforcement?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Strafverfolgung</a>
-      <a href="https://www.snap.com/cookie-policy?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Cookie-Richtlinie</a>
-      <a href="https://www.snapchat.com/cookie-settings?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Cookie-Einstellungen</a>
-      <a href="https://help.snapchat.com/hc/articles/7012332110996?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterSubmenuLink">Verstoß melden</a>
-    </div>
-  </div>
-
-
-<!-- Bild-Link -->
-<div class="FooterImageLink">
-  <a href="https://example.com">
-    <img src="Logo.png" alt="Logo">
-  </a>
-</div>
-
-<!-- Datenschutzbestimmungen -->
-<div class="FooterLegalLink">
-  <a href="https://values.snap.com/privacy/privacy-policy?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterLink">Datenschutzbestimmungen</a>
-</div>
-
-<!-- Servicebestimmungen -->
-<div class="FooterLegalLink">
-  <a href="https://www.snap.com/terms?utm_source=help_snapchat_com&utm_medium=referral&utm_campaign=universal_navigation&utm_content=footer_item_link" class="FooterLink">Servicebestimmungen</a>
-</div>
-
-<!-- Sprache Text -->
-<div class="FooterLanguageLabel">
-  <p>Sprache</p>
-</div>
-
-<!-- Google Translate Widget -->
-<div class="FooterLanguageSelector">
-  <div id="google_translate_element"></div>
-</div>
-  
-   <!-- JavaScript-->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const menuLogo = document.getElementById("menuLogo");
-  const dropdownMenu = document.getElementById("dropdownMenu");
-  const menuOpenIcon = "Menu.jpeg";       
-  const menuCloseIcon = "menu-close.png"; 
-  const submenuItems = document.querySelectorAll(".overlay-item.has-submenu");
-
-  // ======================
-  // MENU öffnen/schließen
-  // ======================
-  menuLogo.addEventListener("click", () => {
-    const isOpen = dropdownMenu.classList.toggle("show");
-    if (isOpen) {
-      menuLogo.src = menuCloseIcon;
-      menuLogo.classList.add("open");
-    } else {
-      menuLogo.src = menuOpenIcon;
-      menuLogo.classList.remove("open");
-    }
-  });
-
-  // ======================
-  // SUBMENUS initialisieren
-  // ======================
-  submenuItems.forEach((item, index) => {
-    const submenu = item.nextElementSibling;
-    if (!submenu) return;
-
-    const subId = "sub" + (index + 1);
-    submenu.id = subId;
-    item.dataset.target = subId;
-
-    item.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation(); // verhindert, dass Klick auf Window ausgelöst wird
-
-      const targetMenu = document.getElementById(item.dataset.target);
-
-      // Alle anderen Submenus schließen
-      document.querySelectorAll(".submenu").forEach(sub => {
-        if (sub !== targetMenu) sub.classList.remove("open");
-      });
-      submenuItems.forEach(i => {
-        if (i !== item) i.classList.remove("open");
+      menuLogo.addEventListener("click", () => {
+        const isOpen = dropdownMenu.classList.toggle("show");
+        if (isOpen) {
+          menuLogo.src = menuCloseIcon;
+          menuLogo.classList.add("open");
+        } else {
+          menuLogo.src = menuOpenIcon;
+          menuLogo.classList.remove("open");
+        }
       });
 
-      // Eigenes Submenu toggeln
-      const isOpening = !targetMenu.classList.contains("open");
-      targetMenu.classList.toggle("open");
-      item.classList.toggle("open");
+      submenuItems.forEach((item, index) => {
+        const submenu = item.nextElementSibling;
+        if (!submenu) return;
 
-      // ======================
-      // Scroll-Handling innerhalb des Dropdown-Menüs
-      // ======================
-      if (isOpening) {
-        setTimeout(() => {
-          const dropdownHeight = dropdownMenu.clientHeight;
-          const dropdownScrollTop = dropdownMenu.scrollTop;
-          const submenuRect = targetMenu.getBoundingClientRect();
-          const menuRect = dropdownMenu.getBoundingClientRect();
+        const subId = "sub" + (index + 1);
+        submenu.id = subId;
+        item.dataset.target = subId;
 
-          // Wie viel des Submenus unterhalb des sichtbaren Bereichs liegt
-          const over = submenuRect.bottom - menuRect.bottom;
-          if (over > 0) {
-            dropdownMenu.scrollBy({ top: over + 10, behavior: "smooth" });
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const targetMenu = document.getElementById(item.dataset.target);
+
+          document.querySelectorAll(".submenu").forEach(sub => {
+            if (sub !== targetMenu) sub.classList.remove("open");
+          });
+          submenuItems.forEach(i => {
+            if (i !== item) i.classList.remove("open");
+          });
+
+          const isOpening = !targetMenu.classList.contains("open");
+          targetMenu.classList.toggle("open");
+          item.classList.toggle("open");
+
+          if (isOpening) {
+            setTimeout(() => {
+              const dropdownHeight = dropdownMenu.clientHeight;
+              const dropdownScrollTop = dropdownMenu.scrollTop;
+              const submenuRect = targetMenu.getBoundingClientRect();
+              const menuRect = dropdownMenu.getBoundingClientRect();
+
+              const over = submenuRect.bottom - menuRect.bottom;
+              if (over > 0) {
+                dropdownMenu.scrollBy({ top: over + 10, behavior: "smooth" });
+              }
+
+              const under = menuRect.top - submenuRect.top;
+              if (under > 0) {
+                dropdownMenu.scrollBy({ top: -under - 10, behavior: "smooth" });
+              }
+            }, 200);
           }
+        });
+      });
 
-          // Optional: etwas nach oben scrollen, falls Submenu teilweise außerhalb oben
-          const under = menuRect.top - submenuRect.top;
-          if (under > 0) {
-            dropdownMenu.scrollBy({ top: -under - 10, behavior: "smooth" });
-          }
-        }, 200); // Warten, bis CSS Transition aktiv ist
-      }
+      window.addEventListener("click", (e) => {
+        if (!dropdownMenu.contains(e.target) && !menuLogo.contains(e.target)) {
+          dropdownMenu.classList.remove("show");
+          document.querySelectorAll(".submenu").forEach(sub => sub.classList.remove("open"));
+          submenuItems.forEach(item => item.classList.remove("open"));
+        }
+      });
+
+      dropdownMenu.addEventListener("touchstart", e => {
+        e.stopPropagation();
+      });
     });
-  });
 
-  // ======================
-  // Klick außerhalb → Menü schließen
-  // ======================
-  window.addEventListener("click", (e) => {
-    if (!dropdownMenu.contains(e.target) && !menuLogo.contains(e.target)) {
-      dropdownMenu.classList.remove("show");
-      document.querySelectorAll(".submenu").forEach(sub => sub.classList.remove("open"));
-      submenuItems.forEach(item => item.classList.remove("open"));
+    const searchLogo = document.getElementById("searchLogo");
+    const searchOverlay = document.getElementById("searchOverlay");
+    const cancelSearch = document.getElementById("cancelSearch");
+    const ghostLogo = document.getElementById("Ghostlogo");
+
+    function openSearch() {
+      searchLogo.style.display = "none";
+      searchOverlay.classList.add("active");
+      ghostLogo.style.transform = `translate(calc(-60% - 45px), -50%)`; 
+      document.querySelector(".searchInput").focus();
     }
-  });
 
-  // ======================
-  // Optional: Menü auf Touch-Scroll fixieren (Mobile)
-  // ======================
-  dropdownMenu.addEventListener("touchstart", e => {
-    e.stopPropagation();
-  });
-});
+    function closeSearch() {
+      searchOverlay.classList.remove("active");
+      searchLogo.style.display = "block";
+      ghostLogo.style.transform = "translate(-60%, -50%)";
+    }
 
-  // ======================
-  // SEARCH-WINDOW
-  // ======================
+    searchLogo.addEventListener("click", openSearch);
+    cancelSearch.addEventListener("click", closeSearch);
 
-const searchLogo = document.getElementById("searchLogo");
-const searchOverlay = document.getElementById("searchOverlay");
-const cancelSearch = document.getElementById("cancelSearch");
-const ghostLogo = document.getElementById("Ghostlogo");
+    const searchForm = document.getElementById("searchForm");
+    const searchInput = document.querySelector(".searchInput");
 
-function openSearch() {
-  searchLogo.style.display = "none";
-  searchOverlay.classList.add("active");
-
-  ghostLogo.style.transform = `translate(calc(-60% - 45px), -50%)`; 
-
-  document.querySelector(".searchInput").focus();
-}
-
-function closeSearch() {
-  searchOverlay.classList.remove("active");
-  searchLogo.style.display = "block";
-
-  // wieder exakt zentriert
-  ghostLogo.style.transform = "translate(-60%, -50%)";
-}
-
-searchLogo.addEventListener("click", openSearch);
-cancelSearch.addEventListener("click", closeSearch);
-
-  // ======================
-  // SEARCH-FUNKTION
-  // ======================
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.querySelector(".searchInput");
-
-// Mapping von Suchbegriffen zu Unterseiten
-const searchMap = {
-  "kontakt": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Kontakt",
-  "hack": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Hack",
-  "hacking": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Hacking",
-  "passwort": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Passwort",
-  "account": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Account",
-  "snapchat": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Snapchat",
-  "email": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Email",
-  "e-mail": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=E-mail",
+    const searchMap = {
+      "kontakt": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Kontakt",
+      "hack": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Hack",
+      "hacking": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Hacking",
+      "passwort": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Passwort",
+      "account": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Account",
+      "snapchat": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Snapchat",
+      "email": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Email",
+      "e-mail": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=E-mail",
   "flammen": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Flammen",
   "benutzer": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Benutzer",
   "story": "https://help.snapchat.com/hc/de/search?utf8=%E2%9C%93&query=Story",
