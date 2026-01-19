@@ -832,6 +832,7 @@
 }
 
 /* === HORIZONTALE TRENNLINIEN === */
+    
 .PageDivider {
   width: 100%;
   height: 1px;
@@ -847,6 +848,7 @@
 }
 
 /* === TEXT ZWISCHEN DEN LINIEN === */
+    
 .InfoText {
   font-size: 14px;
   color: #000;
@@ -1115,28 +1117,30 @@
 </div>
 
  <!-- TIPPS-SLIDE -->
-  
-  <div class="TippsCard">
-  <h2>Tipps</h2>
 
-    <button class="PrevArrow" onclick="prevSlide()">
-  <img src="arrowleft.png" alt="Zurück">
-</button>
-    
+<div class="TippsCard">
+  
+  <h2 class="TippsCardTitle">Tipps</h2>
+  
+  <button class="PrevArrow" onclick="prevSlide()">
+    <img src="arrowleft.png" alt="Zurück">
+  </button>
+  
   <button class="NextArrow" onclick="nextSlide()">
-  <img src="arrowright.png" alt="Weiter">
-</button>
-    
+    <img src="arrowright.png" alt="Weiter">
+  </button>
+  
   <div class="TippsCarousel">
-    <div class="TipsIndicators">
+    <!-- ENTFERNE das erste <div class="TipsIndicators"> hier! -->
+    
     <div class="TippsSlide active" id="slide1">
       <p>
-        Überprüfe deine <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat" class="SlideLink"> Datenschutzeinstellungen </a>, um festzulegen, wer dir Snaps schicken, sich deine Storys ansehen oder deinen Standort auf der Snap Map sehen darf.
+        Überprüfe deine <a href="https://help.snapchat.com/hc/de/articles/7012343074580-Wie-%C3%A4ndere-ich-meine-Datenschutzeinstellungen-in-Snapchat" class="SlideLink">Datenschutzeinstellungen</a>, um festzulegen, wer dir Snaps schicken, sich deine Storys ansehen oder deinen Standort auf der Snap Map sehen darf.
       </p>
     </div>
     
     <div class="TippsSlide" id="slide2">
-      <p> Du kannst deine Memorys durchsuchen, indem du vom Kamerabildschirm nach oben wischst und in das Suchfeld oben eingibst 👆</p>
+      <p>Du kannst deine Memorys durchsuchen, indem du vom Kamerabildschirm nach oben wischst und in das Suchfeld oben eingibst 👆</p>
     </div>
     
     <div class="TippsSlide" id="slide3">
@@ -1145,18 +1149,39 @@
     
     <div class="TippsSlide" id="slide4">
       <p>
-        Du kannst mit <a href="snapchat.com/web/" class="SlideLink"> Snapchat für Web </a> von deinem Desktop aus chatten, Freunde anrufen und mehr 💻</p>
+        Du kannst mit <a href="snapchat.com/web/" class="SlideLink">Snapchat für Web</a> von deinem Desktop aus chatten, Freunde anrufen und mehr 💻
+      </p>
     </div>
     
     <div class="TippsSlide" id="slide5">
       <p>
-        Du kannst deine Freundschafts-Emojis <a href="https://help.snapchat.com/hc/de/articles/7012387999764-So-passt-du-Freundschafts-Emojis-auf-Snapchat-an" class="SlideLink"> anpassen </a>, damit die ganzen 💛 zu 🍕 werden – oder zu einem anderen Emoji deiner Wahl!
+        Du kannst deine Freundschafts-Emojis <a href="https://help.snapchat.com/hc/de/articles/7012387999764-So-passt-du-Freundschafts-Emojis-auf-Snapchat-an" class="SlideLink">anpassen</a>, damit die ganzen 💛 zu 🍕 werden – oder zu einem anderen Emoji deiner Wahl!
       </p>
     </div>
   </div>
-
-<!-- Dots: außerhalb der Slides, immer sichtbar -->
+  
+  <!-- Dots: außerhalb von .TippsCarousel -->
   <div class="TipsIndicators">
+    <span class="Dot active"></span>
+    <span class="Dot"></span>
+    <span class="Dot"></span>
+    <span class="Dot"></span>
+    <span class="Dot"></span>
+  </div>  
+</div>
+
+<!-- Zwei Klassen mit Leerzeichen! -->
+<div class="PageDivider Top"></div>
+
+<p class="InfoText">
+  Erfahre mehr in unseren <a href="https://policies.google.com/privacy" class="InlineLink">Datenschutzbestimmungen</a> und 
+  <a href="https://policies.google.com/terms" class="InlineLink">Servicebestimmungen</a> 
+  von Google.
+</p>
+
+<div class="PageDivider Bot"></div>
+    
+<!-- Dots: außerhalb der Slides, immer sichtbar -->
     <span class="Dot active"></span>
     <span class="Dot"></span>
     <span class="Dot"></span>
